@@ -16,7 +16,7 @@ appleRespawnProbability = 0.05
 
 
 
-waste_densities = np.linspace(0,1,10)
+waste_densities = np.linspace(0,1,100)
 apple_spawn_prob, waste_spawn_prob = [], []
 
 for waste_density in waste_densities:
@@ -48,5 +48,9 @@ for waste_density in waste_densities:
 
 plt.plot(waste_densities, apple_spawn_prob, label='Apples')
 plt.plot(waste_densities, waste_spawn_prob, label='Waste')
+plt.xlabel("Waste Density %", fontsize=25)
+plt.ylabel("Probability of Spawn (each tile)", fontsize=25)
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
 plt.legend()
 plt.show()
