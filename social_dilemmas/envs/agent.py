@@ -17,7 +17,7 @@ BASE_ACTIONS = {
 
 
 class Agent(object):
-    def __init__(self, agent_id, start_pos, start_orientation, full_map, row_size, col_size):
+    def __init__(self, agent_id, team_num, credo, rogue_flag, rogue_deg, start_pos, start_orientation, full_map, row_size, col_size):
         """Superclass for all agents.
 
         Parameters
@@ -36,6 +36,12 @@ class Agent(object):
             how many columns left and right the agent can look
         """
         self.agent_id = agent_id
+        self.team_num = team_num
+        self.credo = credo
+        self.is_rogue = rogue_flag
+        self.rogue_deg = rogue_deg
+
+        
         self.pos = np.array(start_pos)
         self.orientation = start_orientation
         self.full_map = full_map
@@ -76,7 +82,8 @@ class Agent(object):
         raise NotImplementedError
 
     def get_char_id(self):
-        return bytes(str(int(self.agent_id[-1]) + 1), encoding="ascii")
+        # return bytes(str(int(self.agent_id[-1]) + 1), encoding="ascii")
+        return bytes(str(self.team_num + 1), encoding="ascii")              #changed for agents on same team = same color
 
     def get_state(self):
         return util.return_view(self.full_map, self.pos, self.row_size, self.col_size)
@@ -159,9 +166,9 @@ HARVEST_ACTIONS.update({7: "FIRE"})  # Fire a penalty beam
 
 
 class HarvestAgent(Agent):
-    def __init__(self, agent_id, start_pos, start_orientation, full_map, view_len):
+    def __init__(self, agent_id, team_num, credo, rogue_flag, rogue_deg, start_pos, start_orientation, full_map, view_len):
         self.view_len = view_len
-        super().__init__(agent_id, start_pos, start_orientation, full_map, view_len, view_len)
+        super().__init__(agent_id, team_num, credo, rogue_flag, rogue_deg, start_pos, start_orientation, full_map, view_len, view_len)
         self.update_agent_pos(start_pos)
         self.update_agent_rot(start_orientation)
 
@@ -196,9 +203,9 @@ CLEANUP_ACTIONS.update({7: "FIRE", 8: "CLEAN"})  # Fire a penalty beam  # Fire a
 
 
 class CleanupAgent(Agent):
-    def __init__(self, agent_id, start_pos, start_orientation, full_map, view_len):
+    def __init__(self, agent_id, team_num, credo, rogue_flag, rogue_deg, start_pos, start_orientation, full_map, view_len):
         self.view_len = view_len
-        super().__init__(agent_id, start_pos, start_orientation, full_map, view_len, view_len)
+        super().__init__(agent_id, team_num, credo, rogue_flag, rogue_deg, start_pos, start_orientation, full_map, view_len, view_len)
         # remember what you've stepped on
         self.update_agent_pos(start_pos)
         self.update_agent_rot(start_orientation)

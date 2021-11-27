@@ -1,0 +1,28 @@
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-13 16:57:20,200	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.93 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-13 16:57:20,505	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 12797939712 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-13 17:03:11,130	WARNING util.py:137 -- The `fetch_result` operation took 0.9368538856506348 seconds to complete, which may be a performance bottleneck.
+2021-11-13 17:03:12,370	WARNING util.py:137 -- The `process_trial` operation took 2.245800018310547 seconds to complete, which may be a performance bottleneck.
+2021-11-13 18:03:13,838	WARNING util.py:137 -- The `experiment_checkpoint` operation took 2.7774245738983154 seconds to complete, which may be a performance bottleneck.
+2021-11-13 18:08:33,824	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6186113357543945 seconds to complete, which may be a performance bottleneck.
+2021-11-13 19:06:38,626	WARNING util.py:137 -- The `process_trial` operation took 0.5411150455474854 seconds to complete, which may be a performance bottleneck.
+2021-11-13 19:38:50,527	WARNING util.py:137 -- The `process_trial` operation took 0.5434620380401611 seconds to complete, which may be a performance bottleneck.
+2021-11-13 19:49:43,563	WARNING util.py:137 -- The `process_trial` operation took 0.6310367584228516 seconds to complete, which may be a performance bottleneck.
+2021-11-13 20:11:07,131	WARNING util.py:137 -- The `process_trial` operation took 0.5750753879547119 seconds to complete, which may be a performance bottleneck.
+2021-11-13 20:19:01,548	WARNING util.py:137 -- The `process_trial` operation took 0.5358171463012695 seconds to complete, which may be a performance bottleneck.
+2021-11-13 20:21:41,800	WARNING util.py:137 -- The `process_trial` operation took 0.5269184112548828 seconds to complete, which may be a performance bottleneck.
+2021-11-13 21:01:59,225	WARNING util.py:137 -- The `process_trial` operation took 0.6180694103240967 seconds to complete, which may be a performance bottleneck.
+2021-11-13 21:31:14,791	WARNING util.py:137 -- The `process_trial` operation took 0.5357944965362549 seconds to complete, which may be a performance bottleneck.
+2021-11-13 21:41:34,452	WARNING util.py:137 -- The `process_trial` operation took 0.5316448211669922 seconds to complete, which may be a performance bottleneck.
+2021-11-13 21:54:38,180	WARNING util.py:137 -- The `process_trial` operation took 0.5766417980194092 seconds to complete, which may be a performance bottleneck.
+2021-11-13 22:12:54,528	WARNING util.py:137 -- The `process_trial` operation took 0.5139615535736084 seconds to complete, which may be a performance bottleneck.
+2021-11-13 22:33:53,636	WARNING util.py:137 -- The `process_trial` operation took 0.5159430503845215 seconds to complete, which may be a performance bottleneck.
+2021-11-13 23:20:44,588	WARNING util.py:137 -- The `process_trial_save` operation took 0.6827602386474609 seconds to complete, which may be a performance bottleneck.
+2021-11-13 23:20:44,589	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-13 23:59:44,030	WARNING util.py:137 -- The `process_trial` operation took 0.562579870223999 seconds to complete, which may be a performance bottleneck.
+2021-11-14 00:12:46,537	WARNING util.py:137 -- The `process_trial_save` operation took 0.8439383506774902 seconds to complete, which may be a performance bottleneck.
+2021-11-14 00:12:46,537	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-14 01:07:06,085	WARNING util.py:137 -- The `process_trial` operation took 0.5518977642059326 seconds to complete, which may be a performance bottleneck.
+2021-11-14 03:42:45,755	WARNING util.py:137 -- The `process_trial` operation took 0.8784806728363037 seconds to complete, which may be a performance bottleneck.
+2021-11-14 07:12:33,591	WARNING util.py:137 -- The `process_trial` operation took 19.730279207229614 seconds to complete, which may be a performance bottleneck.
+2021-11-15 07:53:22,652	WARNING util.py:137 -- The `process_trial` operation took 2.940629005432129 seconds to complete, which may be a performance bottleneck.

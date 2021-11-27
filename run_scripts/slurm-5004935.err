@@ -1,0 +1,15 @@
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 15:07:42,584	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.25 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 15:07:42,853	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21396946944 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 16:03:20,405	ERROR trial_runner.py:349 -- Trial Runner checkpointing failed.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 347, in step
+    self.checkpoint()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 278, in checkpoint
+    os.rename(tmp_file_name, self.checkpoint_file)
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_2teams_6agents_custom_metrics/.tmp_checkpoint' -> '/h/dtradke/ray_results/cleanup_baseline_PPO_2teams_6agents_custom_metrics/experiment_state-2021-11-17_15-07-43.json'
+slurmstepd: error: *** JOB 5004935 ON gpu031 CANCELLED AT 2021-11-17T16:07:40 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 16:10:26,273	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.99 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 16:10:26,563	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 17659346944 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+slurmstepd: error: *** JOB 5004935 ON gpu130 CANCELLED AT 2021-11-17T17:11:44 DUE TO PREEMPTION ***

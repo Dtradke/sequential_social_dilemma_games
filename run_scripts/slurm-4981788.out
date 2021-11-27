@@ -1,0 +1,1518 @@
+== Status ==
+Memory usage on this node: 16.0/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+-------+
+| Trial name                           | status   | loc   |
+|--------------------------------------+----------+-------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  |       |
++--------------------------------------+----------+-------+
+
+
+[2m[36m(pid=28218)[0m 2021-11-15 12:17:44,637	INFO trainer.py:421 -- Tip: set 'eager': true or the --eager flag to enable TensorFlow eager execution
+[2m[36m(pid=28218)[0m 2021-11-15 12:17:44,642	INFO trainer.py:580 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
+[2m[36m(pid=28218)[0m 2021-11-15 12:19:31,263	INFO trainable.py:180 -- _setup took 106.625 seconds. If your trainable is slow to initialize, consider setting reuse_actors=True to reduce actor creation overheads.
+[2m[36m(pid=28218)[0m 2021-11-15 12:19:31,263	INFO trainable.py:217 -- Getting current IP.
+[2m[36m(pid=28218)[0m 2021-11-15 12:19:31,263	WARNING util.py:37 -- Install gputil for GPU system monitoring.
+[2m[36m(pid=28218)[0m trainer.train() result: <ray.rllib.agents.trainer_template.BaselinePPOTrainer object at 0x7ff64f4ac518> -> 96 episodes
+Result for BaselinePPOTrainer_cleanup_env_00000:
+  callback_ok: true
+  custom_metrics:
+    apples_agent-0_max: 29
+    apples_agent-0_mean: 4.125
+    apples_agent-0_min: 0
+    apples_agent-1_max: 22
+    apples_agent-1_mean: 4.677083333333333
+    apples_agent-1_min: 0
+    apples_agent-2_max: 20
+    apples_agent-2_mean: 3.5208333333333335
+    apples_agent-2_min: 0
+    apples_agent-3_max: 17
+    apples_agent-3_mean: 2.9270833333333335
+    apples_agent-3_min: 0
+    apples_agent-4_max: 24
+    apples_agent-4_mean: 3.2083333333333335
+    apples_agent-4_min: 0
+    apples_agent-5_max: 28
+    apples_agent-5_mean: 4.041666666666667
+    apples_agent-5_min: 0
+    cleaning_beam_agent-0_max: 131
+    cleaning_beam_agent-0_mean: 103.85416666666667
+    cleaning_beam_agent-0_min: 85
+    cleaning_beam_agent-1_max: 130
+    cleaning_beam_agent-1_mean: 109.36458333333333
+    cleaning_beam_agent-1_min: 79
+    cleaning_beam_agent-2_max: 145
+    cleaning_beam_agent-2_mean: 116.3125
+    cleaning_beam_agent-2_min: 95
+    cleaning_beam_agent-3_max: 135
+    cleaning_beam_agent-3_mean: 112.44791666666667
+    cleaning_beam_agent-3_min: 95
+    cleaning_beam_agent-4_max: 146
+    cleaning_beam_agent-4_mean: 119.41666666666667
+    cleaning_beam_agent-4_min: 95
+    cleaning_beam_agent-5_max: 136
+    cleaning_beam_agent-5_mean: 113.5625
+    cleaning_beam_agent-5_min: 93
+    fire_beam_agent-0_max: 132
+    fire_beam_agent-0_mean: 111.26041666666667
+    fire_beam_agent-0_min: 85
+    fire_beam_agent-1_max: 138
+    fire_beam_agent-1_mean: 111.59375
+    fire_beam_agent-1_min: 94
+    fire_beam_agent-2_max: 134
+    fire_beam_agent-2_mean: 110.5625
+    fire_beam_agent-2_min: 84
+    fire_beam_agent-3_max: 152
+    fire_beam_agent-3_mean: 123.34375
+    fire_beam_agent-3_min: 102
+    fire_beam_agent-4_max: 128
+    fire_beam_agent-4_mean: 105.97916666666667
+    fire_beam_agent-4_min: 85
+    fire_beam_agent-5_max: 160
+    fire_beam_agent-5_mean: 112.625
+    fire_beam_agent-5_min: 92
+    num_batches_max: 6
+    num_batches_mean: 6.0
+    num_batches_min: 6
+  date: 2021-11-15_12-24-03
+  done: false
+  episode_len_mean: 1000.0
+  episode_reward_max: -3164.0
+  episode_reward_mean: -6869.90625
+  episode_reward_min: -10014.0
+  episodes_this_iter: 96
+  episodes_total: 96
+  experiment_id: 36d0688fbabf4e1fbd5c93bbe370bb81
+  experiment_tag: '0'
+  hostname: gpu161.cluster.local
+  info:
+    grad_time_ms: 35548.682
+    learner:
+      agent-0:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.0012600000482052565
+        entropy: 2.188324213027954
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.007124709896743298
+        model: {}
+        policy_loss: -0.002560109831392765
+        total_loss: 1.5681211948394775
+        vf_explained_var: -0.0002664923667907715
+        vf_loss: 15731.078125
+      agent-1:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.0012600000482052565
+        entropy: 2.187915325164795
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0077341399155557156
+        model: {}
+        policy_loss: -0.0023407423868775368
+        total_loss: 1.7589390277862549
+        vf_explained_var: -0.00031873583793640137
+        vf_loss: 17635.8359375
+      agent-2:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.0012600000482052565
+        entropy: 2.191305160522461
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.006193585228174925
+        model: {}
+        policy_loss: -0.0012142173945903778
+        total_loss: 1.909403920173645
+        vf_explained_var: -0.00023567676544189453
+        vf_loss: 19132.36328125
+      agent-3:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.0012600000482052565
+        entropy: 2.1883702278137207
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.008239120244979858
+        model: {}
+        policy_loss: -0.004516529850661755
+        total_loss: 1.4597876071929932
+        vf_explained_var: -0.0004228949546813965
+        vf_loss: 14665.0791015625
+      agent-4:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.0012600000482052565
+        entropy: 2.185340642929077
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.00956811010837555
+        model: {}
+        policy_loss: -0.0035521809477359056
+        total_loss: 1.540124773979187
+        vf_explained_var: -0.00044596195220947266
+        vf_loss: 15456.09375
+      agent-5:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.0012600000482052565
+        entropy: 2.190267324447632
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.005872748792171478
+        model: {}
+        policy_loss: -0.0035489024594426155
+        total_loss: 1.3924872875213623
+        vf_explained_var: -0.0002869069576263428
+        vf_loss: 13987.1669921875
+    load_time_ms: 78602.439
+    num_steps_sampled: 96000
+    num_steps_trained: 96000
+    sample_time_ms: 130829.464
+    update_time_ms: 3308.949
+  iterations_since_restore: 1
+  node_ip: 172.17.8.161
+  num_healthy_workers: 6
+  off_policy_estimator: {}
+  optimizer_steps_this_iter: 1
+  perf:
+    cpu_util_percent: 22.29605263157895
+    ram_util_percent: 16.382631578947368
+  pid: 28218
+  policy_reward_max:
+    agent-0: -183.0
+    agent-1: -101.0
+    agent-2: -391.0
+    agent-3: -253.0
+    agent-4: -273.0
+    agent-5: -104.0
+  policy_reward_mean:
+    agent-0: -1132.1770833333333
+    agent-1: -1219.8541666666667
+    agent-2: -1264.5520833333333
+    agent-3: -1102.5833333333333
+    agent-4: -1121.53125
+    agent-5: -1029.2083333333333
+  policy_reward_min:
+    agent-0: -2108.0
+    agent-1: -2211.0
+    agent-2: -2325.0
+    agent-3: -2343.0
+    agent-4: -2471.0
+    agent-5: -2288.0
+  sampler_perf:
+    mean_env_wait_ms: 24.913507821041467
+    mean_inference_ms: 14.224326296960994
+    mean_processing_ms: 54.80470158757664
+  time_since_restore: 266.195100069046
+  time_this_iter_s: 266.195100069046
+  time_total_s: 266.195100069046
+  timestamp: 1636997043
+  timesteps_since_restore: 96000
+  timesteps_this_iter: 96000
+  timesteps_total: 96000
+  training_iteration: 1
+  trial_id: '00000'
+  
+== Status ==
+Memory usage on this node: 35.2/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+--------------------+--------+------------------+-------+----------+
+| Trial name                           | status   | loc                |   iter |   total time (s) |    ts |   reward |
+|--------------------------------------+----------+--------------------+--------+------------------+-------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  | 172.17.8.161:28218 |      1 |          266.195 | 96000 | -6869.91 |
++--------------------------------------+----------+--------------------+--------+------------------+-------+----------+
+
+
+Result for BaselinePPOTrainer_cleanup_env_00000:
+[2m[36m(pid=28218)[0m trainer.train() result: <ray.rllib.agents.trainer_template.BaselinePPOTrainer object at 0x7ff64f4ac518> -> 96 episodes
+  callback_ok: true
+  custom_metrics:
+    apples_agent-0_max: 21
+    apples_agent-0_mean: 3.78
+    apples_agent-0_min: 0
+    apples_agent-1_max: 30
+    apples_agent-1_mean: 5.19
+    apples_agent-1_min: 0
+    apples_agent-2_max: 33
+    apples_agent-2_mean: 3.75
+    apples_agent-2_min: 0
+    apples_agent-3_max: 37
+    apples_agent-3_mean: 4.56
+    apples_agent-3_min: 0
+    apples_agent-4_max: 20
+    apples_agent-4_mean: 3.74
+    apples_agent-4_min: 0
+    apples_agent-5_max: 21
+    apples_agent-5_mean: 3.5
+    apples_agent-5_min: 0
+    cleaning_beam_agent-0_max: 132
+    cleaning_beam_agent-0_mean: 109.58
+    cleaning_beam_agent-0_min: 86
+    cleaning_beam_agent-1_max: 119
+    cleaning_beam_agent-1_mean: 78.17
+    cleaning_beam_agent-1_min: 53
+    cleaning_beam_agent-2_max: 133
+    cleaning_beam_agent-2_mean: 105.53
+    cleaning_beam_agent-2_min: 85
+    cleaning_beam_agent-3_max: 147
+    cleaning_beam_agent-3_mean: 122.98
+    cleaning_beam_agent-3_min: 102
+    cleaning_beam_agent-4_max: 175
+    cleaning_beam_agent-4_mean: 145.51
+    cleaning_beam_agent-4_min: 107
+    cleaning_beam_agent-5_max: 175
+    cleaning_beam_agent-5_mean: 129.92
+    cleaning_beam_agent-5_min: 109
+    fire_beam_agent-0_max: 132
+    fire_beam_agent-0_mean: 106.67
+    fire_beam_agent-0_min: 84
+    fire_beam_agent-1_max: 134
+    fire_beam_agent-1_mean: 112.31
+    fire_beam_agent-1_min: 91
+    fire_beam_agent-2_max: 130
+    fire_beam_agent-2_mean: 109.03
+    fire_beam_agent-2_min: 86
+    fire_beam_agent-3_max: 157
+    fire_beam_agent-3_mean: 133.56
+    fire_beam_agent-3_min: 109
+    fire_beam_agent-4_max: 113
+    fire_beam_agent-4_mean: 85.61
+    fire_beam_agent-4_min: 64
+    fire_beam_agent-5_max: 132
+    fire_beam_agent-5_mean: 103.91
+    fire_beam_agent-5_min: 78
+    num_batches_max: 6
+    num_batches_mean: 6.0
+    num_batches_min: 6
+  date: 2021-11-15_12-28-16
+  done: false
+  episode_len_mean: 1000.0
+  episode_reward_max: -2699.0
+  episode_reward_mean: -6588.93
+  episode_reward_min: -11321.0
+  episodes_this_iter: 96
+  episodes_total: 192
+  experiment_id: 36d0688fbabf4e1fbd5c93bbe370bb81
+  experiment_tag: '0'
+  hostname: gpu161.cluster.local
+  info:
+    grad_time_ms: 27845.058
+    learner:
+      agent-0:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.001254009548574686
+        entropy: 2.1858768463134766
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.00330912321805954
+        model: {}
+        policy_loss: -0.0008637243881821632
+        total_loss: 1.3172850608825684
+        vf_explained_var: -0.00047081708908081055
+        vf_loss: 13213.341796875
+      agent-1:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.001254009548574686
+        entropy: 2.1848719120025635
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0016139054205268621
+        model: {}
+        policy_loss: -5.95626188442111e-05
+        total_loss: 1.2637903690338135
+        vf_explained_var: -0.0004419386386871338
+        vf_loss: 12673.724609375
+      agent-2:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.001254009548574686
+        entropy: 2.190112590789795
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.004863381385803223
+        model: {}
+        policy_loss: -0.0011053401976823807
+        total_loss: 1.1977344751358032
+        vf_explained_var: -0.0005045831203460693
+        vf_loss: 12017.2177734375
+      agent-3:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.001254009548574686
+        entropy: 2.189408779144287
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0020918757654726505
+        model: {}
+        policy_loss: -0.0003897123388014734
+        total_loss: 1.1205562353134155
+        vf_explained_var: -0.0005079209804534912
+        vf_loss: 11243.810546875
+      agent-4:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.001254009548574686
+        entropy: 2.1805992126464844
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0021531253587454557
+        model: {}
+        policy_loss: -0.0003175811143592
+        total_loss: 1.5317003726959229
+        vf_explained_var: -0.0003782212734222412
+        vf_loss: 15354.251953125
+      agent-5:
+        cur_kl_coeff: 0.20000000298023224
+        cur_lr: 0.001254009548574686
+        entropy: 2.1827971935272217
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0028359286952763796
+        model: {}
+        policy_loss: -0.0003739474341273308
+        total_loss: 1.2581095695495605
+        vf_explained_var: -0.0005359947681427002
+        vf_loss: 12617.580078125
+    load_time_ms: 86710.578
+    num_steps_sampled: 192000
+    num_steps_trained: 192000
+    sample_time_ms: 129062.247
+    update_time_ms: 2176.381
+  iterations_since_restore: 2
+  node_ip: 172.17.8.161
+  num_healthy_workers: 6
+  off_policy_estimator: {}
+  optimizer_steps_this_iter: 1
+  perf:
+    cpu_util_percent: 18.739204545454545
+    ram_util_percent: 18.464488636363637
+  pid: 28218
+  policy_reward_max:
+    agent-0: -318.0
+    agent-1: -117.0
+    agent-2: -147.0
+    agent-3: -99.0
+    agent-4: -228.0
+    agent-5: -93.0
+  policy_reward_mean:
+    agent-0: -1118.99
+    agent-1: -1104.56
+    agent-2: -1095.3
+    agent-3: -1012.99
+    agent-4: -1182.05
+    agent-5: -1075.04
+  policy_reward_min:
+    agent-0: -1955.0
+    agent-1: -2432.0
+    agent-2: -2317.0
+    agent-3: -2732.0
+    agent-4: -2539.0
+    agent-5: -2197.0
+  sampler_perf:
+    mean_env_wait_ms: 24.954386403473418
+    mean_inference_ms: 13.515501693781436
+    mean_processing_ms: 54.12409742460114
+  time_since_restore: 509.91719818115234
+  time_this_iter_s: 243.72209811210632
+  time_total_s: 509.91719818115234
+  timestamp: 1636997296
+  timesteps_since_restore: 192000
+  timesteps_this_iter: 96000
+  timesteps_total: 192000
+  training_iteration: 2
+  trial_id: '00000'
+  
+== Status ==
+Memory usage on this node: 34.6/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+| Trial name                           | status   | loc                |   iter |   total time (s) |     ts |   reward |
+|--------------------------------------+----------+--------------------+--------+------------------+--------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  | 172.17.8.161:28218 |      2 |          509.917 | 192000 | -6588.93 |
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+
+
+[2m[36m(pid=28218)[0m trainer.train() result: <ray.rllib.agents.trainer_template.BaselinePPOTrainer object at 0x7ff64f4ac518> -> 96 episodes
+Result for BaselinePPOTrainer_cleanup_env_00000:
+  callback_ok: true
+  custom_metrics:
+    apples_agent-0_max: 24
+    apples_agent-0_mean: 3.49
+    apples_agent-0_min: 0
+    apples_agent-1_max: 24
+    apples_agent-1_mean: 4.11
+    apples_agent-1_min: 0
+    apples_agent-2_max: 26
+    apples_agent-2_mean: 5.08
+    apples_agent-2_min: 0
+    apples_agent-3_max: 15
+    apples_agent-3_mean: 3.34
+    apples_agent-3_min: 0
+    apples_agent-4_max: 17
+    apples_agent-4_mean: 3.5
+    apples_agent-4_min: 0
+    apples_agent-5_max: 18
+    apples_agent-5_mean: 3.77
+    apples_agent-5_min: 0
+    cleaning_beam_agent-0_max: 142
+    cleaning_beam_agent-0_mean: 117.49
+    cleaning_beam_agent-0_min: 94
+    cleaning_beam_agent-1_max: 88
+    cleaning_beam_agent-1_mean: 71.13
+    cleaning_beam_agent-1_min: 55
+    cleaning_beam_agent-2_max: 142
+    cleaning_beam_agent-2_mean: 112.52
+    cleaning_beam_agent-2_min: 83
+    cleaning_beam_agent-3_max: 160
+    cleaning_beam_agent-3_mean: 129.68
+    cleaning_beam_agent-3_min: 103
+    cleaning_beam_agent-4_max: 197
+    cleaning_beam_agent-4_mean: 162.11
+    cleaning_beam_agent-4_min: 136
+    cleaning_beam_agent-5_max: 175
+    cleaning_beam_agent-5_mean: 137.03
+    cleaning_beam_agent-5_min: 114
+    fire_beam_agent-0_max: 118
+    fire_beam_agent-0_mean: 94.98
+    fire_beam_agent-0_min: 68
+    fire_beam_agent-1_max: 131
+    fire_beam_agent-1_mean: 100.79
+    fire_beam_agent-1_min: 69
+    fire_beam_agent-2_max: 120
+    fire_beam_agent-2_mean: 98.63
+    fire_beam_agent-2_min: 77
+    fire_beam_agent-3_max: 160
+    fire_beam_agent-3_mean: 133.78
+    fire_beam_agent-3_min: 109
+    fire_beam_agent-4_max: 101
+    fire_beam_agent-4_mean: 80.67
+    fire_beam_agent-4_min: 63
+    fire_beam_agent-5_max: 120
+    fire_beam_agent-5_mean: 96.61
+    fire_beam_agent-5_min: 72
+    num_batches_max: 6
+    num_batches_mean: 6.0
+    num_batches_min: 6
+  date: 2021-11-15_12-32-14
+  done: false
+  episode_len_mean: 1000.0
+  episode_reward_max: -3599.0
+  episode_reward_mean: -6300.15
+  episode_reward_min: -10987.0
+  episodes_this_iter: 96
+  episodes_total: 288
+  experiment_id: 36d0688fbabf4e1fbd5c93bbe370bb81
+  experiment_tag: '0'
+  hostname: gpu161.cluster.local
+  info:
+    grad_time_ms: 25092.538
+    learner:
+      agent-0:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012480191653594375
+        entropy: 2.1693334579467773
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0029268881771713495
+        model: {}
+        policy_loss: -0.00040948670357465744
+        total_loss: 1.1169155836105347
+        vf_explained_var: -0.00037744641304016113
+        vf_loss: 11208.50390625
+      agent-1:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012480191653594375
+        entropy: 2.168088436126709
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0040141260251402855
+        model: {}
+        policy_loss: -0.0008299387991428375
+        total_loss: 1.1527434587478638
+        vf_explained_var: -0.0006283819675445557
+        vf_loss: 11569.8798828125
+      agent-2:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012480191653594375
+        entropy: 2.1935722827911377
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0051018791273236275
+        model: {}
+        policy_loss: -0.0001545764971524477
+        total_loss: 1.0867078304290771
+        vf_explained_var: -0.0003833174705505371
+        vf_loss: 10902.1298828125
+      agent-3:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012480191653594375
+        entropy: 2.1894431114196777
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.004004017449915409
+        model: {}
+        policy_loss: -0.0005203410983085632
+        total_loss: 1.0028681755065918
+        vf_explained_var: -0.0005474090576171875
+        vf_loss: 10068.416015625
+      agent-4:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012480191653594375
+        entropy: 2.1636013984680176
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.005885452032089233
+        model: {}
+        policy_loss: -0.0009533162228763103
+        total_loss: 1.1137160062789917
+        vf_explained_var: -0.0005154311656951904
+        vf_loss: 11178.8876953125
+      agent-5:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012480191653594375
+        entropy: 2.1880526542663574
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0028249602764844894
+        model: {}
+        policy_loss: -0.0005439650267362595
+        total_loss: 1.050601840019226
+        vf_explained_var: -0.0005355775356292725
+        vf_loss: 10547.142578125
+    load_time_ms: 78708.993
+    num_steps_sampled: 288000
+    num_steps_trained: 288000
+    sample_time_ms: 137666.467
+    update_time_ms: 1474.789
+  iterations_since_restore: 3
+  node_ip: 172.17.8.161
+  num_healthy_workers: 6
+  off_policy_estimator: {}
+  optimizer_steps_this_iter: 1
+  perf:
+    cpu_util_percent: 19.011309523809523
+    ram_util_percent: 17.978273809523813
+  pid: 28218
+  policy_reward_max:
+    agent-0: -245.0
+    agent-1: -179.0
+    agent-2: -194.0
+    agent-3: -213.0
+    agent-4: -181.0
+    agent-5: -151.0
+  policy_reward_mean:
+    agent-0: -1057.08
+    agent-1: -1108.02
+    agent-2: -1031.6
+    agent-3: -1010.39
+    agent-4: -1062.74
+    agent-5: -1030.32
+  policy_reward_min:
+    agent-0: -2700.0
+    agent-1: -2352.0
+    agent-2: -2333.0
+    agent-3: -1916.0
+    agent-4: -2329.0
+    agent-5: -2197.0
+  sampler_perf:
+    mean_env_wait_ms: 24.84800361789886
+    mean_inference_ms: 13.179270225606466
+    mean_processing_ms: 53.86244916106716
+  time_since_restore: 747.2982952594757
+  time_this_iter_s: 237.38109707832336
+  time_total_s: 747.2982952594757
+  timestamp: 1636997534
+  timesteps_since_restore: 288000
+  timesteps_this_iter: 96000
+  timesteps_total: 288000
+  training_iteration: 3
+  trial_id: '00000'
+  
+== Status ==
+Memory usage on this node: 34.3/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+| Trial name                           | status   | loc                |   iter |   total time (s) |     ts |   reward |
+|--------------------------------------+----------+--------------------+--------+------------------+--------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  | 172.17.8.161:28218 |      3 |          747.298 | 288000 | -6300.15 |
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+
+
+[2m[36m(pid=28218)[0m trainer.train() result: <ray.rllib.agents.trainer_template.BaselinePPOTrainer object at 0x7ff64f4ac518> -> 96 episodes
+Result for BaselinePPOTrainer_cleanup_env_00000:
+  callback_ok: true
+  custom_metrics:
+    apples_agent-0_max: 27
+    apples_agent-0_mean: 4.21
+    apples_agent-0_min: 0
+    apples_agent-1_max: 26
+    apples_agent-1_mean: 4.62
+    apples_agent-1_min: 0
+    apples_agent-2_max: 26
+    apples_agent-2_mean: 4.35
+    apples_agent-2_min: 0
+    apples_agent-3_max: 28
+    apples_agent-3_mean: 4.42
+    apples_agent-3_min: 0
+    apples_agent-4_max: 22
+    apples_agent-4_mean: 3.31
+    apples_agent-4_min: 0
+    apples_agent-5_max: 21
+    apples_agent-5_mean: 3.39
+    apples_agent-5_min: 0
+    cleaning_beam_agent-0_max: 140
+    cleaning_beam_agent-0_mean: 118.34
+    cleaning_beam_agent-0_min: 89
+    cleaning_beam_agent-1_max: 79
+    cleaning_beam_agent-1_mean: 59.94
+    cleaning_beam_agent-1_min: 44
+    cleaning_beam_agent-2_max: 156
+    cleaning_beam_agent-2_mean: 124.37
+    cleaning_beam_agent-2_min: 103
+    cleaning_beam_agent-3_max: 169
+    cleaning_beam_agent-3_mean: 136.96
+    cleaning_beam_agent-3_min: 115
+    cleaning_beam_agent-4_max: 191
+    cleaning_beam_agent-4_mean: 170.51
+    cleaning_beam_agent-4_min: 133
+    cleaning_beam_agent-5_max: 159
+    cleaning_beam_agent-5_mean: 137.9
+    cleaning_beam_agent-5_min: 116
+    fire_beam_agent-0_max: 120
+    fire_beam_agent-0_mean: 91.0
+    fire_beam_agent-0_min: 73
+    fire_beam_agent-1_max: 114
+    fire_beam_agent-1_mean: 89.23
+    fire_beam_agent-1_min: 67
+    fire_beam_agent-2_max: 114
+    fire_beam_agent-2_mean: 88.4
+    fire_beam_agent-2_min: 68
+    fire_beam_agent-3_max: 160
+    fire_beam_agent-3_mean: 125.29
+    fire_beam_agent-3_min: 101
+    fire_beam_agent-4_max: 116
+    fire_beam_agent-4_mean: 88.38
+    fire_beam_agent-4_min: 72
+    fire_beam_agent-5_max: 111
+    fire_beam_agent-5_mean: 90.98
+    fire_beam_agent-5_min: 72
+    num_batches_max: 6
+    num_batches_mean: 6.0
+    num_batches_min: 6
+  date: 2021-11-15_12-35-37
+  done: false
+  episode_len_mean: 1000.0
+  episode_reward_max: -3658.0
+  episode_reward_mean: -5905.0
+  episode_reward_min: -8827.0
+  episodes_this_iter: 96
+  episodes_total: 384
+  experiment_id: 36d0688fbabf4e1fbd5c93bbe370bb81
+  experiment_tag: '0'
+  hostname: gpu161.cluster.local
+  info:
+    grad_time_ms: 23801.758
+    learner:
+      agent-0:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012420287821441889
+        entropy: 2.152771472930908
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.017326097935438156
+        model: {}
+        policy_loss: 0.00038569187745451927
+        total_loss: 1.0836588144302368
+        vf_explained_var: -0.0003726780414581299
+        vf_loss: 10861.95703125
+      agent-1:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012420287821441889
+        entropy: 2.165461778640747
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.016215942800045013
+        model: {}
+        policy_loss: 6.505195051431656e-05
+        total_loss: 0.7624172568321228
+        vf_explained_var: -0.0007859468460083008
+        vf_loss: 7653.5263671875
+      agent-2:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012420287821441889
+        entropy: 2.1804866790771484
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.006030350457876921
+        model: {}
+        policy_loss: -0.0008812318556010723
+        total_loss: 0.9357782006263733
+        vf_explained_var: -0.0005370974540710449
+        vf_loss: 9398.9404296875
+      agent-3:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012420287821441889
+        entropy: 2.19010066986084
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.012320833280682564
+        model: {}
+        policy_loss: 0.0013979598879814148
+        total_loss: 0.6958760619163513
+        vf_explained_var: -0.0008992254734039307
+        vf_loss: 6977.16650390625
+      agent-4:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012420287821441889
+        entropy: 2.1421570777893066
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.005934297572821379
+        model: {}
+        policy_loss: -0.00042669009417295456
+        total_loss: 0.8700487613677979
+        vf_explained_var: -0.000744253396987915
+        vf_loss: 8736.5224609375
+      agent-5:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012420287821441889
+        entropy: 2.1786699295043945
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.008032119832932949
+        model: {}
+        policy_loss: -0.00020743347704410553
+        total_loss: 0.932860791683197
+        vf_explained_var: -0.0005707144737243652
+        vf_loss: 9365.0107421875
+    load_time_ms: 69471.591
+    num_steps_sampled: 384000
+    num_steps_trained: 384000
+    sample_time_ms: 138507.574
+    update_time_ms: 1125.771
+  iterations_since_restore: 4
+  node_ip: 172.17.8.161
+  num_healthy_workers: 6
+  off_policy_estimator: {}
+  optimizer_steps_this_iter: 1
+  perf:
+    cpu_util_percent: 21.14355400696864
+    ram_util_percent: 17.590243902439024
+  pid: 28218
+  policy_reward_max:
+    agent-0: -276.0
+    agent-1: -217.0
+    agent-2: -358.0
+    agent-3: -170.0
+    agent-4: -243.0
+    agent-5: -112.0
+  policy_reward_mean:
+    agent-0: -1077.9
+    agent-1: -934.12
+    agent-2: -984.22
+    agent-3: -902.06
+    agent-4: -995.67
+    agent-5: -1011.03
+  policy_reward_min:
+    agent-0: -2348.0
+    agent-1: -1835.0
+    agent-2: -2573.0
+    agent-3: -1749.0
+    agent-4: -2098.0
+    agent-5: -2135.0
+  sampler_perf:
+    mean_env_wait_ms: 24.799237581607503
+    mean_inference_ms: 13.017407085346852
+    mean_processing_ms: 53.80268710536435
+  time_since_restore: 950.2181179523468
+  time_this_iter_s: 202.9198226928711
+  time_total_s: 950.2181179523468
+  timestamp: 1636997737
+  timesteps_since_restore: 384000
+  timesteps_this_iter: 96000
+  timesteps_total: 384000
+  training_iteration: 4
+  trial_id: '00000'
+  
+== Status ==
+Memory usage on this node: 34.1/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+| Trial name                           | status   | loc                |   iter |   total time (s) |     ts |   reward |
+|--------------------------------------+----------+--------------------+--------+------------------+--------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  | 172.17.8.161:28218 |      4 |          950.218 | 384000 |    -5905 |
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+
+
+[2m[36m(pid=28218)[0m trainer.train() result: <ray.rllib.agents.trainer_template.BaselinePPOTrainer object at 0x7ff64f4ac518> -> 96 episodes
+Result for BaselinePPOTrainer_cleanup_env_00000:
+  callback_ok: true
+  custom_metrics:
+    apples_agent-0_max: 27
+    apples_agent-0_mean: 3.66
+    apples_agent-0_min: 0
+    apples_agent-1_max: 24
+    apples_agent-1_mean: 4.71
+    apples_agent-1_min: 0
+    apples_agent-2_max: 29
+    apples_agent-2_mean: 3.82
+    apples_agent-2_min: 0
+    apples_agent-3_max: 19
+    apples_agent-3_mean: 3.17
+    apples_agent-3_min: 0
+    apples_agent-4_max: 34
+    apples_agent-4_mean: 4.32
+    apples_agent-4_min: 0
+    apples_agent-5_max: 24
+    apples_agent-5_mean: 4.11
+    apples_agent-5_min: 0
+    cleaning_beam_agent-0_max: 135
+    cleaning_beam_agent-0_mean: 90.77
+    cleaning_beam_agent-0_min: 68
+    cleaning_beam_agent-1_max: 86
+    cleaning_beam_agent-1_mean: 66.39
+    cleaning_beam_agent-1_min: 47
+    cleaning_beam_agent-2_max: 157
+    cleaning_beam_agent-2_mean: 122.27
+    cleaning_beam_agent-2_min: 100
+    cleaning_beam_agent-3_max: 176
+    cleaning_beam_agent-3_mean: 142.01
+    cleaning_beam_agent-3_min: 107
+    cleaning_beam_agent-4_max: 221
+    cleaning_beam_agent-4_mean: 187.43
+    cleaning_beam_agent-4_min: 157
+    cleaning_beam_agent-5_max: 170
+    cleaning_beam_agent-5_mean: 138.44
+    cleaning_beam_agent-5_min: 115
+    fire_beam_agent-0_max: 120
+    fire_beam_agent-0_mean: 72.09
+    fire_beam_agent-0_min: 52
+    fire_beam_agent-1_max: 104
+    fire_beam_agent-1_mean: 75.58
+    fire_beam_agent-1_min: 58
+    fire_beam_agent-2_max: 92
+    fire_beam_agent-2_mean: 74.27
+    fire_beam_agent-2_min: 53
+    fire_beam_agent-3_max: 159
+    fire_beam_agent-3_mean: 129.08
+    fire_beam_agent-3_min: 101
+    fire_beam_agent-4_max: 101
+    fire_beam_agent-4_mean: 76.38
+    fire_beam_agent-4_min: 58
+    fire_beam_agent-5_max: 93
+    fire_beam_agent-5_mean: 71.98
+    fire_beam_agent-5_min: 48
+    num_batches_max: 6
+    num_batches_mean: 6.0
+    num_batches_min: 6
+  date: 2021-11-15_12-39-09
+  done: false
+  episode_len_mean: 1000.0
+  episode_reward_max: -2591.0
+  episode_reward_mean: -5064.8
+  episode_reward_min: -8807.0
+  episodes_this_iter: 96
+  episodes_total: 480
+  experiment_id: 36d0688fbabf4e1fbd5c93bbe370bb81
+  experiment_tag: '0'
+  hostname: gpu161.cluster.local
+  info:
+    grad_time_ms: 22947.559
+    learner:
+      agent-0:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012360383989289403
+        entropy: 2.1397433280944824
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.010235337540507317
+        model: {}
+        policy_loss: -0.000379128847271204
+        total_loss: 0.5858103036880493
+        vf_explained_var: -0.0007020235061645508
+        vf_loss: 5894.4365234375
+      agent-1:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012360383989289403
+        entropy: 2.1426141262054443
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.012085625901818275
+        model: {}
+        policy_loss: -0.00045027583837509155
+        total_loss: 0.5939971208572388
+        vf_explained_var: -0.0007438361644744873
+        vf_loss: 5976.14208984375
+      agent-2:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012360383989289403
+        entropy: 2.186950206756592
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.006383107975125313
+        model: {}
+        policy_loss: -0.0008575198007747531
+        total_loss: 0.642271876335144
+        vf_explained_var: -0.0007534325122833252
+        vf_loss: 6463.40087890625
+      agent-3:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012360383989289403
+        entropy: 2.1654813289642334
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.008764212019741535
+        model: {}
+        policy_loss: -1.5273690223693848e-07
+        total_loss: 0.4298515319824219
+        vf_explained_var: -0.0009853541851043701
+        vf_loss: 4332.2470703125
+      agent-4:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012360383989289403
+        entropy: 2.131575107574463
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0034184965770691633
+        model: {}
+        policy_loss: -0.0004482013173401356
+        total_loss: 0.678429365158081
+        vf_explained_var: -0.0005763471126556396
+        vf_loss: 6822.873046875
+      agent-5:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012360383989289403
+        entropy: 2.152010202407837
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.018176034092903137
+        model: {}
+        policy_loss: -0.0009343109559267759
+        total_loss: 0.6812728047370911
+        vf_explained_var: -0.0006461739540100098
+        vf_loss: 6850.8583984375
+    load_time_ms: 67328.362
+    num_steps_sampled: 480000
+    num_steps_trained: 480000
+    sample_time_ms: 137652.972
+    update_time_ms: 914.712
+  iterations_since_restore: 5
+  node_ip: 172.17.8.161
+  num_healthy_workers: 6
+  off_policy_estimator: {}
+  optimizer_steps_this_iter: 1
+  perf:
+    cpu_util_percent: 20.37821782178218
+    ram_util_percent: 17.728382838283828
+  pid: 28218
+  policy_reward_max:
+    agent-0: -205.0
+    agent-1: -164.0
+    agent-2: -173.0
+    agent-3: -174.0
+    agent-4: -107.0
+    agent-5: -117.0
+  policy_reward_mean:
+    agent-0: -840.22
+    agent-1: -822.45
+    agent-2: -880.01
+    agent-3: -752.43
+    agent-4: -872.61
+    agent-5: -897.08
+  policy_reward_min:
+    agent-0: -2312.0
+    agent-1: -2407.0
+    agent-2: -2278.0
+    agent-3: -1548.0
+    agent-4: -2233.0
+    agent-5: -2170.0
+  sampler_perf:
+    mean_env_wait_ms: 24.68301429185994
+    mean_inference_ms: 12.923576697056747
+    mean_processing_ms: 53.649834138370444
+  time_since_restore: 1162.941071987152
+  time_this_iter_s: 212.7229540348053
+  time_total_s: 1162.941071987152
+  timestamp: 1636997949
+  timesteps_since_restore: 480000
+  timesteps_this_iter: 96000
+  timesteps_total: 480000
+  training_iteration: 5
+  trial_id: '00000'
+  
+== Status ==
+Memory usage on this node: 29.7/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+| Trial name                           | status   | loc                |   iter |   total time (s) |     ts |   reward |
+|--------------------------------------+----------+--------------------+--------+------------------+--------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  | 172.17.8.161:28218 |      5 |          1162.94 | 480000 |  -5064.8 |
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+
+
+[2m[36m(pid=28218)[0m trainer.train() result: <ray.rllib.agents.trainer_template.BaselinePPOTrainer object at 0x7ff64f4ac518> -> 96 episodes
+Result for BaselinePPOTrainer_cleanup_env_00000:
+  callback_ok: true
+  custom_metrics:
+    apples_agent-0_max: 29
+    apples_agent-0_mean: 4.54
+    apples_agent-0_min: 0
+    apples_agent-1_max: 48
+    apples_agent-1_mean: 5.03
+    apples_agent-1_min: 0
+    apples_agent-2_max: 38
+    apples_agent-2_mean: 5.6
+    apples_agent-2_min: 0
+    apples_agent-3_max: 19
+    apples_agent-3_mean: 3.09
+    apples_agent-3_min: 0
+    apples_agent-4_max: 34
+    apples_agent-4_mean: 3.68
+    apples_agent-4_min: 0
+    apples_agent-5_max: 33
+    apples_agent-5_mean: 4.22
+    apples_agent-5_min: 0
+    cleaning_beam_agent-0_max: 99
+    cleaning_beam_agent-0_mean: 75.68
+    cleaning_beam_agent-0_min: 53
+    cleaning_beam_agent-1_max: 78
+    cleaning_beam_agent-1_mean: 53.91
+    cleaning_beam_agent-1_min: 38
+    cleaning_beam_agent-2_max: 147
+    cleaning_beam_agent-2_mean: 123.42
+    cleaning_beam_agent-2_min: 102
+    cleaning_beam_agent-3_max: 200
+    cleaning_beam_agent-3_mean: 173.71
+    cleaning_beam_agent-3_min: 132
+    cleaning_beam_agent-4_max: 223
+    cleaning_beam_agent-4_mean: 194.7
+    cleaning_beam_agent-4_min: 172
+    cleaning_beam_agent-5_max: 159
+    cleaning_beam_agent-5_mean: 133.19
+    cleaning_beam_agent-5_min: 105
+    fire_beam_agent-0_max: 97
+    fire_beam_agent-0_mean: 78.04
+    fire_beam_agent-0_min: 60
+    fire_beam_agent-1_max: 112
+    fire_beam_agent-1_mean: 79.24
+    fire_beam_agent-1_min: 56
+    fire_beam_agent-2_max: 104
+    fire_beam_agent-2_mean: 79.99
+    fire_beam_agent-2_min: 66
+    fire_beam_agent-3_max: 178
+    fire_beam_agent-3_mean: 147.56
+    fire_beam_agent-3_min: 118
+    fire_beam_agent-4_max: 97
+    fire_beam_agent-4_mean: 79.98
+    fire_beam_agent-4_min: 59
+    fire_beam_agent-5_max: 80
+    fire_beam_agent-5_mean: 55.04
+    fire_beam_agent-5_min: 40
+    num_batches_max: 6
+    num_batches_mean: 6.0
+    num_batches_min: 6
+  date: 2021-11-15_12-42-39
+  done: false
+  episode_len_mean: 1000.0
+  episode_reward_max: -2461.0
+  episode_reward_mean: -5129.36
+  episode_reward_min: -7575.0
+  episodes_this_iter: 96
+  episodes_total: 576
+  experiment_id: 36d0688fbabf4e1fbd5c93bbe370bb81
+  experiment_tag: '0'
+  hostname: gpu161.cluster.local
+  info:
+    grad_time_ms: 22418.468
+    learner:
+      agent-0:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012300480157136917
+        entropy: 2.118469715118408
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.01165099162608385
+        model: {}
+        policy_loss: -0.00038787268567830324
+        total_loss: 0.6600728034973145
+        vf_explained_var: -0.0008558332920074463
+        vf_loss: 6636.06640625
+      agent-1:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012300480157136917
+        entropy: 2.1314783096313477
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.00763220340013504
+        model: {}
+        policy_loss: -0.001202739542350173
+        total_loss: 0.6366652250289917
+        vf_explained_var: -0.0007812082767486572
+        vf_loss: 6412.3779296875
+      agent-2:
+        cur_kl_coeff: 0.10000000149011612
+        cur_lr: 0.0012300480157136917
+        entropy: 2.185002565383911
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.0038879569619894028
+        model: {}
+        policy_loss: -0.0005274100694805384
+        total_loss: 0.7010303735733032
+        vf_explained_var: -0.0007070302963256836
+        vf_loss: 7050.1455078125
+      agent-3:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012300480157136917
+        entropy: 2.136544704437256
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.006940851919353008
+        model: {}
+        policy_loss: -0.0004926789551973343
+        total_loss: 0.4456503987312317
+        vf_explained_var: -0.0010682940483093262
+        vf_loss: 4495.5634765625
+      agent-4:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012300480157136917
+        entropy: 2.155867576599121
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.004079396370798349
+        model: {}
+        policy_loss: -0.0005182051099836826
+        total_loss: 0.5799046158790588
+        vf_explained_var: -0.0008988082408905029
+        vf_loss: 5840.1318359375
+      agent-5:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012300480157136917
+        entropy: 2.1348817348480225
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.007828840985894203
+        model: {}
+        policy_loss: -0.0006276474450714886
+        total_loss: 0.7137646079063416
+        vf_explained_var: -0.0008546113967895508
+        vf_loss: 7177.58203125
+    load_time_ms: 66988.699
+    num_steps_sampled: 576000
+    num_steps_trained: 576000
+    sample_time_ms: 135348.289
+    update_time_ms: 775.096
+  iterations_since_restore: 6
+  node_ip: 172.17.8.161
+  num_healthy_workers: 6
+  off_policy_estimator: {}
+  optimizer_steps_this_iter: 1
+  perf:
+    cpu_util_percent: 19.940939597315435
+    ram_util_percent: 17.586241610738256
+  pid: 28218
+  policy_reward_max:
+    agent-0: -182.0
+    agent-1: -127.0
+    agent-2: -307.0
+    agent-3: -237.0
+    agent-4: -179.0
+    agent-5: -186.0
+  policy_reward_mean:
+    agent-0: -890.47
+    agent-1: -836.29
+    agent-2: -882.93
+    agent-3: -808.19
+    agent-4: -813.19
+    agent-5: -898.29
+  policy_reward_min:
+    agent-0: -2322.0
+    agent-1: -1882.0
+    agent-2: -1903.0
+    agent-3: -1603.0
+    agent-4: -2030.0
+    agent-5: -2495.0
+  sampler_perf:
+    mean_env_wait_ms: 24.606944346303795
+    mean_inference_ms: 12.860123393058338
+    mean_processing_ms: 53.54923643450187
+  time_since_restore: 1372.0272347927094
+  time_this_iter_s: 209.08616280555725
+  time_total_s: 1372.0272347927094
+  timestamp: 1636998159
+  timesteps_since_restore: 576000
+  timesteps_this_iter: 96000
+  timesteps_total: 576000
+  training_iteration: 6
+  trial_id: '00000'
+  
+== Status ==
+Memory usage on this node: 33.5/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+| Trial name                           | status   | loc                |   iter |   total time (s) |     ts |   reward |
+|--------------------------------------+----------+--------------------+--------+------------------+--------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  | 172.17.8.161:28218 |      6 |          1372.03 | 576000 | -5129.36 |
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+
+
+[2m[33m(pid=raylet)[0m F1115 12:45:51.924461 28158 node_manager.cc:559]  Check failed: node_id != self_node_id_ Exiting because this node manager has mistakenly been marked dead by the monitor.
+[2m[33m(pid=raylet)[0m *** Check failure stack trace: ***
+[2m[33m(pid=raylet)[0m     @     0x55cd9951376d  google::LogMessage::Fail()
+[2m[33m(pid=raylet)[0m     @     0x55cd99514bdc  google::LogMessage::SendToLog()
+[2m[33m(pid=raylet)[0m     @     0x55cd99513449  google::LogMessage::Flush()
+[2m[33m(pid=raylet)[0m     @     0x55cd99513661  google::LogMessage::~LogMessage()
+[2m[33m(pid=raylet)[0m     @     0x55cd991d4029  ray::RayLog::~RayLog()
+[2m[33m(pid=raylet)[0m     @     0x55cd98fb3810  ray::raylet::NodeManager::NodeRemoved()
+[2m[33m(pid=raylet)[0m     @     0x55cd98fb39ec  _ZNSt17_Function_handlerIFvRKN3ray8ClientIDERKNS0_3rpc11GcsNodeInfoEEZNS0_6raylet11NodeManager11RegisterGcsEvEUlS3_S7_E0_E9_M_invokeERKSt9_Any_dataS3_S7_
+[2m[33m(pid=raylet)[0m     @     0x55cd9906d682  ray::gcs::ClientTable::HandleNotification()
+[2m[33m(pid=raylet)[0m     @     0x55cd9906db6b  _ZNSt17_Function_handlerIFvPN3ray3gcs14RedisGcsClientERKNS0_8ClientIDERKSt6vectorINS0_3rpc11GcsNodeInfoESaIS9_EEEZNS1_11ClientTable21SubscribeToNodeChangeERKSt8functionIFvS6_RKS9_EERKSG_IFvNS0_6StatusEEEEUlS3_RKNS0_8UniqueIDESD_E_E9_M_invokeERKSt9_Any_dataS3_S6_SD_
+[2m[33m(pid=raylet)[0m     @     0x55cd99070908  _ZNSt17_Function_handlerIFvPN3ray3gcs14RedisGcsClientERKNS0_8ClientIDENS0_3rpc13GcsChangeModeERKSt6vectorINS7_11GcsNodeInfoESaISA_EEEZNS1_3LogIS4_SA_E9SubscribeERKNS0_5JobIDES6_RKSt8functionIFvS3_S6_SE_EERKSL_IFvS3_EEEUlS3_S6_S8_SE_E_E9_M_invokeERKSt9_Any_dataS3_S6_S8_SE_
+[2m[33m(pid=raylet)[0m     @     0x55cd9906e18e  _ZNSt17_Function_handlerIFvSt10shared_ptrIN3ray3gcs13CallbackReplyEEEZNS2_3LogINS1_8ClientIDENS1_3rpc11GcsNodeInfoEE9SubscribeERKNS1_5JobIDERKS7_RKSt8functionIFvPNS2_14RedisGcsClientESF_NS8_13GcsChangeModeERKSt6vectorIS9_SaIS9_EEEERKSG_IFvSI_EEEUlS4_E_E9_M_invokeERKSt9_Any_dataS4_
+[2m[33m(pid=raylet)[0m     @     0x55cd9904ad0b  _ZN5boost4asio6detail18completion_handlerIZN3ray3gcs20RedisCallbackManager12CallbackItem8DispatchERSt10shared_ptrINS4_13CallbackReplyEEEUlvE_E11do_completeEPvPNS1_19scheduler_operationERKNS_6system10error_codeEm
+[2m[33m(pid=raylet)[0m     @     0x55cd994a541f  boost::asio::detail::scheduler::do_run_one()
+[2m[33m(pid=raylet)[0m     @     0x55cd994a6921  boost::asio::detail::scheduler::run()
+[2m[33m(pid=raylet)[0m     @     0x55cd994a77c2  boost::asio::io_context::run()
+[2m[33m(pid=raylet)[0m     @     0x55cd98f23669  main
+[2m[33m(pid=raylet)[0m     @     0x7fda3a297bf7  __libc_start_main
+[2m[33m(pid=raylet)[0m     @     0x55cd98f34331  (unknown)
+[2m[36m(pid=28231)[0m E1115 12:45:55.865648 28390 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28202)[0m E1115 12:45:55.848526 28367 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28212)[0m E1115 12:45:55.870265 28412 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28201)[0m E1115 12:45:55.971006 28594 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28207)[0m E1115 12:45:55.975616 28617 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28223)[0m E1115 12:45:55.971447 28597 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28213)[0m E1115 12:45:55.971516 28598 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28227)[0m E1115 12:45:55.971812 28600 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28230)[0m E1115 12:45:55.971683 28599 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28204)[0m E1115 12:45:55.972026 28602 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28217)[0m E1115 12:45:55.972633 28610 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28224)[0m E1115 12:45:55.972275 28606 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28225)[0m E1115 12:45:55.972153 28603 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28238)[0m E1115 12:45:55.975004 28614 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28215)[0m E1115 12:45:55.975488 28616 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28237)[0m E1115 12:45:55.972532 28608 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28203)[0m E1115 12:45:55.848707 28368 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28211)[0m E1115 12:45:55.848835 28369 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28214)[0m E1115 12:45:55.853080 28371 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28228)[0m E1115 12:45:55.880909 28436 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28226)[0m E1115 12:45:55.874887 28431 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28206)[0m E1115 12:45:55.874630 28426 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28229)[0m E1115 12:45:55.925354 28454 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28205)[0m E1115 12:45:55.875095 28430 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28232)[0m E1115 12:45:55.926350 28458 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28222)[0m E1115 12:45:55.874825 28429 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28209)[0m E1115 12:45:55.925918 28457 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28235)[0m E1115 12:45:55.936038 28485 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28219)[0m E1115 12:45:55.970479 28589 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28221)[0m E1115 12:45:55.971303 28596 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28216)[0m E1115 12:45:55.970791 28593 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28233)[0m E1115 12:45:55.971199 28595 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28208)[0m E1115 12:45:55.972899 28611 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28234)[0m E1115 12:45:55.972393 28607 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28239)[0m E1115 12:45:55.972697 28609 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28200)[0m E1115 12:45:56.770040 28311 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28218)[0m E1115 12:45:56.770321 28312 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28220)[0m E1115 12:45:56.784049 28334 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28236)[0m E1115 12:45:56.785411 28336 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28210)[0m E1115 12:45:56.785326 28335 core_worker.cc:646] Raylet failed. Shutting down.
+[2m[36m(pid=28218)[0m 2021-11-15 12:49:32,354	WARNING metrics.py:70 -- WARNING: collected no metrics in 180 seconds
+[2m[36m(pid=28218)[0m trainer.train() result: <ray.rllib.agents.trainer_template.BaselinePPOTrainer object at 0x7ff64f4ac518> -> 0 episodes
+Result for BaselinePPOTrainer_cleanup_env_00000:
+  callback_ok: true
+  custom_metrics:
+    apples_agent-0_max: 29
+    apples_agent-0_mean: 4.54
+    apples_agent-0_min: 0
+    apples_agent-1_max: 48
+    apples_agent-1_mean: 5.03
+    apples_agent-1_min: 0
+    apples_agent-2_max: 38
+    apples_agent-2_mean: 5.6
+    apples_agent-2_min: 0
+    apples_agent-3_max: 19
+    apples_agent-3_mean: 3.09
+    apples_agent-3_min: 0
+    apples_agent-4_max: 34
+    apples_agent-4_mean: 3.68
+    apples_agent-4_min: 0
+    apples_agent-5_max: 33
+    apples_agent-5_mean: 4.22
+    apples_agent-5_min: 0
+    cleaning_beam_agent-0_max: 99
+    cleaning_beam_agent-0_mean: 75.68
+    cleaning_beam_agent-0_min: 53
+    cleaning_beam_agent-1_max: 78
+    cleaning_beam_agent-1_mean: 53.91
+    cleaning_beam_agent-1_min: 38
+    cleaning_beam_agent-2_max: 147
+    cleaning_beam_agent-2_mean: 123.42
+    cleaning_beam_agent-2_min: 102
+    cleaning_beam_agent-3_max: 200
+    cleaning_beam_agent-3_mean: 173.71
+    cleaning_beam_agent-3_min: 132
+    cleaning_beam_agent-4_max: 223
+    cleaning_beam_agent-4_mean: 194.7
+    cleaning_beam_agent-4_min: 172
+    cleaning_beam_agent-5_max: 159
+    cleaning_beam_agent-5_mean: 133.19
+    cleaning_beam_agent-5_min: 105
+    fire_beam_agent-0_max: 97
+    fire_beam_agent-0_mean: 78.04
+    fire_beam_agent-0_min: 60
+    fire_beam_agent-1_max: 112
+    fire_beam_agent-1_mean: 79.24
+    fire_beam_agent-1_min: 56
+    fire_beam_agent-2_max: 104
+    fire_beam_agent-2_mean: 79.99
+    fire_beam_agent-2_min: 66
+    fire_beam_agent-3_max: 178
+    fire_beam_agent-3_mean: 147.56
+    fire_beam_agent-3_min: 118
+    fire_beam_agent-4_max: 97
+    fire_beam_agent-4_mean: 79.98
+    fire_beam_agent-4_min: 59
+    fire_beam_agent-5_max: 80
+    fire_beam_agent-5_mean: 55.04
+    fire_beam_agent-5_min: 40
+    num_batches_max: 6
+    num_batches_mean: 6.0
+    num_batches_min: 6
+  date: 2021-11-15_12-49-38
+  done: false
+  episode_len_mean: 1000.0
+  episode_reward_max: -2461.0
+  episode_reward_mean: -5129.36
+  episode_reward_min: -7575.0
+  episodes_this_iter: 0
+  episodes_total: 576
+  experiment_id: 36d0688fbabf4e1fbd5c93bbe370bb81
+  experiment_tag: '0'
+  hostname: gpu161.cluster.local
+  info:
+    grad_time_ms: 21971.702
+    learner:
+      agent-0:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012240576324984431
+        entropy: 2.102100133895874
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.005702238064259291
+        model: {}
+        policy_loss: -0.0008187587955035269
+        total_loss: 0.47421079874038696
+        vf_explained_var: -0.0009095668792724609
+        vf_loss: 4784.44140625
+      agent-1:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012240576324984431
+        entropy: 2.1358211040496826
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.01484711840748787
+        model: {}
+        policy_loss: -0.0003317892551422119
+        total_loss: 0.5128470659255981
+        vf_explained_var: -0.0008506476879119873
+        vf_loss: 5161.95556640625
+      agent-2:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012240576324984431
+        entropy: 2.168133020401001
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.004765240475535393
+        model: {}
+        policy_loss: -0.00039335177280008793
+        total_loss: 0.43572667241096497
+        vf_explained_var: -0.0007752180099487305
+        vf_loss: 4396.97705078125
+      agent-3:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012240576324984431
+        entropy: 2.1392738819122314
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.004322154447436333
+        model: {}
+        policy_loss: -0.00024201988708227873
+        total_loss: 0.3457034230232239
+        vf_explained_var: -0.0012603700160980225
+        vf_loss: 3494.944091796875
+      agent-4:
+        cur_kl_coeff: 0.02500000037252903
+        cur_lr: 0.0012240576324984431
+        entropy: 2.170400381088257
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.009037958458065987
+        model: {}
+        policy_loss: -0.00010741944424808025
+        total_loss: 0.4011075496673584
+        vf_explained_var: -0.0011772215366363525
+        vf_loss: 4048.089111328125
+      agent-5:
+        cur_kl_coeff: 0.05000000074505806
+        cur_lr: 0.0012240576324984431
+        entropy: 2.1183440685272217
+        entropy_coeff: 0.0017600000137463212
+        kl: 0.008693287149071693
+        model: {}
+        policy_loss: -0.0009468193165957928
+        total_loss: 0.5012245774269104
+        vf_explained_var: -0.0012127161026000977
+        vf_loss: 5054.65087890625
+    load_time_ms: 68167.181
+    num_steps_sampled: 672000
+    num_steps_trained: 672000
+    sample_time_ms: 135235.57
+    update_time_ms: 673.726
+  iterations_since_restore: 7
+  node_ip: 172.17.8.161
+  num_healthy_workers: 6
+  off_policy_estimator: {}
+  optimizer_steps_this_iter: 1
+  perf:
+    cpu_util_percent: 11.556388415672911
+    ram_util_percent: 16.644974446337304
+  pid: 28218
+  policy_reward_max:
+    agent-0: -182.0
+    agent-1: -127.0
+    agent-2: -307.0
+    agent-3: -237.0
+    agent-4: -179.0
+    agent-5: -186.0
+  policy_reward_mean:
+    agent-0: -890.47
+    agent-1: -836.29
+    agent-2: -882.93
+    agent-3: -808.19
+    agent-4: -813.19
+    agent-5: -898.29
+  policy_reward_min:
+    agent-0: -2322.0
+    agent-1: -1882.0
+    agent-2: -1903.0
+    agent-3: -1603.0
+    agent-4: -2030.0
+    agent-5: -2495.0
+  sampler_perf:
+    mean_env_wait_ms: 24.60694434630378
+    mean_inference_ms: 12.860123393058338
+    mean_processing_ms: 53.54923643450186
+  time_since_restore: 1791.2741148471832
+  time_this_iter_s: 419.2468800544739
+  time_total_s: 1791.2741148471832
+  timestamp: 1636998578
+  timesteps_since_restore: 672000
+  timesteps_this_iter: 96000
+  timesteps_total: 672000
+  training_iteration: 7
+  trial_id: '00000'
+  
+== Status ==
+Memory usage on this node: 27.9/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 6/40 CPUs, 1.0/1 GPUs, 0.0/148.97 GiB heap, 0.0/37.01 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 RUNNING)
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+| Trial name                           | status   | loc                |   iter |   total time (s) |     ts |   reward |
+|--------------------------------------+----------+--------------------+--------+------------------+--------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | RUNNING  | 172.17.8.161:28218 |      7 |          1791.27 | 672000 | -5129.36 |
++--------------------------------------+----------+--------------------+--------+------------------+--------+----------+
+
+
+== Status ==
+Memory usage on this node: 25.5/188.6 GiB
+Using FIFO scheduling algorithm.
+Resources requested: 0/0 CPUs, 0.0/0 GPUs, 0.0/0.0 GiB heap, 0.0/0.0 GiB objects
+Result logdir: /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics
+Number of trials: 1 (1 PENDING)
++--------------------------------------+----------+-------+--------+------------------+--------+----------+
+| Trial name                           | status   | loc   |   iter |   total time (s) |     ts |   reward |
+|--------------------------------------+----------+-------+--------+------------------+--------+----------|
+| BaselinePPOTrainer_cleanup_env_00000 | PENDING  |       |      7 |          1791.27 | 672000 | -5129.36 |
++--------------------------------------+----------+-------+--------+------------------+--------+----------+
+Number of errored trials: 1
++--------------------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+| Trial name                           |   # failures | error file                                                                                                                                       |
+|--------------------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------|
+| BaselinePPOTrainer_cleanup_env_00000 |            1 | /h/dtradke/ray_results/cleanup_baseline_PPO_6teams_6agents_custom_metrics/BaselinePPOTrainer_cleanup_env_0_2021-11-15_12-17-39i7n6jdjd/error.txt |
++--------------------------------------+--------------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+

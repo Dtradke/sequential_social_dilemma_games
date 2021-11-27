@@ -1,0 +1,351 @@
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-23 09:33:41,120	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 54.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-23 09:33:41,410	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 19550068736 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+slurmstepd: error: *** JOB 5055605 ON gpu014 CANCELLED AT 2021-11-23T19:22:35 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-23 19:25:06,755	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 54.58 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-23 19:25:07,050	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21421166592 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-23 19:25:07,900	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_2teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-23 19:25:08,229	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-23 19:25:08,230	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-23 19:25:08,582	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-24 02:08:29,337	WARNING util.py:137 -- The `process_trial_save` operation took 0.5249478816986084 seconds to complete, which may be a performance bottleneck.
+2021-11-24 02:08:29,337	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 04:50:07,185	WARNING util.py:137 -- The `process_trial_save` operation took 0.5085864067077637 seconds to complete, which may be a performance bottleneck.
+2021-11-24 04:50:07,185	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 05:29:50,837	WARNING util.py:137 -- The `process_trial_save` operation took 0.5242691040039062 seconds to complete, which may be a performance bottleneck.
+2021-11-24 05:29:50,838	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 05:49:41,280	WARNING util.py:137 -- The `process_trial_save` operation took 0.5358173847198486 seconds to complete, which may be a performance bottleneck.
+2021-11-24 05:49:41,280	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 06:09:28,548	WARNING util.py:137 -- The `process_trial_save` operation took 0.5362668037414551 seconds to complete, which may be a performance bottleneck.
+2021-11-24 06:09:28,549	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 06:29:13,413	WARNING util.py:137 -- The `process_trial_save` operation took 0.5459990501403809 seconds to complete, which may be a performance bottleneck.
+2021-11-24 06:29:13,413	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 06:49:00,231	WARNING util.py:137 -- The `process_trial_save` operation took 0.5843105316162109 seconds to complete, which may be a performance bottleneck.
+2021-11-24 06:49:00,231	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 06:51:00,670	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.508143424987793 seconds to complete, which may be a performance bottleneck.
+2021-11-24 07:09:02,624	WARNING util.py:137 -- The `process_trial_save` operation took 0.589440107345581 seconds to complete, which may be a performance bottleneck.
+2021-11-24 07:09:02,625	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 07:28:48,058	WARNING util.py:137 -- The `process_trial_save` operation took 0.735055685043335 seconds to complete, which may be a performance bottleneck.
+2021-11-24 07:28:48,058	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 07:48:37,874	WARNING util.py:137 -- The `process_trial_save` operation took 0.6034438610076904 seconds to complete, which may be a performance bottleneck.
+2021-11-24 07:48:37,875	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 08:04:29,657	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5507440567016602 seconds to complete, which may be a performance bottleneck.
+2021-11-24 08:08:28,273	WARNING util.py:137 -- The `process_trial_save` operation took 0.6333832740783691 seconds to complete, which may be a performance bottleneck.
+2021-11-24 08:08:28,273	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 08:28:17,336	WARNING util.py:137 -- The `process_trial_save` operation took 0.623974084854126 seconds to complete, which may be a performance bottleneck.
+2021-11-24 08:28:17,336	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 08:32:15,465	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.522428035736084 seconds to complete, which may be a performance bottleneck.
+2021-11-24 08:48:07,753	WARNING util.py:137 -- The `process_trial_save` operation took 0.6520671844482422 seconds to complete, which may be a performance bottleneck.
+2021-11-24 08:48:07,754	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 09:07:58,628	WARNING util.py:137 -- The `process_trial_save` operation took 0.7996747493743896 seconds to complete, which may be a performance bottleneck.
+2021-11-24 09:07:58,628	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 09:27:48,813	WARNING util.py:137 -- The `process_trial_save` operation took 0.6794943809509277 seconds to complete, which may be a performance bottleneck.
+2021-11-24 09:27:48,813	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 09:39:44,402	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5733380317687988 seconds to complete, which may be a performance bottleneck.
+2021-11-24 09:47:40,297	WARNING util.py:137 -- The `process_trial_save` operation took 0.6882965564727783 seconds to complete, which may be a performance bottleneck.
+2021-11-24 09:47:40,297	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 10:07:30,981	WARNING util.py:137 -- The `process_trial_save` operation took 0.8510940074920654 seconds to complete, which may be a performance bottleneck.
+2021-11-24 10:07:30,981	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 10:27:20,632	WARNING util.py:137 -- The `process_trial_save` operation took 0.7422831058502197 seconds to complete, which may be a performance bottleneck.
+2021-11-24 10:27:20,632	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 10:43:10,978	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5652730464935303 seconds to complete, which may be a performance bottleneck.
+2021-11-24 10:47:08,822	WARNING util.py:137 -- The `process_trial_save` operation took 0.74580979347229 seconds to complete, which may be a performance bottleneck.
+2021-11-24 10:47:08,822	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 11:06:59,098	WARNING util.py:137 -- The `process_trial_save` operation took 0.9295845031738281 seconds to complete, which may be a performance bottleneck.
+2021-11-24 11:06:59,098	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 11:14:54,972	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5060751438140869 seconds to complete, which may be a performance bottleneck.
+2021-11-24 11:18:52,703	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5010602474212646 seconds to complete, which may be a performance bottleneck.
+2021-11-24 11:26:50,067	WARNING util.py:137 -- The `process_trial_save` operation took 0.7770373821258545 seconds to complete, which may be a performance bottleneck.
+2021-11-24 11:26:50,067	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 11:28:50,573	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5057382583618164 seconds to complete, which may be a performance bottleneck.
+2021-11-24 11:40:53,612	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.563178300857544 seconds to complete, which may be a performance bottleneck.
+2021-11-24 11:46:50,202	WARNING util.py:137 -- The `process_trial_save` operation took 0.7661175727844238 seconds to complete, which may be a performance bottleneck.
+2021-11-24 11:46:50,202	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 11:48:48,885	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5221123695373535 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:04:42,353	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5126664638519287 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:06:41,916	WARNING util.py:137 -- The `process_trial_save` operation took 0.912362813949585 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:06:41,917	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 12:26:31,390	WARNING util.py:137 -- The `process_trial_save` operation took 0.7916288375854492 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:26:31,391	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 12:28:32,021	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5285229682922363 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:34:29,565	WARNING util.py:137 -- The `experiment_checkpoint` operation took 1.462355136871338 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:36:28,383	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5862951278686523 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:42:26,354	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5823369026184082 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:46:24,542	WARNING util.py:137 -- The `process_trial_save` operation took 0.8292760848999023 seconds to complete, which may be a performance bottleneck.
+2021-11-24 12:46:24,543	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 12:48:23,890	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5032467842102051 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:00:16,129	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5051109790802002 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:02:19,339	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5429763793945312 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:04:21,611	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5576508045196533 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:06:23,098	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5285079479217529 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:06:23,976	WARNING util.py:137 -- The `process_trial_save` operation took 0.8431546688079834 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:06:23,976	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 13:08:26,249	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5087461471557617 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:12:28,396	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.563441276550293 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:14:30,180	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.629492998123169 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:16:30,936	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5233743190765381 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:18:31,820	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5247695446014404 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:26:37,489	WARNING util.py:137 -- The `process_trial_save` operation took 0.8635914325714111 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:26:37,489	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 13:28:40,493	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5192534923553467 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:34:43,723	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5142722129821777 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:36:45,015	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5105764865875244 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:46:51,005	WARNING util.py:137 -- The `process_trial_save` operation took 0.8857219219207764 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:46:51,005	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 13:48:52,862	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5473442077636719 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:54:56,495	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5056054592132568 seconds to complete, which may be a performance bottleneck.
+2021-11-24 13:56:57,670	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.636080265045166 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:03:00,937	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.546623706817627 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:05:01,581	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6008265018463135 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:07:10,627	WARNING util.py:137 -- The `process_trial_save` operation took 0.9973416328430176 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:07:10,627	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 14:09:20,194	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5191128253936768 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:15:23,137	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5469927787780762 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:17:24,326	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5466675758361816 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:23:27,230	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5438470840454102 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:25:28,429	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5194895267486572 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:27:28,976	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5579164028167725 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:27:29,907	WARNING util.py:137 -- The `process_trial_save` operation took 0.9013721942901611 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:27:29,907	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 14:29:31,454	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.528916597366333 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:31:30,766	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5181176662445068 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:33:30,018	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5320637226104736 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:35:29,926	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5822720527648926 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:39:27,714	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5500342845916748 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:41:27,019	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5477104187011719 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:43:27,146	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6147775650024414 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:45:25,634	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5192594528198242 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:47:25,887	WARNING util.py:137 -- The `process_trial_save` operation took 1.0307714939117432 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:47:25,887	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 14:49:25,069	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5098118782043457 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:51:24,505	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5001735687255859 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:53:23,849	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5418531894683838 seconds to complete, which may be a performance bottleneck.
+2021-11-24 14:59:24,648	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5195581912994385 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:01:25,506	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5216045379638672 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:03:25,907	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5101516246795654 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:05:25,970	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5077712535858154 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:07:27,031	WARNING util.py:137 -- The `process_trial_save` operation took 0.9263019561767578 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:07:27,031	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 15:09:28,393	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.582970380783081 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:11:28,804	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.534426212310791 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:13:29,618	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5193431377410889 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:15:30,679	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6349096298217773 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:17:31,320	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5769808292388916 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:19:31,178	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6035089492797852 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:21:31,714	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5840849876403809 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:23:32,117	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5152904987335205 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:25:32,822	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5360469818115234 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:27:34,172	WARNING util.py:137 -- The `process_trial_save` operation took 0.9235143661499023 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:27:34,173	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 15:29:35,531	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5582807064056396 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:31:36,330	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5141775608062744 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:33:36,977	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5587410926818848 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:35:37,477	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5290732383728027 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:37:38,117	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.528144121170044 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:39:39,452	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5615625381469727 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:41:40,088	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5239543914794922 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:43:40,776	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.567556619644165 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:45:41,643	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5463817119598389 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:47:44,724	WARNING util.py:137 -- The `process_trial_save` operation took 0.9460916519165039 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:47:44,724	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 15:49:46,040	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5112905502319336 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:51:46,541	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.9733755588531494 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:53:46,966	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5864267349243164 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:55:47,773	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5182147026062012 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:57:48,968	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5410206317901611 seconds to complete, which may be a performance bottleneck.
+2021-11-24 15:59:49,928	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5046803951263428 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:01:50,768	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5060584545135498 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:03:51,281	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5259149074554443 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:05:52,251	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5349264144897461 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:07:54,537	WARNING util.py:137 -- The `process_trial_save` operation took 1.1059091091156006 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:07:54,538	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 16:09:56,148	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5408844947814941 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:11:57,105	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5399563312530518 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:13:59,209	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5718977451324463 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:16:00,764	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5829355716705322 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:18:01,880	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5361292362213135 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:20:03,409	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5823268890380859 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:22:04,112	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5579702854156494 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:24:05,092	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5989654064178467 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:26:06,105	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6029772758483887 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:28:07,517	WARNING util.py:137 -- The `process_trial_save` operation took 0.9952383041381836 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:28:07,518	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 16:30:09,654	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6867916584014893 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:32:11,270	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5413870811462402 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:34:12,304	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5483899116516113 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:36:13,825	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5534310340881348 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:38:14,308	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.572045087814331 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:40:15,414	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5441493988037109 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:42:16,230	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5523149967193604 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:44:17,512	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6021387577056885 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:46:17,706	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.661017894744873 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:48:19,527	WARNING util.py:137 -- The `process_trial_save` operation took 0.9856550693511963 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:48:19,527	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 16:50:21,044	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5571794509887695 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:52:21,258	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5653190612792969 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:54:22,694	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5179753303527832 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:56:23,272	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7605924606323242 seconds to complete, which may be a performance bottleneck.
+2021-11-24 16:58:23,469	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5728762149810791 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:00:24,840	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5578300952911377 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:02:25,768	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6060986518859863 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:04:27,112	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6046686172485352 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:06:28,170	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5368576049804688 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:08:30,499	WARNING util.py:137 -- The `process_trial_save` operation took 1.0177209377288818 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:08:30,499	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 17:10:32,270	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5481646060943604 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:12:32,803	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5464930534362793 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:14:33,918	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6201746463775635 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:16:34,684	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5281636714935303 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:18:34,966	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5838992595672607 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:20:36,331	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7567160129547119 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:22:37,087	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5577607154846191 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:24:39,736	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5656330585479736 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:26:40,992	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6047673225402832 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:28:42,727	WARNING util.py:137 -- The `process_trial_save` operation took 1.0437724590301514 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:28:42,727	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 17:30:45,357	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6128451824188232 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:32:46,682	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5397748947143555 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:34:47,578	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6316201686859131 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:36:48,377	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.577883243560791 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:38:49,227	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5455193519592285 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:40:50,757	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5368475914001465 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:42:51,954	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6134986877441406 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:44:53,231	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5566415786743164 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:46:54,482	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.695533037185669 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:48:56,174	WARNING util.py:137 -- The `process_trial_save` operation took 1.0562419891357422 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:48:56,175	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 17:50:57,722	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6271235942840576 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:52:58,976	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.617922306060791 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:54:59,880	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6020426750183105 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:57:00,238	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5510306358337402 seconds to complete, which may be a performance bottleneck.
+2021-11-24 17:59:01,307	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5527634620666504 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:01:02,923	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6456053256988525 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:03:04,366	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6125662326812744 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:05:04,737	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5542221069335938 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:07:06,184	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.554755687713623 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:09:08,720	WARNING util.py:137 -- The `process_trial_save` operation took 1.1733932495117188 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:09:08,720	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 18:11:10,676	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5673623085021973 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:13:11,308	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5972464084625244 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:15:12,113	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5589413642883301 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:17:13,239	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6584725379943848 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:19:14,050	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5725805759429932 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:21:14,583	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5943799018859863 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:23:15,387	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5765209197998047 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:25:16,433	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6012201309204102 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:27:17,566	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5805866718292236 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:29:18,440	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5077033042907715 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:29:19,709	WARNING util.py:137 -- The `process_trial_save` operation took 1.2390553951263428 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:29:19,710	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 18:31:21,441	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5988953113555908 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:33:22,450	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6067724227905273 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:35:23,718	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6888673305511475 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:37:24,102	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6302516460418701 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:39:24,724	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5882863998413086 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:41:25,985	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6682698726654053 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:43:27,381	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6134219169616699 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:45:28,110	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6427607536315918 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:47:28,938	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5534472465515137 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:49:29,684	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.502528190612793 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:49:30,814	WARNING util.py:137 -- The `process_trial_save` operation took 1.0961287021636963 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:49:30,815	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 18:51:32,565	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6372089385986328 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:53:34,132	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.592625617980957 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:55:35,284	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.579054594039917 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:57:35,908	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.770012617111206 seconds to complete, which may be a performance bottleneck.
+2021-11-24 18:59:36,364	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6320962905883789 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:01:37,304	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6040010452270508 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:03:38,290	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6214096546173096 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:05:39,244	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5756919384002686 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:07:40,429	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6289093494415283 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:09:41,579	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5054881572723389 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:09:42,729	WARNING util.py:137 -- The `process_trial_save` operation took 1.113516092300415 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:09:42,729	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 19:11:44,386	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6347088813781738 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:13:45,454	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6751389503479004 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:15:45,977	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6281623840332031 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:17:47,258	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6029939651489258 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:19:47,937	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.726470947265625 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:21:48,896	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.8969013690948486 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:23:49,822	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5566132068634033 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:25:50,346	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.561863899230957 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:27:51,560	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6050009727478027 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:29:52,267	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5085890293121338 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:29:53,441	WARNING util.py:137 -- The `process_trial_save` operation took 1.1386933326721191 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:29:53,442	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 19:31:54,354	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6757533550262451 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:33:55,653	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6188726425170898 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:35:56,813	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6516449451446533 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:37:58,505	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6898860931396484 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:39:59,738	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6883227825164795 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:42:00,965	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6001310348510742 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:44:15,601	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.8314683437347412 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:46:20,900	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5859274864196777 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:48:23,667	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6203062534332275 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:50:26,029	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.527010440826416 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:50:27,195	WARNING util.py:137 -- The `process_trial_save` operation took 1.1357309818267822 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:50:27,195	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 19:52:29,922	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7474610805511475 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:54:31,170	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6115560531616211 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:56:32,517	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6190645694732666 seconds to complete, which may be a performance bottleneck.
+2021-11-24 19:58:34,105	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6713070869445801 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:00:55,676	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7049520015716553 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:02:57,427	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.690969705581665 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:05:08,317	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6132683753967285 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:07:10,473	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7534184455871582 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:09:11,712	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6757757663726807 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:11:13,002	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5342400074005127 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:11:14,191	WARNING util.py:137 -- The `process_trial_save` operation took 1.1573755741119385 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:11:14,191	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 20:13:15,212	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6482284069061279 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:15:32,899	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6357030868530273 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:17:39,784	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6571018695831299 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:19:44,456	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.77850341796875 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:21:47,677	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6614151000976562 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:23:49,829	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6367425918579102 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:25:51,807	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6941978931427002 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:27:53,303	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6809024810791016 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:30:04,078	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.8018214702606201 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:32:04,834	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5511586666107178 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:32:06,031	WARNING util.py:137 -- The `process_trial_save` operation took 1.1606533527374268 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:32:06,032	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 20:34:23,080	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7199478149414062 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:36:24,883	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6668744087219238 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:38:25,900	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6751556396484375 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:40:27,461	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6276860237121582 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:42:29,137	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.706233024597168 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:44:30,505	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6851379871368408 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:46:31,014	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6910912990570068 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:48:32,626	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7798652648925781 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:50:33,847	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6527643203735352 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:52:34,738	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6874606609344482 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:52:35,930	WARNING util.py:137 -- The `process_trial_save` operation took 1.1574904918670654 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:52:35,930	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 20:54:37,797	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6629459857940674 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:56:39,137	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6329090595245361 seconds to complete, which may be a performance bottleneck.
+2021-11-24 20:58:39,391	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6314992904663086 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:00:42,176	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6676466464996338 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:02:47,202	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7040276527404785 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:04:50,099	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6399168968200684 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:06:55,948	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6165361404418945 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:08:58,136	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7801434993743896 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:11:07,843	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6343305110931396 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:13:13,854	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5590834617614746 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:13:15,197	WARNING util.py:137 -- The `process_trial_save` operation took 1.3021516799926758 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:13:15,198	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 21:15:20,957	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7671835422515869 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:17:24,200	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.646625280380249 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:19:25,788	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7054555416107178 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:21:26,814	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6822237968444824 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:23:27,813	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7141251564025879 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:25:28,872	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.7296702861785889 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:27:28,852	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.613222599029541 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:29:29,331	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6726911067962646 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:31:31,436	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.8222243785858154 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:33:32,400	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5635640621185303 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:33:33,820	WARNING util.py:137 -- The `process_trial_save` operation took 1.3874320983886719 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:33:33,820	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-24 21:35:36,405	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6742548942565918 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:37:42,723	WARNING util.py:137 -- The `process_trial` operation took 1.334963321685791 seconds to complete, which may be a performance bottleneck.
+2021-11-24 21:37:43,409	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6854171752929688 seconds to complete, which may be a performance bottleneck.

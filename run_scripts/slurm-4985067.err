@@ -1,0 +1,469 @@
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-15 16:59:28,290	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.84 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-15 16:59:28,558	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 10563571712 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-15 17:05:27,905	WARNING util.py:137 -- The `fetch_result` operation took 0.5046963691711426 seconds to complete, which may be a performance bottleneck.
+2021-11-15 17:05:28,969	WARNING util.py:137 -- The `process_trial` operation took 1.6190335750579834 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu057 CANCELLED AT 2021-11-15T17:59:20 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-15 18:01:53,224	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.69 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-15 18:01:53,342	WARNING services.py:928 -- Redis failed to start, retrying now.
+2021-11-15 18:01:53,610	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 9339711488 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-15 18:01:54,323	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-15 18:01:54,471	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-15 18:01:54,471	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-15 18:01:54,603	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-15 18:07:40,665	WARNING util.py:137 -- The `fetch_result` operation took 2.0401668548583984 seconds to complete, which may be a performance bottleneck.
+2021-11-15 18:07:42,429	WARNING util.py:137 -- The `process_trial` operation took 3.8738009929656982 seconds to complete, which may be a performance bottleneck.
+2021-11-15 18:07:46,712	WARNING util.py:137 -- The `experiment_checkpoint` operation took 4.282822370529175 seconds to complete, which may be a performance bottleneck.
+2021-11-15 18:10:50,929	WARNING util.py:137 -- The `process_trial` operation took 0.6648244857788086 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu026 CANCELLED AT 2021-11-15T19:48:31 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-15 19:51:01,970	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 50.76 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-15 19:51:02,281	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 12437561344 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-15 19:51:03,115	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-15 19:51:03,394	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-15 19:51:03,394	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-15 19:51:03,630	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-15 19:56:39,883	WARNING util.py:137 -- The `fetch_result` operation took 1.9578604698181152 seconds to complete, which may be a performance bottleneck.
+2021-11-15 19:56:41,860	WARNING util.py:137 -- The `process_trial` operation took 4.035848140716553 seconds to complete, which may be a performance bottleneck.
+2021-11-15 19:56:46,833	WARNING util.py:137 -- The `experiment_checkpoint` operation took 4.968716382980347 seconds to complete, which may be a performance bottleneck.
+2021-11-15 20:05:54,336	WARNING util.py:137 -- The `process_trial` operation took 0.7125911712646484 seconds to complete, which may be a performance bottleneck.
+2021-11-15 20:46:50,916	WARNING util.py:137 -- The `process_trial_save` operation took 0.6831231117248535 seconds to complete, which may be a performance bottleneck.
+2021-11-15 20:46:50,959	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-15 23:48:52,187	WARNING util.py:137 -- The `process_trial` operation took 15.419678688049316 seconds to complete, which may be a performance bottleneck.
+2021-11-16 07:45:24,466	ERROR trial_runner.py:349 -- Trial Runner checkpointing failed.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 347, in step
+    self.checkpoint()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 278, in checkpoint
+    os.rename(tmp_file_name, self.checkpoint_file)
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/.tmp_checkpoint' -> '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/experiment_state-2021-11-15_19-51-03.json'
+2021-11-16 09:32:21,007	WARNING util.py:137 -- The `process_trial_save` operation took 0.5179345607757568 seconds to complete, which may be a performance bottleneck.
+2021-11-16 09:32:21,007	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu138 CANCELLED AT 2021-11-16T10:25:53 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-16 10:28:06,296	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.97 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-16 10:28:06,565	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 11447726080 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-16 10:28:07,685	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-16 10:28:08,411	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-16 10:28:08,411	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-16 10:28:08,787	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-16 10:34:42,929	WARNING util.py:137 -- The `fetch_result` operation took 0.9072761535644531 seconds to complete, which may be a performance bottleneck.
+2021-11-16 10:34:43,730	WARNING util.py:137 -- The `process_trial` operation took 1.8311371803283691 seconds to complete, which may be a performance bottleneck.
+2021-11-16 10:34:47,021	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.2830255031585693 seconds to complete, which may be a performance bottleneck.
+2021-11-16 11:36:21,451	WARNING util.py:137 -- The `process_trial` operation took 0.9039998054504395 seconds to complete, which may be a performance bottleneck.
+2021-11-16 11:36:46,704	WARNING util.py:137 -- The `process_trial_save` operation took 22.098628997802734 seconds to complete, which may be a performance bottleneck.
+2021-11-16 11:36:46,705	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu003 CANCELLED AT 2021-11-16T12:28:12 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-16 12:30:24,239	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.54 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-16 12:30:24,527	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 12073041920 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-16 12:30:25,570	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-16 12:30:26,127	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-16 12:30:26,128	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-16 12:30:26,662	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-16 12:35:36,768	WARNING util.py:137 -- The `fetch_result` operation took 1.5803756713867188 seconds to complete, which may be a performance bottleneck.
+2021-11-16 12:35:37,800	WARNING util.py:137 -- The `process_trial` operation took 2.762826919555664 seconds to complete, which may be a performance bottleneck.
+2021-11-16 12:35:40,933	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.1263866424560547 seconds to complete, which may be a performance bottleneck.
+2021-11-16 13:16:48,331	WARNING util.py:137 -- The `experiment_checkpoint` operation took 14.096684217453003 seconds to complete, which may be a performance bottleneck.
+2021-11-16 13:27:14,137	WARNING util.py:137 -- The `process_trial_save` operation took 0.6315822601318359 seconds to complete, which may be a performance bottleneck.
+2021-11-16 13:27:14,137	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-16 13:52:01,282	ERROR trial_runner.py:349 -- Trial Runner checkpointing failed.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 347, in step
+    self.checkpoint()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 278, in checkpoint
+    os.rename(tmp_file_name, self.checkpoint_file)
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/.tmp_checkpoint' -> '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/experiment_state-2021-11-16_12-30-26.json'
+2021-11-16 14:16:07,818	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6799211502075195 seconds to complete, which may be a performance bottleneck.
+2021-11-16 14:25:38,741	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.762967824935913 seconds to complete, which may be a performance bottleneck.
+2021-11-16 14:36:53,829	WARNING util.py:137 -- The `process_trial` operation took 0.5991382598876953 seconds to complete, which may be a performance bottleneck.
+2021-11-16 16:11:22,183	ERROR trial_runner.py:349 -- Trial Runner checkpointing failed.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 347, in step
+    self.checkpoint()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 278, in checkpoint
+    os.rename(tmp_file_name, self.checkpoint_file)
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/.tmp_checkpoint' -> '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/experiment_state-2021-11-16_12-30-26.json'
+slurmstepd: error: *** JOB 4985067 ON gpu038 CANCELLED AT 2021-11-16T16:35:05 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-16 16:37:27,900	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 45.03 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-16 16:37:28,202	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21389017088 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-16 16:37:29,343	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-16 16:37:30,039	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-16 16:37:30,040	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-16 16:37:30,630	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-16 16:43:17,494	WARNING util.py:137 -- The `fetch_result` operation took 1.7948992252349854 seconds to complete, which may be a performance bottleneck.
+2021-11-16 16:43:19,369	WARNING util.py:137 -- The `process_trial` operation took 3.9469921588897705 seconds to complete, which may be a performance bottleneck.
+2021-11-16 16:43:23,831	WARNING util.py:137 -- The `experiment_checkpoint` operation took 4.447828054428101 seconds to complete, which may be a performance bottleneck.
+2021-11-16 17:07:20,865	WARNING util.py:137 -- The `process_trial` operation took 13.032691717147827 seconds to complete, which may be a performance bottleneck.
+2021-11-16 17:37:30,535	WARNING util.py:137 -- The `process_trial_save` operation took 0.9973173141479492 seconds to complete, which may be a performance bottleneck.
+2021-11-16 17:37:30,536	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-16 18:17:57,642	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5338094234466553 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu021 CANCELLED AT 2021-11-16T18:56:02 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-16 18:58:45,056	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 52.94 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-16 18:58:45,324	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21468852224 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-16 18:58:46,742	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-16 18:58:47,436	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-16 18:58:47,436	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-16 18:58:47,876	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-16 19:04:44,181	WARNING util.py:137 -- The `fetch_result` operation took 0.9094557762145996 seconds to complete, which may be a performance bottleneck.
+2021-11-16 19:04:44,925	WARNING util.py:137 -- The `process_trial` operation took 1.7407662868499756 seconds to complete, which may be a performance bottleneck.
+2021-11-16 19:04:47,189	WARNING util.py:137 -- The `experiment_checkpoint` operation took 2.2637813091278076 seconds to complete, which may be a performance bottleneck.
+2021-11-16 19:23:17,252	WARNING util.py:137 -- The `experiment_checkpoint` operation took 13.262446880340576 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu037 CANCELLED AT 2021-11-16T19:58:39 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-16 20:00:49,701	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 52.83 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-16 20:00:49,997	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 20813893632 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-16 20:00:51,228	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-16 20:00:52,088	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-16 20:00:52,089	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-16 20:00:52,525	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-16 20:06:50,645	WARNING util.py:137 -- The `fetch_result` operation took 1.1753222942352295 seconds to complete, which may be a performance bottleneck.
+2021-11-16 20:06:51,792	WARNING util.py:137 -- The `process_trial` operation took 2.412405252456665 seconds to complete, which may be a performance bottleneck.
+2021-11-16 20:06:56,266	WARNING util.py:137 -- The `experiment_checkpoint` operation took 4.456880331039429 seconds to complete, which may be a performance bottleneck.
+2021-11-16 20:25:11,490	WARNING util.py:137 -- The `experiment_checkpoint` operation took 15.178987979888916 seconds to complete, which may be a performance bottleneck.
+2021-11-16 20:56:57,055	WARNING util.py:137 -- The `process_trial_save` operation took 0.805305004119873 seconds to complete, which may be a performance bottleneck.
+2021-11-16 20:56:57,055	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-16 21:57:16,545	WARNING util.py:137 -- The `process_trial` operation took 0.6217780113220215 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu130 CANCELLED AT 2021-11-16T23:17:00 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-16 23:19:11,587	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 54.15 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-16 23:19:11,880	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21471137792 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-16 23:19:13,148	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-16 23:19:13,957	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-16 23:19:13,957	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-16 23:19:14,551	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-16 23:24:25,495	WARNING util.py:137 -- The `fetch_result` operation took 0.7797670364379883 seconds to complete, which may be a performance bottleneck.
+2021-11-16 23:24:26,304	WARNING util.py:137 -- The `process_trial` operation took 1.6752502918243408 seconds to complete, which may be a performance bottleneck.
+2021-11-16 23:24:29,321	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.0151169300079346 seconds to complete, which may be a performance bottleneck.
+2021-11-16 23:32:56,434	WARNING util.py:137 -- The `experiment_checkpoint` operation took 13.699313163757324 seconds to complete, which may be a performance bottleneck.
+2021-11-17 00:16:29,141	WARNING util.py:137 -- The `process_trial_save` operation took 0.8139817714691162 seconds to complete, which may be a performance bottleneck.
+2021-11-17 00:16:29,141	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu009 CANCELLED AT 2021-11-17T00:20:00 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 00:22:15,998	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.57 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 00:22:16,284	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21416230912 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 00:22:17,535	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 00:22:18,318	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 00:22:18,319	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 00:22:18,957	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 00:27:58,373	WARNING util.py:137 -- The `fetch_result` operation took 1.2677950859069824 seconds to complete, which may be a performance bottleneck.
+2021-11-17 00:27:59,487	WARNING util.py:137 -- The `process_trial` operation took 2.463775634765625 seconds to complete, which may be a performance bottleneck.
+2021-11-17 00:28:03,202	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.708165168762207 seconds to complete, which may be a performance bottleneck.
+2021-11-17 00:37:51,306	WARNING util.py:137 -- The `experiment_checkpoint` operation took 12.314873218536377 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu046 CANCELLED AT 2021-11-17T01:23:00 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 01:25:12,244	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 52.03 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 01:25:12,545	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21388087296 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 01:25:13,822	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 01:25:14,614	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 01:25:14,614	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 01:25:15,259	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 01:30:29,961	WARNING util.py:137 -- The `fetch_result` operation took 0.6077525615692139 seconds to complete, which may be a performance bottleneck.
+2021-11-17 01:30:30,387	WARNING util.py:137 -- The `process_trial` operation took 1.0878970623016357 seconds to complete, which may be a performance bottleneck.
+2021-11-17 01:30:31,660	WARNING util.py:137 -- The `experiment_checkpoint` operation took 1.269010066986084 seconds to complete, which may be a performance bottleneck.
+2021-11-17 01:39:15,599	WARNING util.py:137 -- The `experiment_checkpoint` operation took 12.642714023590088 seconds to complete, which may be a performance bottleneck.
+2021-11-17 02:22:42,260	WARNING util.py:137 -- The `process_trial_save` operation took 0.7873010635375977 seconds to complete, which may be a performance bottleneck.
+2021-11-17 02:22:42,261	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu027 CANCELLED AT 2021-11-17T02:26:00 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 02:28:56,296	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.59 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 02:28:56,579	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21416206336 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 02:28:57,843	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 02:28:58,726	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 02:28:58,727	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 02:28:59,308	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 02:45:03,233	WARNING util.py:137 -- The `experiment_checkpoint` operation took 1.8653490543365479 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu046 CANCELLED AT 2021-11-17T03:29:00 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 03:31:44,184	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.73 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 03:31:44,533	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21424369664 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 03:31:45,862	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 03:31:46,657	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 03:31:46,658	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 03:31:47,272	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 03:37:05,595	WARNING util.py:137 -- The `fetch_result` operation took 1.522310495376587 seconds to complete, which may be a performance bottleneck.
+2021-11-17 03:37:06,823	WARNING util.py:137 -- The `process_trial` operation took 2.7613749504089355 seconds to complete, which may be a performance bottleneck.
+2021-11-17 03:37:09,413	WARNING util.py:137 -- The `experiment_checkpoint` operation took 2.588928461074829 seconds to complete, which may be a performance bottleneck.
+2021-11-17 03:46:11,056	WARNING util.py:137 -- The `experiment_checkpoint` operation took 10.85811996459961 seconds to complete, which may be a performance bottleneck.
+2021-11-17 04:29:34,597	WARNING util.py:137 -- The `process_trial_save` operation took 5.279905796051025 seconds to complete, which may be a performance bottleneck.
+2021-11-17 04:29:34,598	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu053 CANCELLED AT 2021-11-17T04:31:36 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 04:34:27,449	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 52.59 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 04:34:27,752	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 20069326848 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 04:34:29,185	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 04:34:30,027	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 04:34:30,027	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 04:34:30,533	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 04:40:08,371	WARNING util.py:137 -- The `fetch_result` operation took 3.639328956604004 seconds to complete, which may be a performance bottleneck.
+2021-11-17 04:40:11,867	WARNING util.py:137 -- The `process_trial` operation took 7.283689022064209 seconds to complete, which may be a performance bottleneck.
+2021-11-17 04:40:22,031	WARNING util.py:137 -- The `experiment_checkpoint` operation took 10.142436742782593 seconds to complete, which may be a performance bottleneck.
+2021-11-17 04:50:20,320	WARNING util.py:137 -- The `experiment_checkpoint` operation took 19.737613201141357 seconds to complete, which may be a performance bottleneck.
+2021-11-17 05:33:52,953	WARNING util.py:137 -- The `process_trial_save` operation took 1.0381648540496826 seconds to complete, which may be a performance bottleneck.
+2021-11-17 05:33:52,953	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-17 06:19:17,882	WARNING util.py:137 -- The `process_trial` operation took 0.5173766613006592 seconds to complete, which may be a performance bottleneck.
+2021-11-17 06:19:18,973	WARNING util.py:137 -- The `process_trial_save` operation took 0.8078422546386719 seconds to complete, which may be a performance bottleneck.
+2021-11-17 06:19:18,973	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-17 06:35:03,586	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5193784236907959 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu125 CANCELLED AT 2021-11-17T07:37:03 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 07:39:25,431	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.94 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 07:39:25,785	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21472337920 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 07:39:27,092	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 07:39:27,904	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 07:39:27,905	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 07:39:28,584	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 07:44:41,564	WARNING util.py:137 -- The `fetch_result` operation took 1.0561902523040771 seconds to complete, which may be a performance bottleneck.
+2021-11-17 07:44:42,694	WARNING util.py:137 -- The `process_trial` operation took 2.305460214614868 seconds to complete, which may be a performance bottleneck.
+2021-11-17 07:44:46,115	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.3913345336914062 seconds to complete, which may be a performance bottleneck.
+2021-11-17 07:51:02,334	WARNING util.py:137 -- The `experiment_checkpoint` operation took 11.525845527648926 seconds to complete, which may be a performance bottleneck.
+2021-11-17 08:37:34,161	WARNING util.py:137 -- The `process_trial_save` operation took 1.3848271369934082 seconds to complete, which may be a performance bottleneck.
+2021-11-17 08:37:34,161	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu053 CANCELLED AT 2021-11-17T08:39:16 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 08:41:44,607	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.73 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 08:41:44,898	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21411962880 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 08:41:46,791	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 08:41:47,298	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 08:41:47,298	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 08:41:47,810	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 08:48:06,138	WARNING util.py:137 -- The `fetch_result` operation took 0.604783296585083 seconds to complete, which may be a performance bottleneck.
+2021-11-17 08:48:06,665	WARNING util.py:137 -- The `process_trial` operation took 1.1836185455322266 seconds to complete, which may be a performance bottleneck.
+2021-11-17 08:48:07,615	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.9490025043487549 seconds to complete, which may be a performance bottleneck.
+2021-11-17 08:54:45,883	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.716237783432007 seconds to complete, which may be a performance bottleneck.
+2021-11-17 09:44:51,029	WARNING util.py:137 -- The `process_trial_save` operation took 9.947805881500244 seconds to complete, which may be a performance bottleneck.
+2021-11-17 09:44:51,123	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu044 CANCELLED AT 2021-11-17T09:48:00 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 09:50:12,452	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 47.33 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 09:50:12,750	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21367242752 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 09:50:14,032	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 09:50:14,843	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 09:50:14,844	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 09:50:15,484	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 09:55:25,213	WARNING util.py:137 -- The `fetch_result` operation took 1.1183021068572998 seconds to complete, which may be a performance bottleneck.
+2021-11-17 09:55:26,328	WARNING util.py:137 -- The `process_trial` operation took 2.281733989715576 seconds to complete, which may be a performance bottleneck.
+2021-11-17 09:55:29,718	WARNING util.py:137 -- The `experiment_checkpoint` operation took 3.3860132694244385 seconds to complete, which may be a performance bottleneck.
+2021-11-17 10:01:27,097	WARNING util.py:137 -- The `experiment_checkpoint` operation took 14.66562533378601 seconds to complete, which may be a performance bottleneck.
+2021-11-17 10:46:01,869	WARNING util.py:137 -- The `process_trial_save` operation took 2.169733762741089 seconds to complete, which may be a performance bottleneck.
+2021-11-17 10:46:01,869	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu042 CANCELLED AT 2021-11-17T10:50:12 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 10:52:26,857	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 52.65 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 10:52:27,155	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 18850238464 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 10:52:28,513	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 10:52:29,452	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 10:52:29,452	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 10:52:29,933	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 10:58:20,424	WARNING util.py:137 -- The `fetch_result` operation took 4.089821815490723 seconds to complete, which may be a performance bottleneck.
+2021-11-17 10:58:24,200	WARNING util.py:137 -- The `process_trial` operation took 8.034481287002563 seconds to complete, which may be a performance bottleneck.
+2021-11-17 10:58:34,992	WARNING util.py:137 -- The `experiment_checkpoint` operation took 10.766520261764526 seconds to complete, which may be a performance bottleneck.
+2021-11-17 11:05:04,178	WARNING util.py:137 -- The `experiment_checkpoint` operation took 12.720740795135498 seconds to complete, which may be a performance bottleneck.
+2021-11-17 11:49:38,975	WARNING util.py:137 -- The `process_trial_save` operation took 0.9551541805267334 seconds to complete, which may be a performance bottleneck.
+2021-11-17 11:49:38,976	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-17 12:04:38,936	ERROR trial_runner.py:349 -- Trial Runner checkpointing failed.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 347, in step
+    self.checkpoint()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 278, in checkpoint
+    os.rename(tmp_file_name, self.checkpoint_file)
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/.tmp_checkpoint' -> '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/experiment_state-2021-11-17_10-52-29.json'
+slurmstepd: error: *** JOB 4985067 ON gpu125 CANCELLED AT 2021-11-17T12:20:32 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 12:22:43,351	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.04 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 12:22:43,628	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21471834112 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 12:22:44,898	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 12:22:45,803	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 12:22:45,803	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 12:22:46,449	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 12:28:09,735	WARNING util.py:137 -- The `fetch_result` operation took 1.00484299659729 seconds to complete, which may be a performance bottleneck.
+2021-11-17 12:28:10,046	WARNING util.py:137 -- The `process_trial` operation took 1.3538365364074707 seconds to complete, which may be a performance bottleneck.
+2021-11-17 12:28:11,436	WARNING util.py:137 -- The `experiment_checkpoint` operation took 1.3898744583129883 seconds to complete, which may be a performance bottleneck.
+2021-11-17 12:31:05,912	WARNING util.py:137 -- The `experiment_checkpoint` operation took 1.5900886058807373 seconds to complete, which may be a performance bottleneck.
+2021-11-17 13:19:52,702	WARNING util.py:137 -- The `process_trial_save` operation took 0.8731491565704346 seconds to complete, which may be a performance bottleneck.
+2021-11-17 13:19:52,703	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+2021-11-17 13:22:30,364	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.753612756729126 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu005 CANCELLED AT 2021-11-17T13:22:40 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 13:24:52,057	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 52.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 13:24:52,368	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 18955886592 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 13:24:53,983	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 13:24:54,872	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 13:24:54,873	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 13:24:55,385	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 13:30:52,407	WARNING util.py:137 -- The `fetch_result` operation took 1.4990150928497314 seconds to complete, which may be a performance bottleneck.
+2021-11-17 13:30:54,470	WARNING util.py:137 -- The `process_trial` operation took 3.6572563648223877 seconds to complete, which may be a performance bottleneck.
+2021-11-17 13:31:02,880	WARNING util.py:137 -- The `experiment_checkpoint` operation took 8.378577470779419 seconds to complete, which may be a performance bottleneck.
+2021-11-17 13:31:02,881	ERROR trial_runner.py:349 -- Trial Runner checkpointing failed.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 347, in step
+    self.checkpoint()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 278, in checkpoint
+    os.rename(tmp_file_name, self.checkpoint_file)
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/.tmp_checkpoint' -> '/h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics/experiment_state-2021-11-17_13-24-54.json'
+2021-11-17 13:34:38,084	WARNING util.py:137 -- The `experiment_checkpoint` operation took 14.449635028839111 seconds to complete, which may be a performance bottleneck.
+2021-11-17 14:24:32,357	WARNING util.py:137 -- The `process_trial_save` operation took 2.376664400100708 seconds to complete, which may be a performance bottleneck.
+2021-11-17 14:24:32,357	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu126 CANCELLED AT 2021-11-17T14:24:43 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 14:27:09,784	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.33 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 14:27:10,068	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21474783232 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 14:27:11,773	WARNING trial_runner.py:300 -- Attempting to resume experiment from /h/dtradke/ray_results/cleanup_baseline_PPO_1teams_6agents_custom_metrics. This feature is experimental, and may not work with all search algorithms. This will ignore any new changes to the specification.
+2021-11-17 14:27:12,463	INFO trial_runner.py:169 -- Resuming trial.
+2021-11-17 14:27:12,464	INFO trial_runner.py:246 -- TrialRunner resumed, ignoring new add_experiment.
+2021-11-17 14:27:12,961	WARNING ray_trial_executor.py:674 -- Trial BaselinePPOTrainer_cleanup_env_00000: Reading checkpoint into memory.
+2021-11-17 14:32:26,662	WARNING util.py:137 -- The `fetch_result` operation took 4.147326946258545 seconds to complete, which may be a performance bottleneck.
+2021-11-17 14:32:30,076	WARNING util.py:137 -- The `process_trial` operation took 7.701814889907837 seconds to complete, which may be a performance bottleneck.
+2021-11-17 14:32:41,462	WARNING util.py:137 -- The `experiment_checkpoint` operation took 11.370807409286499 seconds to complete, which may be a performance bottleneck.
+2021-11-17 14:35:53,542	WARNING util.py:137 -- The `experiment_checkpoint` operation took 13.289304256439209 seconds to complete, which may be a performance bottleneck.
+2021-11-17 15:26:26,792	WARNING util.py:137 -- The `process_trial_save` operation took 1.0509941577911377 seconds to complete, which may be a performance bottleneck.
+2021-11-17 15:26:26,792	WARNING trial_runner.py:445 -- Consider turning off forced head-worker trial checkpoint syncs by setting sync_on_checkpoint=False. Note that this may result in faulty trial restoration if a failure occurs while the checkpoint is being synced from the worker to the head node.
+slurmstepd: error: *** JOB 4985067 ON gpu142 CANCELLED AT 2021-11-17T15:27:00 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 15:29:10,894	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 49.07 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 15:29:11,163	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21414715392 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 15:34:32,542	WARNING util.py:137 -- The `fetch_result` operation took 1.1751623153686523 seconds to complete, which may be a performance bottleneck.
+2021-11-17 15:34:34,049	WARNING util.py:137 -- The `process_trial` operation took 2.772094964981079 seconds to complete, which may be a performance bottleneck.
+2021-11-17 15:34:34,576	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.5164310932159424 seconds to complete, which may be a performance bottleneck.
+2021-11-17 16:06:20,414	WARNING util.py:137 -- The `experiment_checkpoint` operation took 2.824984550476074 seconds to complete, which may be a performance bottleneck.
+slurmstepd: error: *** JOB 4985067 ON gpu013 CANCELLED AT 2021-11-17T16:29:06 DUE TO PREEMPTION ***
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-17 16:31:28,490	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.67 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-17 16:31:28,770	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21474004992 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+2021-11-17 16:37:00,486	WARNING util.py:137 -- The `fetch_result` operation took 1.1878082752227783 seconds to complete, which may be a performance bottleneck.
+2021-11-17 16:37:02,307	WARNING util.py:137 -- The `process_trial` operation took 3.2354166507720947 seconds to complete, which may be a performance bottleneck.
+2021-11-17 16:37:02,950	WARNING util.py:137 -- The `experiment_checkpoint` operation took 0.6286139488220215 seconds to complete, which may be a performance bottleneck.
+2021-11-17 17:08:00,035	WARNING util.py:137 -- The `experiment_checkpoint` operation took 2.9762754440307617 seconds to complete, which may be a performance bottleneck.
+2021-11-17 17:14:05,676	ERROR trial_runner.py:519 -- Trial BaselinePPOTrainer_cleanup_env_00000: Error processing event.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 502, in _process_trial
+    result, terminate=(decision == TrialScheduler.STOP))
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 472, in update_last_result
+    self.result_logger.on_result(self.last_result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 336, in on_result
+    _logger.on_result(result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 116, in on_result
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+2021-11-17 17:14:07,060	ERROR trial_executor.py:64 -- Trial BaselinePPOTrainer_cleanup_env_00000: Error checkpointing trial metadata.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 502, in _process_trial
+    result, terminate=(decision == TrialScheduler.STOP))
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 472, in update_last_result
+    self.result_logger.on_result(self.last_result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 336, in on_result
+    _logger.on_result(result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 116, in on_result
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_executor.py", line 61, in try_checkpoint_metadata
+    self._cached_trial_state[trial.trial_id] = trial.__getstate__()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 550, in __getstate__
+    self.result_logger.flush(sync_down=False)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 350, in flush
+    _logger.flush()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 122, in flush
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+2021-11-17 17:14:07,083	ERROR ray_trial_executor.py:277 -- Trial BaselinePPOTrainer_cleanup_env_00000: Error stopping runner.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 502, in _process_trial
+    result, terminate=(decision == TrialScheduler.STOP))
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 472, in update_last_result
+    self.result_logger.on_result(self.last_result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 336, in on_result
+    _logger.on_result(result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 116, in on_result
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/ray_trial_executor.py", line 266, in _stop_trial
+    trial.write_error_log(error_msg)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 360, in write_error_log
+    with open(self.error_file, "a+") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_2teams_6agents_custom_metrics/BaselinePPOTrainer_cleanup_env_0_2021-11-17_16-31-298hc8qiv0/error.txt'
+2021-11-17 17:14:07,093	ERROR trial_executor.py:64 -- Trial BaselinePPOTrainer_cleanup_env_00000: Error checkpointing trial metadata.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 502, in _process_trial
+    result, terminate=(decision == TrialScheduler.STOP))
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 472, in update_last_result
+    self.result_logger.on_result(self.last_result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 336, in on_result
+    _logger.on_result(result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 116, in on_result
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/ray_trial_executor.py", line 266, in _stop_trial
+    trial.write_error_log(error_msg)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 360, in write_error_log
+    with open(self.error_file, "a+") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/h/dtradke/ray_results/cleanup_baseline_PPO_2teams_6agents_custom_metrics/BaselinePPOTrainer_cleanup_env_0_2021-11-17_16-31-298hc8qiv0/error.txt'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_executor.py", line 61, in try_checkpoint_metadata
+    self._cached_trial_state[trial.trial_id] = trial.__getstate__()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 550, in __getstate__
+    self.result_logger.flush(sync_down=False)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 350, in flush
+    _logger.flush()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 122, in flush
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+2021-11-17 17:14:07,166	WARNING util.py:137 -- The `process_trial` operation took 1.519864559173584 seconds to complete, which may be a performance bottleneck.
+Traceback (most recent call last):
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 502, in _process_trial
+    result, terminate=(decision == TrialScheduler.STOP))
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial.py", line 472, in update_last_result
+    self.result_logger.on_result(self.last_result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 336, in on_result
+    _logger.on_result(result)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 116, in on_result
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "train.py", line 432, in <module>
+    run(parsed_args, experiment)
+  File "train.py", line 425, in run
+    reuse_actors=args.tune_hparams,
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/tune.py", line 325, in run
+    runner.step()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 339, in step
+    self._process_events()  # blocking
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 452, in _process_events
+    self._process_trial(trial)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 520, in _process_trial
+    self._process_trial_failure(trial, traceback.format_exc())
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 582, in _process_trial_failure
+    self._try_recover(trial, error_msg)
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/trial_runner.py", line 630, in _try_recover
+    trial.result_logger.flush()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 350, in flush
+    _logger.flush()
+  File "/ssd003/home/dtradke/sequential_social_dilemma_games/venv/lib/python3.6/site-packages/ray/tune/logger.py", line 122, in flush
+    self.local_out.flush()
+OSError: [Errno 116] Stale file handle
+2021-11-17 17:14:07,802	WARNING worker.py:1090 -- A worker died or was killed while executing task ffffffffffffffffd03b8d120100.
+2021-11-17 17:14:07,867	WARNING worker.py:1090 -- A worker died or was killed while executing task ffffffffffffffff9b1908ea0100.
+2021-11-17 17:14:07,867	WARNING worker.py:1090 -- A worker died or was killed while executing task ffffffffffffffff54761bfd0100.
+2021-11-17 17:14:07,867	WARNING worker.py:1090 -- A worker died or was killed while executing task ffffffffffffffff7a78cec90100.
+2021-11-17 17:14:07,867	WARNING worker.py:1090 -- A worker died or was killed while executing task ffffffffffffffff4d81fd5d0100.
+2021-11-17 17:14:07,867	WARNING worker.py:1090 -- A worker died or was killed while executing task ffffffffffffffff2512146c0100.

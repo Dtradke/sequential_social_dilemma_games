@@ -28,6 +28,10 @@ def add_default_args(parser):
         "--resume", action="store_true", default=False, help="Resume previous experiment.",
     )
     parser.add_argument("--num_agents", type=int, default=2, help="Number of agent policies")
+    parser.add_argument("--num_teams", type=int, default=1, help="Number of agent teams")
+    parser.add_argument(
+        "--teams", action="store_true", default=False, help="Are we running with teams?",
+    )
     parser.add_argument(
         "--rollout_fragment_length",
         type=int,
@@ -153,6 +157,27 @@ def add_default_args(parser):
     )
 
     parser.add_argument("--entropy_coeff", type=float, default=0.001, help="Entropy reward weight.")
+
+    parser.add_argument(
+        "--credo", action="store_true", default=False, help="Are we running credo with teams?",
+    )
+
+    parser.add_argument("--selfW", type=float, default=0.0, help="Selfish credo parameter.")
+    parser.add_argument("--teamW", type=float, default=1.0, help="Team credo parameter.")
+    parser.add_argument("--sysW", type=float, default=0.0, help="System credo parameter.")
+
+    parser.add_argument(
+        "--rogue", action="store_true", default=False, help="Are we running credo with teams?",
+    )
+
+    parser.add_argument(
+        "--num_rogue",
+        type=int,
+        default=None,
+        help="Number of rogue agents to be added to environment",
+    )
+
+    parser.add_argument("--rogue_deg", type=float, default=0.5, help="Degree of Rogueness.")
 
     parser.add_argument(
         "--use_collective_reward",

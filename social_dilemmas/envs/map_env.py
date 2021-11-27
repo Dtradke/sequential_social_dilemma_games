@@ -65,6 +65,11 @@ class MapEnv(MultiAgentEnv):
         extra_actions,
         view_len,
         num_agents=1,
+        num_teams=1,
+        credo=[0.0, 1.0, 0.0],
+        rogue=False,
+        num_rogue=1,
+        rogue_deg=0.5,
         color_map=None,
         return_agent_actions=False,
         use_collective_reward=False,
@@ -86,6 +91,12 @@ class MapEnv(MultiAgentEnv):
             If true, we the action space will include the actions of other agents
         """
         self.num_agents = num_agents
+        self.num_teams = num_teams
+        self.credo = credo
+        self.rogue = rogue
+        self.num_rogue = num_rogue
+        self.rogue_deg = rogue_deg
+
         self.base_map = self.ascii_to_numpy(ascii_map)
         self.view_len = view_len
         self.map_padding = view_len
@@ -120,6 +131,7 @@ class MapEnv(MultiAgentEnv):
                     self.spawn_points.append([row, col])
                 elif self.base_map[row, col] == b"@":
                     self.wall_points.append([row, col])
+
         self.setup_agents()
 
     @property
@@ -199,6 +211,36 @@ class MapEnv(MultiAgentEnv):
                 arr[row, col] = ascii_list[row][col]
         return arr
 
+    def compute_team_rewards(self):
+        ''' calculates the team's rewards when split is even 
+        
+        Returns
+        -------
+        self_rewards: a dict representing {agent_id: single_agent_reward, ........ for all agents}
+        team_rewards: a dict representing {team_num: {"team_total": total_team_reward, agent_id_1: agent_1_reward, agent_id_2: agent_2_reward}}
+        system_reward: an int representing the total reward obtained by all agents for the current timestep
+        '''
+        self_rewards = {}
+        team_rewards = {}
+        system_reward = 0
+        # calculates total per-team
+        for increment, agent in enumerate(self.agents.values()):
+            if agent.team_num not in list(team_rewards.keys()):
+                team_rewards[agent.team_num] = {"team_total":0}
+            agent_reward = agent.compute_reward()
+
+            self_rewards[agent.agent_id] = agent_reward
+            team_rewards[agent.team_num]["team_total"]+=agent_reward
+            system_reward+=agent_reward
+
+            team_rewards[agent.team_num][agent.agent_id] = agent_reward
+
+        # calculates even split
+        for i, agent in enumerate(self.agents.values()):
+            team_rewards[agent.team_num][agent.agent_id] = team_rewards[agent.team_num]["team_total"]/(self.num_agents/self.num_teams)
+        return self_rewards, team_rewards, system_reward
+
+
     def step(self, actions):
         """Takes in a dict of actions and converts them to a map update
 
@@ -219,7 +261,13 @@ class MapEnv(MultiAgentEnv):
         self.beam_pos = []
         agent_actions = {}
         for agent_id, action in actions.items():
+
+            # making rogue actions...                                                                           TODO: HAVE NOT CHECKED THIS WORKS YET
+            # if self.agents[agent_id].is_rogue and np.random.random() < self.agents[agent_id].rogue_deg:
+            #     action = np.random.randint(9)
+
             agent_action = self.agents[agent_id].action_map(action)
+
             agent_actions[agent_id] = agent_action
 
         # Remove agents from color map
@@ -248,6 +296,9 @@ class MapEnv(MultiAgentEnv):
             if self.world_map[row, col] not in [b"F", b"C"]:
                 self.single_update_world_color_map(row, col, agent.get_char_id())
 
+
+        self_rewards, team_rewards, system_reward = self.compute_team_rewards()
+
         observations = {}
         rewards = {}
         dones = {}
@@ -270,8 +321,28 @@ class MapEnv(MultiAgentEnv):
                 agent.prev_visible_agents = visible_agents
             else:
                 observations[agent.agent_id] = {"curr_obs": rgb_arr}
-            rewards[agent.agent_id] = agent.compute_reward()
+
+            # full team credo
+            # rewards[agent.agent_id] = team_rewards[agent.team_num][agent.agent_id] #agent.compute_reward()                           # changed for teams
+
+            # print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+            # print(team_rewards)
+            # print(agent.team_num)
+            # print(agent.agent_id)
+            # print(team_rewards[agent.team_num][agent.agent_id])
+            # exit()
+
+
+            # credo weights...
+            rewards[agent.agent_id] = ((agent.credo[0]*self_rewards[agent.agent_id])+
+                                        (agent.credo[1]*team_rewards[agent.team_num][agent.agent_id])+
+                                        (agent.credo[2]*system_reward))
+
             dones[agent.agent_id] = agent.get_done()
+            # exit()
+            # info[agent.agent_id]["apples"] = 1
+
 
         if self.use_collective_reward:
             collective_reward = sum(rewards.values())

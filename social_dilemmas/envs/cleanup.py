@@ -34,6 +34,11 @@ class CleanupEnv(MapEnv):
         self,
         ascii_map=CLEANUP_MAP,
         num_agents=1,
+        num_teams=1,
+        credo=[0.0, 1.0, 0.0],
+        rogue=False,
+        num_rogue=1,
+        rogue_deg=0.5,
         return_agent_actions=False,
         use_collective_reward=False,
     ):
@@ -42,6 +47,11 @@ class CleanupEnv(MapEnv):
             _CLEANUP_ACTIONS,
             CLEANUP_VIEW_SIZE,
             num_agents,
+            num_teams,
+            credo,
+            rogue,
+            num_rogue,
+            rogue_deg,
             return_agent_actions=return_agent_actions,
             use_collective_reward=use_collective_reward,
         )
@@ -124,15 +134,33 @@ class CleanupEnv(MapEnv):
         """Constructs all the agents in self.agent"""
         map_with_agents = self.get_map_with_agents()
 
+        agents_per_team = self.num_agents // self.num_teams
+        agents_on_team = 0
+        team_num_count = 0
+        total_num_rogue = 0
         for i in range(self.num_agents):
             agent_id = "agent-" + str(i)
+            if agents_on_team < agents_per_team:
+                agents_on_team += 1
+            else:
+                agents_on_team = 1
+                team_num_count += 1
+                
+            # added rogueness to some agents if rogue flag set
+            if self.rogue and agents_on_team < agents_per_team and total_num_rogue < self.num_rogue:
+                rogue_flag = True
+                total_num_rogue+=1
+            else:
+                rogue_flag = False
+
+            team_label = team_num_count
             spawn_point = self.spawn_point()
             rotation = self.spawn_rotation()
             # grid = util.return_view(map_with_agents, spawn_point,
             #                         CLEANUP_VIEW_SIZE, CLEANUP_VIEW_SIZE)
             # agent = CleanupAgent(agent_id, spawn_point, rotation, grid)
             agent = CleanupAgent(
-                agent_id, spawn_point, rotation, map_with_agents, view_len=CLEANUP_VIEW_SIZE,
+                agent_id, team_label, self.credo, rogue_flag, self.rogue_deg, spawn_point, rotation, map_with_agents, view_len=CLEANUP_VIEW_SIZE,
             )
             self.agents[agent_id] = agent
 
@@ -169,9 +197,15 @@ class CleanupEnv(MapEnv):
         waste_density = 0
         if self.potential_waste_area > 0:
             waste_density = 1 - self.compute_permitted_area() / self.potential_waste_area
+
+        # print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        # exit()
+
+        # if theres too much waste
         if waste_density >= thresholdDepletion:
             self.current_apple_spawn_prob = 0
             self.current_waste_spawn_prob = 0
+        # else compute the probabilities based on how much waste
         else:
             self.current_waste_spawn_prob = wasteSpawnProbability
             if waste_density <= thresholdRestoration:

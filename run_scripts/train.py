@@ -3,6 +3,8 @@ import copy
 import random
 import sys
 from datetime import datetime
+import natsort
+import os
 
 import pytz
 import ray
@@ -12,6 +14,10 @@ from ray.rllib.models import ModelCatalog
 from ray.tune import Experiment
 from ray.tune.registry import register_env
 from ray.tune.schedulers import PopulationBasedTraining
+from utility_funcs import get_all_subdirs
+from visualization.plot_results import ray_results_path
+
+from ray.rllib.examples.custom_metrics_and_callbacks import MyCallbacks
 
 from algorithms.a3c_baseline import build_a3c_baseline_trainer
 from algorithms.a3c_moa import build_a3c_moa_trainer
@@ -37,7 +43,13 @@ def build_experiment_config_dict(args):
     :param args: The parsed arguments.
     :return: An Experiment config dict.
     """
-    env_creator = get_env_creator(args.env, args.num_agents, args)
+
+    if args.rogue:
+        print(">>>>>>>>>>>> ROGUE EXPERIMENT <<<<<<<<<<<<")
+        
+    credo = [args.selfW, args.teamW, args.sysW]
+
+    env_creator = get_env_creator(args.env, args.num_agents, args.num_teams, credo, args)
     env_name = args.env + "_env"
     register_env(env_name, env_creator)
 
@@ -173,6 +185,7 @@ def build_experiment_config_dict(args):
     else:
         sys.exit("The only available algorithms are A3C, PPO and IMPALA")
 
+    config["callbacks"] = MyCallbacks#(args.num_agents)
     return config
 
 
@@ -242,10 +255,15 @@ def get_experiment_name(args):
     """
     if sys.gettrace() is not None:
         exp_name = "debug_experiment"
+    elif args.exp_name is None and args.teams:
+        exp_name = args.env + "_" + args.model + "_" + args.algorithm + "_" + str(args.num_teams) + "teams_" + str(args.num_agents) + "agents"
     elif args.exp_name is None:
         exp_name = args.env + "_" + args.model + "_" + args.algorithm
     else:
         exp_name = args.exp_name
+
+    if args.use_collective_reward:
+        exp_name = exp_name+"_collective"
     return exp_name
 
 
@@ -288,6 +306,9 @@ def create_experiment(args):
     :return: A new experiment with its own trainer.
     """
     experiment_name = get_experiment_name(args)
+
+    experiment_name = experiment_name + "_custom_metrics"
+
     config = build_experiment_config_dict(args)
     trainer = get_trainer(args=args, config=config)
     experiment_dict = build_experiment_dict(args, experiment_name, trainer, config)
@@ -360,9 +381,49 @@ def run(args, experiments):
     :param args: The args to initialize ray with
     :param experiments: A list of experiments to run
     """
+    # category_folders = get_all_subdirs(ray_results_path)
+    exp_fname = experiments.local_dir + "/" + experiments.name
+    if not os.path.exists(exp_fname):
+        os.makedirs(exp_fname)
+    experiment_folders = get_all_subdirs(exp_fname)
+
     initialize_ray(args)
     scheduler = create_pbt_scheduler(args.model) if args.tune_hparams else None
-    tune.run_experiments(
+
+    if len(experiment_folders) > 0:
+        checkpoints = get_all_subdirs(experiment_folders[0])
+        if len(checkpoints) > 0:
+            checkpoints = natsort.natsorted(checkpoints)
+            to_restore = checkpoints[-1]
+
+            print(">>> RESTORING FROM: ", to_restore)
+
+            args.resume=True
+
+            tune.run(
+                experiments,
+                queue_trials=args.use_s3,
+                restore=to_restore,
+                resume=args.resume,
+                scheduler=scheduler,
+                reuse_actors=args.tune_hparams,
+            )
+
+            # initialize_ray(args)
+            # scheduler = create_pbt_scheduler(args.model) if args.tune_hparams else None
+            # tune.run_experiments(
+            #     experiments,
+            #     queue_trials=args.use_s3,
+            #     restore=checkpoints[-1],
+            #     scheduler=scheduler,
+            #     reuse_actors=args.tune_hparams,
+            # )
+            exit()
+        
+    # else:
+    args.resume = False
+
+    tune.run(
         experiments,
         queue_trials=args.use_s3,
         resume=args.resume,

@@ -1,0 +1,4 @@
+ Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
+2021-11-25 10:44:17,633	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 54.21 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2021-11-25 10:44:17,920	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 6242246656 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
+slurmstepd: error: *** JOB 5069301 ON gpu004 CANCELLED AT 2021-11-25T10:44:41 ***
