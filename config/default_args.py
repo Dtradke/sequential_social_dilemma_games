@@ -32,6 +32,16 @@ def add_default_args(parser):
     parser.add_argument(
         "--teams", action="store_true", default=False, help="Are we running with teams?",
     )
+
+    parser.add_argument(
+        "--return_agent_actions", action="store_true", default=False, help="Are we returning agent actions in obs space?",
+    )
+
+    parser.add_argument(
+        "--trial", type=int, default=0, help="Number of experiment so I can run more than 1 in parallel",
+    )
+
+
     parser.add_argument(
         "--rollout_fragment_length",
         type=int,
@@ -168,6 +178,10 @@ def add_default_args(parser):
 
     parser.add_argument(
         "--rogue", action="store_true", default=False, help="Are we running credo with teams?",
+    )
+
+    parser.add_argument(
+        "--rogue_stay", action="store_true", default=False, help="Are we running credo with teams?",
     )
 
     parser.add_argument(

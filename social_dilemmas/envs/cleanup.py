@@ -159,10 +159,13 @@ class CleanupEnv(MapEnv):
             # grid = util.return_view(map_with_agents, spawn_point,
             #                         CLEANUP_VIEW_SIZE, CLEANUP_VIEW_SIZE)
             # agent = CleanupAgent(agent_id, spawn_point, rotation, grid)
+
+            # print(agent_id, ": ", team_label, " - rogue? ", rogue_flag)
             agent = CleanupAgent(
                 agent_id, team_label, self.credo, rogue_flag, self.rogue_deg, spawn_point, rotation, map_with_agents, view_len=CLEANUP_VIEW_SIZE,
             )
             self.agents[agent_id] = agent
+        # exit()
 
     def spawn_apples_and_waste(self):
         spawn_points = []

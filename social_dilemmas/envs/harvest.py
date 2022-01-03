@@ -21,6 +21,11 @@ class HarvestEnv(MapEnv):
         self,
         ascii_map=HARVEST_MAP,
         num_agents=1,
+        num_teams=1,
+        credo=[0.0, 1.0, 0.0],
+        rogue=False,
+        num_rogue=1,
+        rogue_deg=0.5,
         return_agent_actions=False,
         use_collective_reward=False,
     ):
@@ -29,6 +34,11 @@ class HarvestEnv(MapEnv):
             _HARVEST_ACTIONS,
             HARVEST_VIEW_SIZE,
             num_agents,
+            num_teams,
+            credo,
+            rogue,
+            num_rogue,
+            rogue_deg,
             return_agent_actions=return_agent_actions,
             use_collective_reward=use_collective_reward,
         )
@@ -42,15 +52,35 @@ class HarvestEnv(MapEnv):
     def action_space(self):
         return DiscreteWithDType(8, dtype=np.uint8)
 
+
     def setup_agents(self):
         map_with_agents = self.get_map_with_agents()
 
+        agents_per_team = self.num_agents // self.num_teams
+        agents_on_team = 0
+        team_num_count = 0
+        total_num_rogue = 0
         for i in range(self.num_agents):
             agent_id = "agent-" + str(i)
+            if agents_on_team < agents_per_team:
+                agents_on_team += 1
+            else:
+                agents_on_team = 1
+                team_num_count += 1
+                
+            # added rogueness to some agents if rogue flag set
+            if self.rogue and agents_on_team < agents_per_team and total_num_rogue < self.num_rogue:
+                rogue_flag = True
+                total_num_rogue+=1
+            else:
+                rogue_flag = False
+            team_label = team_num_count
+
             spawn_point = self.spawn_point()
             rotation = self.spawn_rotation()
             grid = map_with_agents
-            agent = HarvestAgent(agent_id, spawn_point, rotation, grid, view_len=HARVEST_VIEW_SIZE)
+            # agent = HarvestAgent(agent_id, spawn_point, rotation, grid, view_len=HARVEST_VIEW_SIZE)
+            agent = HarvestAgent(agent_id, team_label, self.credo, rogue_flag, self.rogue_deg, spawn_point, rotation, grid, view_len=HARVEST_VIEW_SIZE,)
             self.agents[agent_id] = agent
 
     def custom_reset(self):

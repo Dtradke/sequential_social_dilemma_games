@@ -137,6 +137,7 @@ class Agent(object):
             validated_new_pos = new_pos
         else:
             validated_new_pos = self.pos
+            # TODO(dr): set action to stay
         self.set_pos(validated_new_pos)
         # TODO(ev) list array consistency
         return self.pos, np.array(old_pos)

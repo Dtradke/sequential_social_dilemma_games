@@ -28,7 +28,7 @@ def get_env_creator(env, num_agents, num_teams, credo, args):
                 rogue=args.rogue,
                 num_rogue=args.num_rogue,
                 rogue_deg=args.rogue_deg,
-                return_agent_actions=True,
+                return_agent_actions=args.return_agent_actions,
                 use_collective_reward=args.use_collective_reward,
             )
 

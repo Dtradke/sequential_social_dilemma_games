@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=1teams_cleanup
+#SBATCH --job-name=2teams_cleanup
 
 #SBATCH --partition=p100,t4v1,t4v2,rtx6000
 

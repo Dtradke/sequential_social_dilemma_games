@@ -5,7 +5,7 @@ python train.py \
 --model baseline \
 --algorithm PPO \
 --num_agents 6 \
---num_teams 1 \
+--num_teams 2 \
 --num_workers 6 \
 --rollout_fragment_length 1000 \
 --num_envs_per_worker 16 \

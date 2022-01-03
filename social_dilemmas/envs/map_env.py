@@ -90,6 +90,7 @@ class MapEnv(MultiAgentEnv):
         return_agent_actions: bool
             If true, we the action space will include the actions of other agents
         """
+
         self.num_agents = num_agents
         self.num_teams = num_teams
         self.credo = credo
@@ -104,6 +105,7 @@ class MapEnv(MultiAgentEnv):
         self.use_collective_reward = use_collective_reward
         self.all_actions = _MAP_ENV_ACTIONS.copy()
         self.all_actions.update(extra_actions)
+        self.num_actions = len(list(self.all_actions.keys()))
         # Map without agents or beams
         self.world_map = np.full(
             (len(self.base_map), len(self.base_map[0])), fill_value=b" ", dtype="c"
@@ -222,7 +224,7 @@ class MapEnv(MultiAgentEnv):
         '''
         self_rewards = {}
         team_rewards = {}
-        system_reward = 0
+        system_reward = []
         # calculates total per-team
         for increment, agent in enumerate(self.agents.values()):
             if agent.team_num not in list(team_rewards.keys()):
@@ -231,14 +233,14 @@ class MapEnv(MultiAgentEnv):
 
             self_rewards[agent.agent_id] = agent_reward
             team_rewards[agent.team_num]["team_total"]+=agent_reward
-            system_reward+=agent_reward
+            system_reward.append(agent_reward)
 
             team_rewards[agent.team_num][agent.agent_id] = agent_reward
 
         # calculates even split
         for i, agent in enumerate(self.agents.values()):
             team_rewards[agent.team_num][agent.agent_id] = team_rewards[agent.team_num]["team_total"]/(self.num_agents/self.num_teams)
-        return self_rewards, team_rewards, system_reward
+        return self_rewards, team_rewards, np.mean(np.array(system_reward))
 
 
     def step(self, actions):
@@ -262,13 +264,15 @@ class MapEnv(MultiAgentEnv):
         agent_actions = {}
         for agent_id, action in actions.items():
 
-            # making rogue actions...                                                                           TODO: HAVE NOT CHECKED THIS WORKS YET
+            # print(len(list(self.all_actions.keys())))
+            # making rogue actions... 
             # if self.agents[agent_id].is_rogue and np.random.random() < self.agents[agent_id].rogue_deg:
-            #     action = np.random.randint(9)
+            #     action = np.random.randint(self.num_actions)
+            #     actions[agent_id] = action
 
             agent_action = self.agents[agent_id].action_map(action)
-
             agent_actions[agent_id] = agent_action
+            
 
         # Remove agents from color map
         for agent in self.agents.values():
@@ -333,7 +337,7 @@ class MapEnv(MultiAgentEnv):
             # print(team_rewards[agent.team_num][agent.agent_id])
             # exit()
 
-
+            # rewards[agent.agent_id] = self_rewards[agent.agent_id] #agent.compute_reward()
             # credo weights...
             rewards[agent.agent_id] = ((agent.credo[0]*self_rewards[agent.agent_id])+
                                         (agent.credo[1]*team_rewards[agent.team_num][agent.agent_id])+
@@ -552,6 +556,8 @@ class MapEnv(MultiAgentEnv):
                 new_rot = self.update_rotation(action, agent.get_orientation())
                 agent.update_agent_rot(new_rot)
 
+        # if agent couldn't move, it stays on the current cell but the action hasn't changed so far
+
         # now do the conflict resolution part of the process
 
         # helpful for finding the agent in the conflicting slot
@@ -655,7 +661,9 @@ class MapEnv(MultiAgentEnv):
                         # all other agents now stay in place so update their moves
                         # to stay in place
                         for agent_id in all_agents_id:
-                            agent_moves[agent_id] = self.agents[agent_id].pos.tolist()
+                            agent_moves[agent_id] = self.agents[agent_id].pos.tolist() # pops agents "potential moves" back in their place to stay
+
+                            # TODO(dr): you need to update the agent's actions here if they are not given another action below
 
             # make the remaining un-conflicted moves
             while len(agent_moves.items()) > 0:

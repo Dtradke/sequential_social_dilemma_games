@@ -17,6 +17,9 @@ from ray.tune.schedulers import PopulationBasedTraining
 from utility_funcs import get_all_subdirs
 from visualization.plot_results import ray_results_path
 
+from ray.tune.result import DEFAULT_RESULTS_DIR
+
+
 from ray.rllib.examples.custom_metrics_and_callbacks import MyCallbacks
 
 from algorithms.a3c_baseline import build_a3c_baseline_trainer
@@ -45,7 +48,7 @@ def build_experiment_config_dict(args):
     """
 
     if args.rogue:
-        print(">>>>>>>>>>>> ROGUE EXPERIMENT <<<<<<<<<<<<")
+        print(">>>>>>>>>>>> UNRELIABLE AGENT EXPERIMENT <<<<<<<<<<<<")
         
     credo = [args.selfW, args.teamW, args.sysW]
 
@@ -146,7 +149,7 @@ def build_experiment_config_dict(args):
                 "influence_reward_weight": args.influence_reward_weight,
                 "influence_reward_schedule_steps": args.influence_reward_schedule_steps,
                 "influence_reward_schedule_weights": args.influence_reward_schedule_weights,
-                "return_agent_actions": True,
+                "return_agent_actions": args.return_agent_actions, # True
                 "influence_divergence_measure": "kl",
                 "train_moa_only_when_visible": True,
                 "influence_only_when_visible": True,
@@ -185,7 +188,7 @@ def build_experiment_config_dict(args):
     else:
         sys.exit("The only available algorithms are A3C, PPO and IMPALA")
 
-    config["callbacks"] = MyCallbacks#(args.num_agents)
+    config["callbacks"] = MyCallbacks #(args.num_agents)
     return config
 
 
@@ -253,10 +256,16 @@ def get_experiment_name(args):
     :param args: The parsed arguments.
     :return: The experiment name.
     """
+
+    if args.rogue:
+        unreliable_str = "_"+str(args.num_rogue)+"rogue"+str(args.rogue_deg)
+    else:
+        unreliable_str = ""
+
     if sys.gettrace() is not None:
         exp_name = "debug_experiment"
     elif args.exp_name is None and args.teams:
-        exp_name = args.env + "_" + args.model + "_" + args.algorithm + "_" + str(args.num_teams) + "teams_" + str(args.num_agents) + "agents"
+        exp_name = args.env + "_" + args.model + "_" + args.algorithm + unreliable_str + "_" + str(args.num_teams) + "teams_" + str(args.num_agents) + "agents"
     elif args.exp_name is None:
         exp_name = args.env + "_" + args.model + "_" + args.algorithm
     else:
@@ -307,11 +316,29 @@ def create_experiment(args):
     """
     experiment_name = get_experiment_name(args)
 
-    experiment_name = experiment_name + "_custom_metrics"
+
+    if args.teamW != 1.0:
+        experiment_name = experiment_name + "_" + str(args.selfW) + "-" + str(args.teamW) + "-" + str(args.sysW)
+        assert (args.selfW + args.teamW + args.sysW) == 1, "CREDO SUM DOES NOT EQUAL 1"
+    else:
+        experiment_name = experiment_name + "_custom_metrics"
+
+    if not args.return_agent_actions:
+        experiment_name = experiment_name + "_rgb"
+    if args.rogue_stay:
+        experiment_name = experiment_name + "stay"
+
+    if args.trial > 0:
+        experiment_name = experiment_name + "_trial" + str(args.trial)
 
     config = build_experiment_config_dict(args)
     trainer = get_trainer(args=args, config=config)
     experiment_dict = build_experiment_dict(args, experiment_name, trainer, config)
+
+    # TODO(dr): figure out if below is necessary to run multiple jobs on vector cluster
+    default_dir = DEFAULT_RESULTS_DIR + str(args.num_teams) + "teams_" + str(args.num_agents) + "agents"
+    experiment_dict["local_dir"] = default_dir #"h/dtradke/ray_results2"
+
     return Experiment(**experiment_dict)
 
 
@@ -382,10 +409,20 @@ def run(args, experiments):
     :param experiments: A list of experiments to run
     """
     # category_folders = get_all_subdirs(ray_results_path)
+
     exp_fname = experiments.local_dir + "/" + experiments.name
     if not os.path.exists(exp_fname):
         os.makedirs(exp_fname)
     experiment_folders = get_all_subdirs(exp_fname)
+
+    # print(experiments.remote_checkpoint_dir)
+    # print(experiments.local_dir)
+    # print(experiments.spec["upload_dir"])
+    # # print(experiments.spec["trial_name_creator"])
+    # print(experiments.spec)
+    # exit()
+
+    # print("I'm in train.py run")
 
     initialize_ray(args)
     scheduler = create_pbt_scheduler(args.model) if args.tune_hparams else None
