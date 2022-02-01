@@ -27,20 +27,24 @@ def create_args(checkpoint_file, video_dir, video_filename):
     return args
 
 
-render_dirs = "cleanup_baseline_PPO_1rogue0.5_1teams_6agents_custom_metrics"
+render_dirs = "cleanup_baseline_PPO_6teams_6agents_custom_metrics_rgb"
 
 
 def render():
     video_base_path = ray_results_path + "_video/"
 
-    new_path = ray_results_path + "1teams_6agents"
+    # new_path = ray_results_path + "1teams_6agents"
 
-    category_folders = get_all_subdirs(new_path) #ray_results_path
+    category_folders = get_all_subdirs(ray_results_path) #ray_results_path
     for category_folder in category_folders:
 
 
         if category_folder.split("/")[-1] in render_dirs:
-            experiment_folders = get_all_subdirs(category_folder)
+            experiment_folders = [get_all_subdirs(category_folder)[4]]
+            # print(experiment_folders)
+            # exit()
+
+
             for i, experiment_folder in enumerate(experiment_folders):
                 print("Experiment dir: ", experiment_folder)
                 print("Rendering experiment" + str(i + 1) + "/" + str(len(experiment_folders)))
