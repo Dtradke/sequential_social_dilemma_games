@@ -13,12 +13,12 @@ import scipy
 import copy
 import sys
 
-# from utility_funcs import get_all_subdirs
+from utility_funcs import get_all_subdirs
 
 ray_results_path = os.path.expanduser("~/ray_results")
 plot_path = os.path.expanduser("~/ray_results_plot")
 
-CLEANUP_MAP = np.zeros((24,18))
+CLEANUP_MAP = np.zeros((25,18))
 
 np.set_printoptions(threshold=sys.maxsize)
 
@@ -60,14 +60,22 @@ def populateValueMap(df, metric):
             row.append([])
         env.append(row)
 
+    if metric == 'location':
+        for index, row in df.iterrows():
+            env[int(row['x'])][int(row['y'])].append(1)
 
-    for index, row in df.iterrows():
-        env[int(row['x'])][int(row['y'])].append(row[metric])
+        for i in range(CLEANUP_MAP.shape[0]):
+            for j in range(CLEANUP_MAP.shape[1]):
+                if len(env[i][j]) > 0:
+                    np_env[i,j] = np.sum(np.array(env[i][j]))
+    else:
+        for index, row in df.iterrows():
+            env[int(row['x'])][int(row['y'])].append(row[metric])
 
-    for i in range(CLEANUP_MAP.shape[0]):
-        for j in range(CLEANUP_MAP.shape[1]):
-            if len(env[i][j]) > 0:
-                np_env[i,j] = np.mean(np.array(env[i][j]))
+        for i in range(CLEANUP_MAP.shape[0]):
+            for j in range(CLEANUP_MAP.shape[1]):
+                if len(env[i][j]) > 0:
+                    np_env[i,j] = np.mean(np.array(env[i][j]))
     return np_env
 
 def currentDirectory(exp_dir, trial_num):
@@ -85,7 +93,6 @@ def saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num):
         os.makedirs(fname)
     np.save(fname+"agent-"+str(agent)+metric+".npy", final_map)
     print("saved: ", fname+"agent-"+str(agent)+metric+".npy")
-    return fname+"agent-"+str(agent)+metric+".npy"
 
 def loadNpyEnvs(exp_dir, trial_num, agent, metric):
     fname = currentDirectory(exp_dir, trial_num)
@@ -103,7 +110,7 @@ def loadNpyEnvs(exp_dir, trial_num, agent, metric):
 def inspectLocationData(category_folders):
     ''' main function to loop through metrics/agents and plot their maps '''
 
-    metrics = ['vf_preds', 'rewards', 'value_targets']
+    metrics = ['vf_preds', 'rewards', 'value_targets', 'location']
 
     for cat_count, category_folder in enumerate(category_folders):
         cat_folders = get_all_subdirs(category_folder)
@@ -116,7 +123,7 @@ def inspectLocationData(category_folders):
                 df, episode_num = getAgentData(exp_dir, agent)
                 for metric in metrics:
                     final_map = populateValueMap(df, metric)
-                    saved_fname = saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
+                    saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
 
 
 def plotLocations(envs):
@@ -163,5 +170,5 @@ if __name__ == "__main__":
             # category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
             category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents_copy/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
-    # inspectLocationData(category_folders)
-    plotLocationData(category_folders)
+    inspectLocationData(category_folders)
+    # plotLocationData(category_folders)
