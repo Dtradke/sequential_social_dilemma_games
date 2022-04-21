@@ -5,6 +5,8 @@ import natsort
 
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
+from matplotlib import ticker
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 import ternary
 from ternary.helpers import simplex_iterator
 import numpy as np
@@ -127,7 +129,7 @@ def inspectLocationData(category_folders):
                         saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
 
 
-def plotLocations(envs, nagents, metric, episodes):
+def plotLocations(envs, nagents, metric, episodes, base_fname):
 
     if metric == 'rewards':
         all_vmin = -1
@@ -142,22 +144,42 @@ def plotLocations(envs, nagents, metric, episodes):
     epi_idx = -1
     for idx, env in enumerate(envs):
         env = np.flipud(env)
-        c = plt.imshow(env, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
-        plt.colorbar(c)
+
+        plt.figure()
+        ax = plt.gca()
+        c = ax.imshow(env, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
+        # plt.colorbar(c, orientation='horizontal')
+
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("bottom", size="5%", pad=0.25)
+        clb = plt.colorbar(c, cax=cax, orientation="horizontal")
+
+        tick_locator = ticker.MaxNLocator(nbins=4)
+        clb.locator = tick_locator
+        clb.update_ticks()
+
+        clb.ax.tick_params(labelsize=12) 
+        clb.ax.set_xlabel(metric,fontsize=20)
+        
 
         agent_num = idx%nagents
         if agent_num == 0: 
             epi_idx += 1
-        plt.title("Agent: "+str(agent_num)+" "+metric+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
 
+        ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
+        ax.text(-5, 14, "River", fontsize=20, rotation=90)
+        ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
         plt.show()
         plt.close()
-    exit()
+
+        # fname = base_fname +episodes[epi_idx]+"/figs/agent-"+str(agent_num)+metric+'.png'
+        # plt.savefig(fname+'.png',bbox_inches='tight', dpi=300)
+        # exit()
 
 
 def plotLocationData(category_folders):
     # metrics = ['vf_preds', 'rewards', 'value_targets']
-    metrics = ['rewards']
+    metrics = ['value_targets']
 
     for cat_count, category_folder in enumerate(category_folders):
         nteams, nagents = getExperimentParameters(category_folder)
@@ -166,12 +188,13 @@ def plotLocationData(category_folders):
         for trial_num in range(num_trials):
             episodes = natsort.natsorted(os.listdir(fname+"trial-"+str(trial_num)+"/agent_values/"))
             for metric in metrics:
+                base_fname = fname+"trial-"+str(trial_num)+"/agent_values/"
                 envs = []
                 for epi in episodes:
                     for agent in range(nagents):
-                        envs.append(np.load(fname+"trial-"+str(trial_num)+"/agent_values/"+str(epi)+"/agent-"+str(agent)+metric+'.npy'))
+                        envs.append(np.load(base_fname+str(epi)+"/npy_arrays/agent-"+str(agent)+metric+'.npy'))
                         
-                plotLocations(envs, nagents, metric, episodes)
+                plotLocations(envs, nagents, metric, episodes, base_fname)
                     
 
 
