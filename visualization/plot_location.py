@@ -34,17 +34,16 @@ def getExperimentParameters(path):
             nagents = int(word[0])
     return nteams, nagents
 
-def getAgentData(exp_dir, agent):
+def getAgentData(exp_dir, agent, file_to_load):
     ''' loads agent location dataframe '''
 
     files = os.listdir(exp_dir+"/agent_values/agent-"+str(agent)+"/")
-
-    if 'episode_list.npy' in files:
-        files = files.remove("episode_list.npy")
-
     files = natsort.natsorted(files)
 
-    file_to_load = str(files[-1])
+    if 'episode_list.npy' in files:
+        files = files[:-1]
+
+    file_to_load = str(files[file_to_load])
     df = pd.read_csv(exp_dir+"/agent_values/agent-"+str(agent)+"/"+file_to_load)
     return df.loc[:, ~df.columns.str.contains('^Unnamed')], file_to_load[:-4]
 
@@ -112,6 +111,8 @@ def inspectLocationData(category_folders):
 
     metrics = ['vf_preds', 'rewards', 'value_targets', 'location']
 
+    files_to_load = [0, -1]
+
     for cat_count, category_folder in enumerate(category_folders):
         cat_folders = get_all_subdirs(category_folder)
         experiment_folders = natsort.natsorted(cat_folders)
@@ -119,11 +120,11 @@ def inspectLocationData(category_folders):
         for trial_num, exp_dir in enumerate(experiment_folders):
             num_agents = len(os.listdir(exp_dir+"/agent_values/"))
             for agent in range(num_agents):
-
-                df, episode_num = getAgentData(exp_dir, agent)
-                for metric in metrics:
-                    final_map = populateValueMap(df, metric)
-                    saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
+                for file_to_load in files_to_load:
+                    df, episode_num = getAgentData(exp_dir, agent, file_to_load)
+                    for metric in metrics:
+                        final_map = populateValueMap(df, metric)
+                        saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
 
 
 def plotLocations(envs):
@@ -168,10 +169,11 @@ if __name__ == "__main__":
     for nteam in nteam_arr:
         for nagent in nagent_arr:
             # category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
-            category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents_copy/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
+            category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
     try:
         from utility_funcs import get_all_subdirs
         inspectLocationData(category_folders)
+        exit()
     except:
         plotLocationData(category_folders)
