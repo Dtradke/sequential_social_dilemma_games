@@ -86,7 +86,7 @@ def saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num):
     ''' saves map of the defined metric as numpy array to be plotted later '''
 
     fname = currentDirectory(exp_dir, trial_num)
-    fname = fname+str(episode_num)+"/"
+    fname = fname+str(episode_num)+"/npy_arrays/"
 
     if not os.path.exists(fname):
         os.makedirs(fname)
@@ -102,7 +102,7 @@ def loadNpyEnvs(exp_dir, trial_num, agent, metric):
 
     envs = []
     for f in files:
-        envs.append(np.load(fname+'/'+f+'/agent-'+agent+metric+".npy"))
+        envs.append(np.load(fname+'/'+f+'/npy_arrays/agent-'+agent+metric+".npy"))
 
 
 
@@ -127,12 +127,29 @@ def inspectLocationData(category_folders):
                         saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
 
 
-def plotLocations(envs):
+def plotLocations(envs, nagents, metric, episodes):
 
-    for env in envs:
+    if metric == 'rewards':
+        all_vmin = -1
+        all_vmax = 1
+        color_map = 'seismic'
+    else:
+        all_vmin = np.amin(np.array(envs))
+        all_vmax = np.amax(np.array(envs))
+        color_map = 'Reds'
+    
+
+    epi_idx = -1
+    for idx, env in enumerate(envs):
         env = np.flipud(env)
-        c = plt.imshow(env, cmap='Reds')
+        c = plt.imshow(env, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
         plt.colorbar(c)
+
+        agent_num = idx%nagents
+        if agent_num == 0: 
+            epi_idx += 1
+        plt.title("Agent: "+str(agent_num)+" "+metric+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
+
         plt.show()
         plt.close()
     exit()
@@ -140,21 +157,21 @@ def plotLocations(envs):
 
 def plotLocationData(category_folders):
     # metrics = ['vf_preds', 'rewards', 'value_targets']
-    metrics = ['location']
+    metrics = ['rewards']
 
     for cat_count, category_folder in enumerate(category_folders):
         nteams, nagents = getExperimentParameters(category_folder)
         fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/tmp/"
         num_trials = len(os.listdir(fname))
         for trial_num in range(num_trials):
-            episodes = os.listdir(fname+"trial-"+str(trial_num)+"/agent_values/")
+            episodes = natsort.natsorted(os.listdir(fname+"trial-"+str(trial_num)+"/agent_values/"))
             for metric in metrics:
                 envs = []
                 for epi in episodes:
                     for agent in range(nagents):
                         envs.append(np.load(fname+"trial-"+str(trial_num)+"/agent_values/"+str(epi)+"/agent-"+str(agent)+metric+'.npy'))
                         
-                plotLocations(envs)
+                plotLocations(envs, nagents, metric, episodes)
                     
 
 
