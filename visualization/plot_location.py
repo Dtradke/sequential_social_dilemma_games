@@ -13,7 +13,7 @@ import scipy
 import copy
 import sys
 
-from utility_funcs import get_all_subdirs
+
 
 ray_results_path = os.path.expanduser("~/ray_results")
 plot_path = os.path.expanduser("~/ray_results_plot")
@@ -139,7 +139,7 @@ def plotLocations(envs):
 
 def plotLocationData(category_folders):
     # metrics = ['vf_preds', 'rewards', 'value_targets']
-    metrics = ['value_targets']
+    metrics = ['location']
 
     for cat_count, category_folder in enumerate(category_folders):
         nteams, nagents = getExperimentParameters(category_folder)
@@ -170,5 +170,8 @@ if __name__ == "__main__":
             # category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
             category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents_copy/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
-    inspectLocationData(category_folders)
-    # plotLocationData(category_folders)
+    try:
+        from utility_funcs import get_all_subdirs
+        inspectLocationData(category_folders)
+    except:
+        plotLocationData(category_folders)
