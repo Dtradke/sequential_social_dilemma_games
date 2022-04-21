@@ -118,7 +118,8 @@ def inspectLocationData(category_folders):
 
     for cat_count, category_folder in enumerate(category_folders):
         cat_folders = get_all_subdirs(category_folder)
-        experiment_folders = natsort.natsorted(cat_folders)
+        experiment_folders = [natsort.natsorted(cat_folders)[0]]
+
 
         for trial_num, exp_dir in enumerate(experiment_folders):
             num_agents = len(os.listdir(exp_dir+"/agent_values/"))
@@ -244,7 +245,7 @@ def plotLocationData(category_folders):
 if __name__ == "__main__":
 
     nteam_arr = [1]
-    nagent_arr = [2]
+    nagent_arr = [6]
 
     category_folders = []
     for nteam in nteam_arr:
@@ -252,9 +253,14 @@ if __name__ == "__main__":
             # category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
             category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
-    try:
-        from utility_funcs import get_all_subdirs
-        inspectLocationData(category_folders)
-        exit()
-    except:
-        plotLocationData(category_folders)
+    # try:
+    #     from utility_funcs import get_all_subdirs
+    #     inspectLocationData(category_folders)
+    #     exit()
+    # except:
+    #     # plotLocationData(category_folders)
+    #     pass
+
+    from utility_funcs import get_all_subdirs
+    inspectLocationData(category_folders)
+    exit()
