@@ -245,7 +245,7 @@ def plotLocationData(category_folders):
 if __name__ == "__main__":
 
     nteam_arr = [1]
-    nagent_arr = [6]
+    nagent_arr = [1]
 
     category_folders = []
     for nteam in nteam_arr:
