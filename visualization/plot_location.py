@@ -14,6 +14,7 @@ import pandas as pd
 import scipy
 import copy
 import sys
+import imageio
 
 
 
@@ -81,7 +82,7 @@ def populateValueMap(df, metric):
 
 def currentDirectory(exp_dir, trial_num):
     nteams, nagents = getExperimentParameters(exp_dir)
-    fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/tmp/trial-"+str(trial_num)+"/agent_values/"
+    fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/maps/trial-"+str(trial_num)+"/agent_values/"
     return fname
 
 def saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num):
@@ -136,18 +137,55 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
         all_vmax = 1
         color_map = 'seismic'
     else:
-        all_vmin = np.amin(np.array(envs))
-        all_vmax = np.amax(np.array(envs))
-        color_map = 'Reds'
-    
+        all_vmin = -1*np.amax(np.absolute(np.array(envs))) # np.amin(np.array(envs))
+        all_vmax = np.amax(np.absolute(np.array(envs))) # np.amax(np.array(envs))
+        color_map = 'seismic' # 'Reds'
+        
 
-    epi_idx = -1
-    for idx, env in enumerate(envs):
+
+    # im = imageio.imread('../results/cleanup/cleanup_basemap.png')
+    im = plt.imread('../results/cleanup/cleanup_basemap.png')
+
+    # plt.figure()
+    # # plt.subplot(1,2,1)
+    # plt.show()
+    # # print(im.shape)
+    # exit()
+
+    # stacked_envs = []
+    # to_stack = []
+    # epi_idx = -1
+    # for idx, env in enumerate(envs):
+    #     agent_num = idx%nagents
+    #     if agent_num == 0:
+
+    #         if len(to_stack) > 0:
+    #             to_stack = np.array(to_stack)
+    #             stacked_envs.append(np.mean(to_stack, axis=0))
+    #             to_stack = []
+    #     to_stack.append(env)
+    
+    # print(len(stacked_envs))
+    # exit()
+
+    
+    # for idx, env in enumerate(envs):
+    # for idx, env in enumerate(stacked_envs):
+    epi_idx = 0
+    for i in range(0, len(envs), nagents):
+
+        to_stack = np.array(envs[i:i+nagents])
+        env = np.mean(to_stack, axis=0)
         env = np.flipud(env)
 
         plt.figure()
         ax = plt.gca()
-        c = ax.imshow(env, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
+        # ax.imshow(im, 'gray', interpolation='none')
+
+        ax.imshow(im, 'gray', interpolation='nearest', extent=[-0.5,17.5,-0.5,24.5])
+        # plt.show()
+        # exit()
+        c = ax.imshow(env, alpha=0.5, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
         # plt.colorbar(c, orientation='horizontal')
 
         divider = make_axes_locatable(ax)
@@ -162,19 +200,22 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
         clb.ax.set_xlabel(metric,fontsize=20)
         
 
-        agent_num = idx%nagents
-        if agent_num == 0: 
-            epi_idx += 1
+        # agent_num = idx%nagents
+        # if agent_num == 0: 
+        #     epi_idx += 1
 
-        ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
+        # ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
+        ax.set_title("Episode: "+str(int(episodes[epi_idx])), fontsize=22)
         ax.text(-5, 14, "River", fontsize=20, rotation=90)
         ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
         plt.show()
         plt.close()
 
+        epi_idx+=1
+
         # fname = base_fname +episodes[epi_idx]+"/figs/agent-"+str(agent_num)+metric+'.png'
         # plt.savefig(fname+'.png',bbox_inches='tight', dpi=300)
-        # exit()
+    exit()
 
 
 def plotLocationData(category_folders):
@@ -183,7 +224,7 @@ def plotLocationData(category_folders):
 
     for cat_count, category_folder in enumerate(category_folders):
         nteams, nagents = getExperimentParameters(category_folder)
-        fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/tmp/"
+        fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/maps/"
         num_trials = len(os.listdir(fname))
         for trial_num in range(num_trials):
             episodes = natsort.natsorted(os.listdir(fname+"trial-"+str(trial_num)+"/agent_values/"))
