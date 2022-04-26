@@ -5,6 +5,7 @@ import natsort
 
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
+import seaborn as sns
 from matplotlib import ticker
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import ternary
@@ -133,14 +134,14 @@ def inspectLocationData(category_folders):
 
 def plotLocations(envs, nagents, metric, episodes, base_fname):
 
-    if metric == 'rewards':
-        all_vmin = -1
-        all_vmax = 1
-        color_map = 'seismic'
-    else:
-        all_vmin = -1*np.amax(np.absolute(np.array(envs))) # np.amin(np.array(envs))
-        all_vmax = np.amax(np.absolute(np.array(envs))) # np.amax(np.array(envs))
-        color_map = 'seismic' # 'Reds'
+    # if metric == 'rewards':
+    #     all_vmin = -1
+    #     all_vmax = 1
+    #     color_map = 'seismic'
+    # else:
+    #     all_vmin = -1*np.amax(np.absolute(np.array(envs))) # np.amin(np.array(envs))
+    #     all_vmax = np.amax(np.absolute(np.array(envs))) # np.amax(np.array(envs))
+    #     color_map = 'seismic' # 'Reds'
         
 
 
@@ -179,6 +180,17 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
         env = np.mean(to_stack, axis=0)
         env = np.flipud(env)
 
+        # print(np.std(env.flatten()), np.count_nonzero(env.flatten()))
+
+        if metric == 'rewards':
+            all_vmin = -1
+            all_vmax = 1
+        else:
+            all_vmin = -1*np.amax(np.absolute(np.array(env))) # np.amin(np.array(envs))
+            all_vmax = np.amax(np.absolute(np.array(env))) # np.amax(np.array(envs))
+        color_map = 'seismic' # 'Reds'
+        
+
         plt.figure()
         ax = plt.gca()
         # ax.imshow(im, 'gray', interpolation='none')
@@ -186,7 +198,7 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
         ax.imshow(im, 'gray', interpolation='nearest', extent=[-0.5,17.5,-0.5,24.5])
         # plt.show()
         # exit()
-        c = ax.imshow(env, alpha=0.5, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
+        c = ax.imshow(env, alpha=0.8, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
         # plt.colorbar(c, orientation='horizontal')
 
         divider = make_axes_locatable(ax)
@@ -199,29 +211,104 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
 
         clb.ax.tick_params(labelsize=12) 
         clb.ax.set_xlabel(metric,fontsize=20)
+
+        ax.tick_params(
+                        axis='x',          # changes apply to the x-axis
+                        which='both',      # both major and minor ticks are affected
+                        bottom=False,      # ticks along the bottom edge are off
+                        top=False,         # ticks along the top edge are off
+                        labelbottom=False) # labels along the bottom edge are off
+
+        ax.tick_params(
+                        axis='y',          # changes apply to the x-axis
+                        which='both',      # both major and minor ticks are affected
+                        left=False,      # ticks along the bottom edge are off
+                        right=False,         # ticks along the top edge are off
+                        labelleft=False) # labels along the bottom edge are off
         
 
-        # agent_num = idx%nagents
-        # if agent_num == 0: 
-        #     epi_idx += 1
-
         # ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
-        ax.set_title("Episode: "+str(int(episodes[epi_idx])), fontsize=22)
-        ax.text(-5, 14, "River", fontsize=20, rotation=90)
-        ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
-        plt.show()
+        # ax.set_title("Episode: "+str(int(episodes[epi_idx])), fontsize=22)
+        ax.set_title(str(nagents)+" Agents", fontsize=22)
+        # ax.text(-5, 14, "River", fontsize=20, rotation=90)
+        # ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
+        # plt.show()
+        
+        fname = base_fname +episodes[epi_idx]+"/"+metric+'.png'
+        plt.savefig(fname,bbox_inches='tight', dpi=300)
+        print("saved: ", fname)
+        plt.close()
+        epi_idx+=1
+    # exit()
+
+
+
+def plotRewardHist(category_folders):
+
+    metrics = ['rewards']
+
+    files_to_load = [0, -1]
+
+    for cat_count, category_folder in enumerate(category_folders):
+        nteams, nagents = getExperimentParameters(category_folder)
+        cat_folders = get_all_subdirs(category_folder)
+        experiment_folders = [natsort.natsorted(cat_folders)[0]]
+
+        rewards = []
+        for trial_num, exp_dir in enumerate(experiment_folders):
+            num_agents = len(os.listdir(exp_dir+"/agent_values/"))
+            for agent in range(num_agents):
+                for file_to_load in files_to_load:
+                    df, episode_num = getAgentData(exp_dir, agent, file_to_load)
+                    rewards = rewards + list(df['rewards'])
+
+        rewards = np.array(rewards)
+        figure(figsize=(4, 2), dpi=300)
+        # plt.hist(outcome_arr, kde=True, stat='probability')
+        ax = sns.histplot(rewards, bins=10, stat='probability')
+
+        plt.axvline(np.mean(rewards), c='r', zorder=10, label='$\overline{TR_i}$ = '+str(np.around(np.mean(rewards), 1)))
+        plt.axvline(np.mean(rewards)+np.std(rewards), c='b', alpha=0.5, linestyle='--', zorder=10, label=r'$\sigma_{TR_i}$ = '+str(np.around(np.std(rewards), 2)))
+        plt.axvline(np.mean(rewards)-np.std(rewards), c='b', alpha=0.5, linestyle='--', zorder=10)
+        plt.legend(fontsize=12, framealpha=0.8, frameon=True, loc='upper left').set_zorder(10)
+
+        title_str = "|$T_i$| = "+str(nagents)
+        plt.title(title_str, fontsize=22)
+        plt.xlabel("Reward", fontsize=22)
+        plt.ylabel("Percentage", fontsize=22)
+
+        plt.xticks(fontsize=18)
+        plt.yticks(fontsize=18)
+        plt.xlim(left=np.amin(rewards)-0.05, right=np.amax(rewards)+0.05)
+        plt.ylim(bottom=0, top=0.6)
+        # plt.show()
+
+        fname = 'figs/theory_pics/paper/experiments/'
+        if not os.path.exists(fname):
+            os.makedirs(fname)
+        plt.savefig(fname+'team-size_'+str(nagents)+'.png',bbox_inches='tight', dpi=300)
         plt.close()
 
-        epi_idx+=1
 
-        # fname = base_fname +episodes[epi_idx]+"/figs/agent-"+str(agent_num)+metric+'.png'
-        # plt.savefig(fname+'.png',bbox_inches='tight', dpi=300)
-    exit()
+    # for cat_count, category_folder in enumerate(category_folders):
+    #     nteams, nagents = getExperimentParameters(category_folder)
+    #     fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/maps/"
+    #     num_trials = len(os.listdir(fname))
+    #     for trial_num in range(num_trials):
+    #         episodes = natsort.natsorted(os.listdir(fname+"trial-"+str(trial_num)+"/agent_values/"))
+    #         base_fname = fname+"trial-"+str(trial_num)+"/agent_values/"
+    #         envs = []
+    #         for epi in episodes:
+    #             for agent in range(nagents):
+    #                 envs.append(np.load(base_fname+str(epi)+"/npy_arrays/agent-"+str(agent)+'rewards.npy'))
+                    
+    #         plotHist(envs, nagents, 'rewards', episodes, base_fname)
+
 
 
 def plotLocationData(category_folders):
-    # metrics = ['vf_preds', 'rewards', 'value_targets']
-    metrics = ['value_targets']
+    metrics = ['vf_preds', 'rewards', 'value_targets']
+    # metrics = ['value_targets']
 
     for cat_count, category_folder in enumerate(category_folders):
         nteams, nagents = getExperimentParameters(category_folder)
@@ -253,14 +340,10 @@ if __name__ == "__main__":
             # category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
             category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
-    # try:
-    #     from utility_funcs import get_all_subdirs
-    #     inspectLocationData(category_folders)
-    #     exit()
-    # except:
-    #     # plotLocationData(category_folders)
-    #     pass
 
-    from utility_funcs import get_all_subdirs
-    inspectLocationData(category_folders)
-    exit()
+    # from utility_funcs import get_all_subdirs
+    # inspectLocationData(category_folders)
+    # exit()
+
+    # plotLocationData(category_folders)
+    plotRewardHist(category_folders)
