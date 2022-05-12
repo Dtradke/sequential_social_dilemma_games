@@ -176,70 +176,74 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
     epi_idx = 0
     for i in range(0, len(envs), nagents):
 
-        to_stack = np.array(envs[i:i+nagents])
-        env = np.mean(to_stack, axis=0)
-        env = np.flipud(env)
+        # to_stack = np.array(envs[i:i+nagents])
+        # env = np.mean(to_stack, axis=0)
 
-        # print(np.std(env.flatten()), np.count_nonzero(env.flatten()))
+        agent_envs = envs[i:i+nagents]
+        for agent_id, env in enumerage(agent_envs):
+            env = np.flipud(env)
 
-        if metric == 'rewards':
-            all_vmin = -1
-            all_vmax = 1
-        else:
-            all_vmin = -1*np.amax(np.absolute(np.array(env))) # np.amin(np.array(envs))
-            all_vmax = np.amax(np.absolute(np.array(env))) # np.amax(np.array(envs))
-        color_map = 'seismic' # 'Reds'
-        
+            # print(np.std(env.flatten()), np.count_nonzero(env.flatten()))
 
-        plt.figure()
-        ax = plt.gca()
-        # ax.imshow(im, 'gray', interpolation='none')
+            if metric == 'rewards':
+                all_vmin = -1
+                all_vmax = 1
+            else:
+                all_vmin = -1*np.amax(np.absolute(np.array(env))) # np.amin(np.array(envs))
+                all_vmax = np.amax(np.absolute(np.array(env))) # np.amax(np.array(envs))
+            color_map = 'seismic' # 'Reds'
+            
 
-        ax.imshow(im, 'gray', interpolation='nearest', extent=[-0.5,17.5,-0.5,24.5])
-        # plt.show()
-        # exit()
-        c = ax.imshow(env, alpha=0.8, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
-        # plt.colorbar(c, orientation='horizontal')
+            plt.figure()
+            ax = plt.gca()
+            # ax.imshow(im, 'gray', interpolation='none')
 
-        divider = make_axes_locatable(ax)
-        cax = divider.append_axes("bottom", size="5%", pad=0.25)
-        clb = plt.colorbar(c, cax=cax, orientation="horizontal")
+            ax.imshow(im, 'gray', interpolation='nearest', extent=[-0.5,17.5,-0.5,24.5])
+            # plt.show()
+            # exit()
+            c = ax.imshow(env, alpha=0.8, vmin=all_vmin, vmax=all_vmax, cmap=color_map)
+            # plt.colorbar(c, orientation='horizontal')
 
-        tick_locator = ticker.MaxNLocator(nbins=4)
-        clb.locator = tick_locator
-        clb.update_ticks()
+            divider = make_axes_locatable(ax)
+            cax = divider.append_axes("bottom", size="5%", pad=0.25)
+            clb = plt.colorbar(c, cax=cax, orientation="horizontal")
 
-        clb.ax.tick_params(labelsize=12) 
-        clb.ax.set_xlabel(metric,fontsize=20)
+            tick_locator = ticker.MaxNLocator(nbins=4)
+            clb.locator = tick_locator
+            clb.update_ticks()
 
-        ax.tick_params(
-                        axis='x',          # changes apply to the x-axis
-                        which='both',      # both major and minor ticks are affected
-                        bottom=False,      # ticks along the bottom edge are off
-                        top=False,         # ticks along the top edge are off
-                        labelbottom=False) # labels along the bottom edge are off
+            clb.ax.tick_params(labelsize=12) 
+            clb.ax.set_xlabel(metric,fontsize=20)
 
-        ax.tick_params(
-                        axis='y',          # changes apply to the x-axis
-                        which='both',      # both major and minor ticks are affected
-                        left=False,      # ticks along the bottom edge are off
-                        right=False,         # ticks along the top edge are off
-                        labelleft=False) # labels along the bottom edge are off
-        
+            ax.tick_params(
+                            axis='x',          # changes apply to the x-axis
+                            which='both',      # both major and minor ticks are affected
+                            bottom=False,      # ticks along the bottom edge are off
+                            top=False,         # ticks along the top edge are off
+                            labelbottom=False) # labels along the bottom edge are off
 
-        # ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
-        # ax.set_title("Episode: "+str(int(episodes[epi_idx])), fontsize=22)
-        ax.set_title(str(nagents)+" Agents", fontsize=22)
-        # ax.text(-5, 14, "River", fontsize=20, rotation=90)
-        # ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
-        # plt.show()
-        
-        fname = base_fname +episodes[epi_idx]+"/"+metric+'.png'
-        plt.savefig(fname,bbox_inches='tight', dpi=300)
-        print("saved: ", fname)
-        plt.close()
+            ax.tick_params(
+                            axis='y',          # changes apply to the x-axis
+                            which='both',      # both major and minor ticks are affected
+                            left=False,      # ticks along the bottom edge are off
+                            right=False,         # ticks along the top edge are off
+                            labelleft=False) # labels along the bottom edge are off
+            
+
+            # ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
+            # ax.set_title("Episode: "+str(int(episodes[epi_idx])), fontsize=22)
+            ax.set_title(str(nagents)+" Agents", fontsize=22)
+            # ax.text(-5, 14, "River", fontsize=20, rotation=90)
+            # ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
+            # plt.show()
+            
+            fname = base_fname +episodes[epi_idx]+"/"+metric+'/agent-'+str(agent_id)+'.png'
+            # plt.savefig(fname,bbox_inches='tight', dpi=300)
+            print("saved: ", fname)
+            exit()
+            plt.close()
         epi_idx+=1
-    # exit()
+        # exit()
 
 
 
@@ -247,12 +251,15 @@ def plotRewardHist(category_folders):
 
     metrics = ['rewards']
 
-    files_to_load = [0, -1]
+    plt.style.use('seaborn-whitegrid')
+
+    files_to_load = [-1]
 
     for cat_count, category_folder in enumerate(category_folders):
         nteams, nagents = getExperimentParameters(category_folder)
         cat_folders = get_all_subdirs(category_folder)
         experiment_folders = [natsort.natsorted(cat_folders)[0]]
+        # experiment_folders = natsort.natsorted(cat_folders)
 
         rewards = []
         for trial_num, exp_dir in enumerate(experiment_folders):
@@ -263,27 +270,29 @@ def plotRewardHist(category_folders):
                     rewards = rewards + list(df['rewards'])
 
         rewards = np.array(rewards)
+        print(rewards.shape)
+
         figure(figsize=(4, 2), dpi=300)
         # plt.hist(outcome_arr, kde=True, stat='probability')
-        ax = sns.histplot(rewards, bins=10, stat='probability')
+        ax = sns.histplot(rewards, bins=7, stat='probability')
 
-        plt.axvline(np.mean(rewards), c='r', zorder=10, label='$\overline{TR_i}$ = '+str(np.around(np.mean(rewards), 1)))
+        plt.axvline(np.mean(rewards), c='r', zorder=25, label='$\overline{TR_i}$ = '+str(np.around(np.mean(rewards), 2)))
         plt.axvline(np.mean(rewards)+np.std(rewards), c='b', alpha=0.5, linestyle='--', zorder=10, label=r'$\sigma_{TR_i}$ = '+str(np.around(np.std(rewards), 2)))
         plt.axvline(np.mean(rewards)-np.std(rewards), c='b', alpha=0.5, linestyle='--', zorder=10)
-        plt.legend(fontsize=12, framealpha=0.8, frameon=True, loc='upper left').set_zorder(10)
+        plt.legend(fontsize=12, framealpha=0.8, frameon=True, loc='upper right').set_zorder(10)
 
         title_str = "|$T_i$| = "+str(nagents)
         plt.title(title_str, fontsize=22)
         plt.xlabel("Reward", fontsize=22)
-        plt.ylabel("Percentage", fontsize=22)
+        plt.ylabel("Fraction", fontsize=22)
 
         plt.xticks(fontsize=18)
         plt.yticks(fontsize=18)
-        plt.xlim(left=np.amin(rewards)-0.05, right=np.amax(rewards)+0.05)
-        plt.ylim(bottom=0, top=0.6)
+        plt.xlim(left=-0.05, right=1.05)
+        plt.ylim(bottom=0, top=1.0)
         # plt.show()
 
-        fname = 'figs/theory_pics/paper/experiments/'
+        fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/maps/hists/"
         if not os.path.exists(fname):
             os.makedirs(fname)
         plt.savefig(fname+'team-size_'+str(nagents)+'.png',bbox_inches='tight', dpi=300)
@@ -332,18 +341,18 @@ def plotLocationData(category_folders):
 if __name__ == "__main__":
 
     nteam_arr = [1]
-    nagent_arr = [1]
+    nagent_arr = [2]
 
     category_folders = []
     for nteam in nteam_arr:
         for nagent in nagent_arr:
-            # category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
-            category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
+            category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
+            # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
 
-    # from utility_funcs import get_all_subdirs
+    from utility_funcs import get_all_subdirs
     # inspectLocationData(category_folders)
     # exit()
 
-    # plotLocationData(category_folders)
-    plotRewardHist(category_folders)
+    plotLocationData(category_folders)
+    # plotRewardHist(category_folders)

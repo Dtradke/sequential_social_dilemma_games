@@ -45,8 +45,10 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
     # Clear plot to prevent slowdown when drawing multiple figures
     plt.style.use('seaborn-whitegrid')
     # figure(figsize=(12, 4), dpi=80)
-    if "cleaning" in file_name_addition or "apples" in file_name_addition:
+    if "cleaning" in file_name_addition or "apples" in file_name_addition or "loss" in file_name_addition:
         figure(figsize=(4, 2.5), dpi=300)
+    elif "diffsizeteams" in file_name_addition:
+        figure(figsize=(2.5, 4), dpi=300)
     elif compare:
         figure(figsize=(10, 4), dpi=300)
     else:
@@ -69,8 +71,10 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
         elif "apples" in file_name_addition and credo:
             credo_str = file_name_addition.split("_")[2].split("-")
             plt.title(r'$\mathbf{cr}_{i} = \langle$ '+str(credo_str[0])+r', '+str(credo_str[1])+r', '+str(credo_str[2])+r'$\rangle$'+'\n'+r'$\overline{R^{\mathbf{cr}}}$'+' = '+str(round(reward,1)), fontsize=22)
-        elif "cleaning" in file_name_addition and credo:
+        elif ("cleaning" in file_name_addition and credo) or ("Met:" in file_name_addition and credo):
             plt.legend(loc='upper center', ncol=3, bbox_to_anchor=(0.5, -0.35), frameon=True)
+        elif "diffsizeteams" in file_name_addition:
+            plt.legend(handles, labels, fontsize=13, loc='lower left', frameon=True)
 
     # Strip path of all but last folder
     path_split = os.path.dirname(path).split("/")
@@ -81,7 +85,7 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
         else:
             pngpath2 = '../results/'+file_name_addition.split("_")[0]+'/team_rewards_rgb/'
     else:
-        pngpath2 = '../results/'+file_name_addition.split("_")[0]+'/baseline_PPO_'+str(nteams)+'teams_6agents_rgb/'
+        pngpath2 = '../results/'+file_name_addition.split("_")[0]+'/baseline_PPO_'+str(nteams)+'teams_'+str(nagents)+'agents_rgb/'
 
     if rogue["flag"]:
         pngpath = pngpath + "rogue/"+str(rogue["nrogue"])+"rogue/deg"+rogue["deg_rogue"]+"/"
@@ -91,16 +95,12 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
         pngpath = pngpath + "trial-"+str(trial)+"/"
         pngpath2 = pngpath2 + "trial-"+str(trial)+"/"
 
-    # svgpath = plot_path + "/svg/" + path_split[-2] + "/"
     pngfile = pngpath + file_name_addition + ".png"
     pngfile2 = pngpath2 + file_name_addition + ".png"
-    # svgfile = svgpath + file_name_addition + ".svg"
-    # if not os.path.exists(pngpath):
-    #     os.makedirs(pngpath)
+
     if not os.path.exists(pngpath2):
         os.makedirs(pngpath2)
-    # if not os.path.exists(svgpath):
-    #     os.makedirs(svgpath)
+
 
     # plt.savefig(pngfile,bbox_inches='tight', dpi=300)
     plt.savefig(pngfile2,bbox_inches='tight', dpi=300)
@@ -109,6 +109,7 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
     if pngfile2 not in files:
         files.append(pngfile2)
     plt.close()
+    # exit()
 
 
 def plot_multiple_category_result(plotdata_list, gini=False):
@@ -142,6 +143,7 @@ def plot_single_category_result(
     interpolated_time = np.linspace(x_min, x_max, most_timesteps)
     interpolated_scores = []
     individual_experiment_label_added = False
+
     for x, y in zip(x_lists, y_lists):
         interpolated_score = np.interp(interpolated_time, x, y, left=np.nan, right=np.nan)
         interpolated_scores.append(interpolated_score)
@@ -199,25 +201,44 @@ def plot_single_category_result(
     # plt.xlabel("Environment steps (1e8)", fontsize=24)
     plt.xlabel("Timesteps (1e8)", fontsize=24)
     plt.ylabel(y_label_name, fontsize=24)
-    bottom = -1 #if "reward" in y_label_name.lower() else None
-    old_bot, old_top = plt.ylim()
-    y_max = max(y_max, old_top)
-    if "Equality" in y_label_name:
-        bottom=0.0
-        y_max=1.05
-    elif "Cleaning" in y_label_name:
-        y_max=600
-    elif "Apples" in y_label_name:
-        y_max=800
-    elif "Mean Pop. Reward" == y_label_name:
-        y_max = 400 # 350
 
-    # print(y_max)
-    
-    # y_maxs = [np.median(np.sort(np.array(yl)[-int(len(yl)*0.75):])[-100:]) for yl in y_lists]
-    # y_max = np.amax(y_maxs)
-    
+    if "loss" not in y_label_name:
+        old_bot, old_top = plt.ylim()
+        bottom = old_bot
+        y_max = max(y_max, old_top)
+        if "Equality" in y_label_name:
+            bottom=0.0
+            y_max=1.05
+        elif "Cleaning" in y_label_name:
+            y_max=600
+            bottom = -1
+        elif "Apples" in y_label_name:
+            y_max=800
+            bottom = -1
+        elif "Mean Pop. Reward" == y_label_name or "Reward" in y_label_name:
+            y_max = 400 # 350
+            bottom = -1
+        elif 'entropy' in y_label_name:
+            bottom = -0.1
+            y_max = 2
+
+        # print(y_max)
+        
+        # y_maxs = [np.median(np.sort(np.array(yl)[-int(len(yl)*0.75):])[-100:]) for yl in y_lists]
+        # y_max = np.amax(y_maxs)
+    else:
+        if "vf_loss" in y_label_name:
+            bottom=0.0
+            y_max=100
+        elif "policy_loss" in y_label_name:
+            bottom=-0.03
+            y_max=0.01
+        elif "total_loss" in y_label_name:
+            bottom=-0.03
+            y_max=0.01
+        
     plt.ylim(bottom=bottom, top=y_max)
+
     plt.xlim(left=0, right=1.6)
     plt.ticklabel_format(axis='y',useOffset=False)
     # plt.gca().xaxis.set_major_locator(MaxNLocator(prune='lower'))
@@ -386,6 +407,7 @@ def plot_single_category_result_fill(
     plt.yticks(fontsize=18)
 
 def extract_stats(dfs, requested_keys):
+
     column_names = [df.columns.values.tolist() for df in dfs]
     column_names = [item for sublist in column_names for item in sublist]
     available_keys = [name.split("/")[-1] for name in column_names]
@@ -397,6 +419,7 @@ def extract_stats(dfs, requested_keys):
     all_df_lists = {}
     for key in keys:
         all_df_lists[key] = []
+
 
     # Per file, extract the mean trajectory for each key.
     # The mean is taken over all distinct agents, per metric,
@@ -411,6 +434,7 @@ def extract_stats(dfs, requested_keys):
 
         for key, value in df_list.items():
             all_df_lists[key].append(value)
+    
     return all_df_lists
 
 
@@ -472,7 +496,9 @@ def plot_csvs_results(paths, nteams, nagents, rogue):
         PlotGraphics("timestep_last_switch_pull_mean", "Time at last switch pull", "black"),
     ]
 
+
     extracted_data = extract_stats(dfs, [detail.column_name for detail in metric_details])
+
     for metric in metric_details:
         if metric.column_name in extracted_data:
             plots.append(
@@ -502,6 +528,137 @@ def plot_csvs_results(paths, nteams, nagents, rogue):
             )
         except ZeroDivisionError:
             pass
+
+# Plot the results for a given generated progress.csv file, found in your ray_results folder.
+def collect_losses(paths, nteams, nagents, rogue):
+    path = paths[0]
+    env, model_name = get_env_and_model_name_from_path(path)
+
+    dfs = []
+    for path in paths:
+        df = pd.read_csv(path, sep=",")
+        # Set NaN values to 0, common at start of training due to ray behavior
+        df = df.fillna(0)
+        dfs.append(df)
+
+    plots = []
+
+    # Convert environment steps to 1e8 representation
+    timesteps_totals = [df.timesteps_total for df in dfs]
+    timesteps_totals = [
+        [timestep / 1e8 for timestep in timesteps_total] for timesteps_total in timesteps_totals
+    ]
+
+    reward_color = get_color_from_model_name(model_name)
+    reward_means = [df.episode_reward_mean for df in dfs]
+    episode_len_means = [df.episode_len_mean for df in dfs]
+
+    metric_details = [
+        PlotGraphics("cur_lr", "Learning rate", "purple"),
+        PlotGraphics("policy_entropy", "Policy Entropy", "b"),
+        PlotGraphics("policy_loss", "Policy loss", "r"),
+        PlotGraphics("vf_loss", "Value function loss", "orange"),
+        PlotGraphics("total_a3c_loss", "Total A3C loss", "blue"),
+        PlotGraphics("total_loss", "Total loss", "blue"),
+        PlotGraphics("moa_loss", "MOA loss", "black"),
+        PlotGraphics("scm_loss", "SCM loss", "black"),
+        PlotGraphics("social_influence_reward", "MOA reward", "black"),
+        PlotGraphics("social_curiosity_reward", "Curiosity reward", "black"),
+        PlotGraphics("cur_influence_reward_weight", "Influence reward weight", "orange"),
+        PlotGraphics("cur_curiosity_reward_weight", "Curiosity reward weight", "orange"),
+        PlotGraphics("extrinsic_reward", "Extrinsic reward", "g"),
+        PlotGraphics("total_successes_mean", "Total successes", "black"),
+        # Switch environment metrics
+        PlotGraphics("switches_on_at_termination_mean", "Switches on at termination", "black"),
+        PlotGraphics("total_pulled_on_mean", "Total switched on", "black"),
+        PlotGraphics("total_pulled_off_mean", "Total switched off", "black"),
+        PlotGraphics("timestep_first_switch_pull_mean", "Time at first switch pull", "black"),
+        PlotGraphics("timestep_last_switch_pull_mean", "Time at last switch pull", "black"),
+    ]
+
+
+    extracted_data = extract_stats(dfs, [detail.column_name for detail in metric_details])
+
+    loss_dict = {}
+    for key in extracted_data.keys():
+        if key not in loss_dict.keys():
+            loss_dict[key] = []
+        for data_arr in extracted_data[key]:
+            loss_dict[key].append(np.mean(np.array(data_arr)))
+
+    for key in loss_dict.keys():
+        loss_dict[key] = np.mean(np.array(loss_dict[key]))
+    return loss_dict
+
+def getMetricNames(path):
+    cols = []
+    df = pd.read_csv(path, sep=",", error_bad_lines=False)
+    df = df.fillna(0)
+    for col_name in df.columns:
+        if "info/learner/agent-" in col_name and col_name.split("/")[-1] not in cols:
+            cols.append(col_name.split("/")[-1])
+    return cols
+
+def getPathForColumnNames(category_folder):
+    col_names = None
+    path = category_folder.split("/")[-2]
+    nteams, nagents, rogue = getExperimentParameters(path)
+    csv_path = category_folder + "/progress.csv"
+    if os.path.getsize(csv_path) > 0:
+        col_names = getMetricNames(csv_path)
+    assert col_names is not None, "Size of the progress.csv file was 0"
+    return col_names
+
+def plotTrialLearningMetrics(learning_metric, trial, category_folder, reward, credo):
+    scale=5
+    
+    d = dict()
+    env_rewards = {}
+    rogue = {"flag": False}
+    # for category_folder in category_folders: #get_all_subdirs(ray_results_path):
+    #     if category_folder.split("/")[-1] in scenarios:
+    path = category_folder.split("/")[-2]
+
+    nteams, nagents, rogue = getExperimentParameters(path)
+    graph_label = str(nteams)+"/"+str(int(nagents/nteams))
+    collective = False
+
+    graph_label = getCredoVals(path, nteams)
+    i = int(float(graph_label.split("-")[0])*scale)
+    j = int(float(graph_label.split("-")[1])*scale)
+    k = int(float(graph_label.split("-")[2])*scale)
+
+    csvs = []
+    # experiment_folders = get_all_subdirs(category_folder)
+    # # grabs one trial
+    # experiment_folders = natsort.natsorted(experiment_folders)
+    experiment_folders = [category_folder] #[experiment_folders[trial]]
+    
+    for experiment_folder in experiment_folders:
+        csv_path = experiment_folder + "/progress.csv"
+        if os.path.getsize(csv_path) > 0:
+            csvs.append(csv_path)
+
+
+    for agent_num in range(nagents):
+        agent_loss, env = get_learning_metric(csvs, nagents, nteams, agent_num, learning_metric, credo=credo) #(csvs, nagents, nteams, agent_num, moi)
+        # agent_metric, env = get_custom_metrics(csvs, nagents, nteams, agent_num, metric_type, credo=True) #(csvs, nagents, nteams, agent_num, moi)
+        if env not in env_rewards:
+            env_rewards[env] = []
+        env_rewards[env].append(agent_loss)
+
+    for env, agent_loss in env_rewards.items():
+        def plot_fn():
+            plot_multiple_category_result(agent_loss)
+
+        # Add filler to path which will be removed
+        collective_env_path = "collective_results/filler/"
+        # plot_and_save(plot_fn, collective_env_path, env+"_gini_specialization_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
+        if credo:
+            plot_and_save(plot_fn, collective_env_path, "credo_" + env+ "_"+graph_label+"_"+learning_metric+"_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True, trial=trial, credo=credo, reward=reward)
+        else:
+            plot_and_save(plot_fn, collective_env_path, env+"_"+str(nteams)+"teams_"+str(nagents)+"agents_"+learning_metric, nteams, nagents, rogue, trial=trial)
+
 
 
 
@@ -535,7 +692,31 @@ def get_color_from_agent_num(agent_num, nteams):
         "agent-3": {1:"deepskyblue", 2:"darkred",       3:"lightcoral",             6:"green"},
         "agent-4": {1:"teal",       2:"red",            3:"green",              6:"magenta"},
         "agent-5": {1:"cyan",       2:"lightcoral",     3:"lime",  6:"cyan"},
-        # "agent-6": {1:"aquamarine", 2:"", 3:"", 6:"grey"},
+        "agent-6": {1:"aquamarine", 2:"", 3:"", 6:"grey"},
+    }
+    # name_lower = model_name.lower()
+    agent_label_str = "agent-"+str(agent_num)
+    if agent_label_str in name_to_color.keys():
+        return name_to_color[agent_label_str][nteams]
+    else:
+        default_color = "darkgreen"
+        print(
+            "Warning: model name "
+            + model_name
+            + " has no default plotting color. Defaulting to "
+            + default_color
+        )
+        return default_color
+
+def get_color_from_agent_num_single_team(agent_num, nteams):
+    name_to_color = {
+        "agent-0": {1:"navy",       2:"navy",           3:"navy",               6:"blue"},
+        "agent-1": {1:"navy",       2:"dodgerblue",     3:"deepskyblue",        6:"red"},
+        "agent-2": {1:"red", 2:"deepskyblue",    3:"darkred",            6:"orange"},
+        "agent-3": {1:"magenta", 2:"darkred",       3:"lightcoral",             6:"green"},
+        "agent-4": {1:"teal",       2:"red",            3:"green",              6:"magenta"},
+        "agent-5": {1:"purple",       2:"lightcoral",     3:"lime",  6:"cyan"},
+        "agent-6": {1:"aquamarine", 2:"", 3:"", 6:"grey"},
     }
     # name_lower = model_name.lower()
     agent_label_str = "agent-"+str(agent_num)
@@ -665,15 +846,15 @@ def get_team_rewards(paths, nagents, nteams, team_count):
     reward_arr = []
     for df in dfs:
         for agent_num in team_dict[team_count]:
-            reward_arr.append(df["policy_reward_mean/agent-"+str(agent_num)])
+            reward_arr.append(list(df["policy_reward_mean/agent-"+str(agent_num)]))
     
 
     # changed for gini
-    lengths = [np.size(n) for n in np.array(timesteps_totals)]
-    timesteps_totals = [timesteps_totals[np.argmax([np.size(n) for n in np.array(timesteps_totals)])]]
+    # lengths = [np.size(n) for n in np.array(timesteps_totals)]
+    # timesteps_totals = [timesteps_totals[np.argmax([np.size(n) for n in np.array(timesteps_totals)])]]
 
     # for x, y, in zip(timesteps_totals, [df.episode_reward_mean for df in dfs]):
-    for x, y, in zip(timesteps_totals, [reward_arr]):
+    for x, y, in zip(timesteps_totals, reward_arr):                     # NOTE: this used to be [reward_arr] but was getting "object too deep for desired array"
         interp_y = np.interp(interp_x, x, y, left=np.nan, right=np.nan)
         interpolated.append(interp_y)
 
@@ -855,8 +1036,6 @@ def get_team_custom_metrics_gini(paths, nagents, nteams, team_num, moi):
     return team_plot_data, env
 
 
-
-
 def get_custom_metrics(paths, nagents, nteams, agent_num, metric_type, credo=False):
     if credo: nteam_to_pass = 3
     else: nteam_to_pass = nteams
@@ -937,6 +1116,60 @@ def get_custom_metrics(paths, nagents, nteams, agent_num, metric_type, credo=Fal
 
 
 
+def get_learning_metric(paths, nagents, nteams, agent_num, metric_type, credo=False):
+
+    if credo: nteam_to_pass = 3
+    else: nteam_to_pass = nteams
+    
+    team_dict = get_team_dict(nagents, nteam_to_pass)
+
+    dfs = []
+    for path in paths:
+        df = pd.read_csv(path, sep=",", error_bad_lines=False)
+        df = df.fillna(0)
+        dfs.append(df)
+
+    env, model_name = get_env_and_model_name_from_path(paths[0])
+
+    # # hack for credo to color agents as 3 teams
+    # if credo: nteam_to_pass = 3
+    # else: nteam_to_pass = nteams
+    color = get_color_from_agent_num(agent_num, nteam_to_pass)
+
+    # Convert environment steps to 1e8 representation
+    timesteps_totals = [df.timesteps_total for df in dfs]
+    timesteps_totals = [
+        [timestep / 1e8 for timestep in timesteps_total] for timesteps_total in timesteps_totals
+    ]
+
+    most_timesteps = np.max(list(map(len, timesteps_totals)))
+    x_min = np.nanmin(list(map(np.nanmin, timesteps_totals)))
+    x_max = np.nanmax(list(map(np.nanmax, timesteps_totals)))
+    # Cut off plotting at 5e8 steps
+    x_max = min(x_max, 5.0)
+    interp_x = np.linspace(x_min, x_max, most_timesteps)
+    interpolated = []
+    loss_arr = []
+    for df in dfs:
+        loss_arr.append(list(df["info/learner/agent-"+str(agent_num)+"/"+metric_type]))
+
+    # for x, y, in zip(timesteps_totals, [df.episode_reward_mean for df in dfs]):
+    for x, y, in zip(timesteps_totals, loss_arr):
+        interp_y = np.interp(interp_x, x, y, left=np.nan, right=np.nan)
+        interpolated.append(interp_y)
+
+    for team_num in team_dict.keys():
+        if agent_num in team_dict[team_num]:
+            t_num = team_num
+
+    agent_plot_data = PlotData(
+        [interp_x] * 5, interpolated, "Met: "+metric_type, 'a-' + str(agent_num) + r'/$T_{' + str(t_num) + r'}$', color,
+    )
+    return agent_plot_data, env
+
+
+
+
 def get_custom_metrics2(paths, nagents, nteams, agent_num, metric_type):
     team_dict = get_team_dict(nagents, nteams)
 
@@ -1010,7 +1243,7 @@ def get_custom_metrics2(paths, nagents, nteams, agent_num, metric_type):
 
 
 
-def get_experiment_gini_label(paths, nteams, label, collective):
+def get_experiment_gini_label(paths, nteams, nagents, label, collective):
     dfs = []
     for path in paths:
         df = pd.read_csv(path, sep=",", error_bad_lines=False)
@@ -1040,7 +1273,7 @@ def get_experiment_gini_label(paths, nteams, label, collective):
     df_ginis = []
     for df in dfs:
         reward_arr = []
-        for agent_num in range(6):
+        for agent_num in range(nagents):
             reward_arr.append(df["policy_reward_mean/agent-"+str(agent_num)])
 
         gini_arr = get_gini_from_reward_arr(reward_arr)
@@ -1066,7 +1299,7 @@ def get_gini_from_reward_arr(reward_arr):
     return np.array(ginis)
 
 
-def get_experiment_rewards_label(paths, nteams, label, collective, credo):
+def get_experiment_rewards_label(paths, nteams, nagents, label, collective, credo, diff_sizes=False):
     dfs = []
     for path in paths:
         df = pd.read_csv(path, sep=",", error_bad_lines=False)
@@ -1078,7 +1311,10 @@ def get_experiment_rewards_label(paths, nteams, label, collective, credo):
     # color = get_color_from_model_name(model_name)
     if collective: nteams+=1
 
-    if not credo:
+    if diff_sizes:
+        # color = get_color_from_agent_num(nagents, nteams)
+        color = get_color_from_agent_num_single_team(nagents, nteams)
+    elif not credo:
         color = get_color_from_num_teams(nteams)
     else:
         r = float(label.split("-")[0]) #np.random.random()
@@ -1119,7 +1355,7 @@ def get_experiment_rewards_label(paths, nteams, label, collective, credo):
     df_rewards = []
     for df in dfs:
         reward_arr = []
-        for agent_num in range(6):
+        for agent_num in range(nagents):
             reward_arr.append(df["policy_reward_mean/agent-"+str(agent_num)])
         reward_arr = np.mean(np.array(reward_arr), axis=0)
         # if nteams == 2: reward_arr = reward_arr[:-2]
@@ -1218,6 +1454,24 @@ def get_credo_experiment_gini(paths, nagents):
         mean_ginis.append(1 - gini(np.array(reward_arr)))
     return np.mean(np.array(mean_ginis))
 
+def get_credo_experiment_matrix(paths, nagents, metric):
+    dfs = []
+    matrix = np.zeros((len(paths),6))
+    for path_count, path in enumerate(paths):
+        df = pd.read_csv(path, sep=",", error_bad_lines=False)
+        # Set NaN values to 0, common at start of training due to ray behavior
+        df = df.fillna(0)
+        # dfs.append(df)
+        for agent_num in range(6):
+            if 'custom_metrics' in metric:
+                agent_metric = df[metric+str(agent_num)+"_mean"]
+            else:
+                agent_metric = df[metric+str(agent_num)]
+            
+            matrix[path_count,agent_num] = np.mean(np.array(agent_metric[-int(agent_metric.size*0.25):]))
+    return matrix
+
+
 
 
 
@@ -1312,14 +1566,19 @@ def getExperimentParameters(path):
 
 def plot_separate_results(scenarios):
 
+    scratch_base = '/scratch/ssd004/scratch/dtradke/ray_results/'
+
+
     # Plot separate experiment results
-    for category_folder in get_all_subdirs(ray_results_path):
+    # for category_folder in get_all_subdirs(ray_results_path):
+    for category_folder in get_all_subdirs(scratch_base):
         # if category_folder.split("/")[-1] == "cleanup_baseline_PPO_2teams_6agents":
         # if category_folder.split("/")[-1] in scenarios:
         #     print("Plotting category folder: " + category_folder.split("/")[-1])
         #     path = category_folder.split("/")[-1]
         #     nteams = int(path.split("_")[-4][0])
         #     nagents = int(path.split("_")[-3][0])
+
         if category_folder.split("/")[-1] in scenarios:
             path = category_folder.split("/")[-1]
 
@@ -1332,6 +1591,29 @@ def plot_separate_results(scenarios):
                 if os.path.getsize(csv_path) > 0:
                     csvs.append(csv_path)
             plot_csvs_results(csvs, nteams, nagents, rogue)
+
+def compare_losses():
+    scratch_base = '/scratch/ssd004/scratch/dtradke/ray_results/'
+    nteam_arr = [1, 2, 3, 6]
+    df = pd.DataFrame(columns=['nteams', 'policy_loss', 'vf_loss', 'total_loss'])
+    for nteam in nteam_arr:
+        exp_str = "cleanup_baseline_PPO_"+str(nteam)+"teams_6agents_custom_metrics_rgb"
+        for category_folder in get_all_subdirs(scratch_base):
+            if category_folder.split("/")[-1] == exp_str:
+                path = category_folder.split("/")[-1]
+
+                nteams, nagents, rogue = getExperimentParameters(path)
+                csvs = []
+                experiment_folders = get_all_subdirs(category_folder)
+                for experiment_folder in experiment_folders:
+                    csv_path = experiment_folder + "/progress.csv"
+                    if os.path.getsize(csv_path) > 0:
+                        csvs.append(csv_path)
+                loss_dict = collect_losses(csvs, nteams, nagents, rogue)
+                row = [nteam, loss_dict['policy_loss'], loss_dict['vf_loss'], loss_dict['total_loss']]
+                df.loc[df.shape[0]] = row
+    print(df)
+    exit()
 
 
 def plot_combined_results(scenarios):
@@ -1392,73 +1674,100 @@ def plot_team_results(scenarios):
 
         nteams, nagents, rogue = getExperimentParameters(path)
 
-        csvs = []
-        experiment_folders = get_all_subdirs(category_folder)
-
-        experiment_folders = natsort.natsorted(experiment_folders)
-        experiment_folders = [experiment_folders[-1]]
-
-        for experiment_folder in experiment_folders:
-            csv_path = experiment_folder + "/progress.csv"
-            if os.path.getsize(csv_path) > 0:
-                csvs.append(csv_path)
-
-        for team_count in range(nteams):
-            team_rewards, env, team_reward_array, _ = get_team_rewards(csvs, nagents, nteams, team_count)
-            team_reward_arrays.append(team_reward_array[0])
-            if env not in env_rewards:
-                env_rewards[env] = []
-            env_rewards[env].append(team_rewards)
         
+        experiment_folders = get_all_subdirs(category_folder)
+        experiment_folders = natsort.natsorted(experiment_folders)
+        # experiment_folders = [experiment_folders[0]]
 
-        for env, team_rewards in env_rewards.items():
-            print("Plotting collective plot for environment: " + env)
+        all_csvs = []
+        for trial_num, experiment_folder in enumerate(experiment_folders):
+            inner_env_rewards = {}
+            inner_team_reward_arrays = []
+            csvs = []
+            e = [experiment_folder]
 
-            def plot_fn():
-                plot_multiple_category_result(team_rewards)
+            for experiment_folder in e:
+                csv_path = experiment_folder + "/progress.csv"
+                if os.path.getsize(csv_path) > 0:
+                    csvs.append(csv_path)
+                    all_csvs.append(csv_path)
 
-            # Add filler to path which will be removed
-            collective_env_path = "team_results/filler/"
-            # plot_and_save(plot_fn, collective_env_path, env + "_team_reward_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
-            plot_and_save(plot_fn, collective_env_path, "TEST_"+env + "_rgb_team_reward_credo_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
+            for team_count in range(nteams):
+                team_rewards, env, team_reward_array, _ = get_team_rewards(csvs, nagents, nteams, team_count)
+                inner_team_reward_arrays.append(team_reward_array[0])
+                if env not in inner_env_rewards:
+                    inner_env_rewards[env] = []
+                inner_env_rewards[env].append(team_rewards)
+            
+
+            for env, team_rewards in inner_env_rewards.items():
+                print("Plotting collective plot for environment: " + env)
+
+                def plot_fn():
+                    plot_multiple_category_result(team_rewards)
+
+                # Add filler to path which will be removed
+                collective_env_path = "team_results/filler/"
+                # plot_and_save(plot_fn, collective_env_path, env + "_team_reward_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
+                # plot_and_save(plot_fn, collective_env_path, "TEST_"+env + "_rgb_team_reward_credo_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
+                plot_and_save(plot_fn, collective_env_path, env + "_team_reward_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue, trial=trial_num)
+
+        ''' to plot all trials together '''
+        # for team_count in range(nteams):
+        #     team_rewards, env, team_reward_array, _ = get_team_rewards(all_csvs, nagents, nteams, team_count)
+        #     team_reward_arrays.append(team_reward_array[0])
+        #     if env not in env_rewards:
+        #         env_rewards[env] = []
+        #     env_rewards[env].append(team_rewards)
+
+        # for env, team_rewards in env_rewards.items():
+        #     print("Plotting collective plot for environment: " + env)
+
+        #     def plot_fn():
+        #         plot_multiple_category_result(team_rewards)
+
+        #     # Add filler to path which will be removed
+        #     collective_env_path = "team_results/filler/"
+        #     plot_and_save(plot_fn, collective_env_path, env + "_team_reward_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
 
 
 
 
-def plot_team_compare_ginis():
+def plot_team_compare_ginis(category_folders):
     '''
     This function compares all of the ginis for experiments in the "scenarios" list on the same graph
     '''
     # global ray_results_path
 
     # scenarios = ["cleanup_baseline_PPO_6teams_6agents_collective", "cleanup_baseline_PPO_6teams_6agents", "cleanup_baseline_PPO_3teams_6agents", "cleanup_baseline_PPO_2teams_6agents", "cleanup_baseline_PPO_1teams_6agents"]
-    scenarios = ["cleanup_baseline_PPO_1teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_2teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_3teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_6teams_6agents_custom_metrics_rgb"]
+    # scenarios = ["cleanup_baseline_PPO_1teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_2teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_3teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_6teams_6agents_custom_metrics_rgb"]
     # scenarios = ["cleanup_baseline_PPO_1teams_6agents_moreapples0-2_rgb", "cleanup_baseline_PPO_2teams_6agents_moreapples0-2_rgb", "cleanup_baseline_PPO_3teams_6agents_moreapples0-2_rgb", "cleanup_baseline_PPO_6teams_6agents_moreapples0-2_rgb"]
 
 
     env_rewards = {}
     rogue = {"flag": False}
-    for category_folder in get_all_subdirs(ray_results_path):
-        if category_folder.split("/")[-1] in scenarios:
-            path = category_folder.split("/")[-1]
+    # for category_folder in get_all_subdirs(ray_results_path):
+    #     if category_folder.split("/")[-1] in scenarios:
+    for category_folder in category_folders:
+        path = category_folder.split("/")[-1]
 
-            nteams, nagents, rogue = getExperimentParameters(path)
-            graph_label = str(nteams)+"/"+str(int(nagents/nteams))
-            collective = False
-            
-            csvs = []
-            experiment_folders = get_all_subdirs(category_folder)
-            
-            for experiment_folder in experiment_folders:
-                csv_path = experiment_folder + "/progress.csv"
-                if os.path.getsize(csv_path) > 0:
-                    csvs.append(csv_path)
+        nteams, nagents, rogue = getExperimentParameters(path)
+        graph_label = str(nteams)+"/"+str(int(nagents/nteams))
+        collective = False
+        
+        csvs = []
+        experiment_folders = get_all_subdirs(category_folder)
+        
+        for experiment_folder in experiment_folders:
+            csv_path = experiment_folder + "/progress.csv"
+            if os.path.getsize(csv_path) > 0:
+                csvs.append(csv_path)
 
 
-            experiment_rewards, env = get_experiment_gini_label(csvs, nteams, graph_label, collective)
-            if env not in env_rewards:
-                env_rewards[env] = []
-            env_rewards[env].append(experiment_rewards)
+        experiment_rewards, env = get_experiment_gini_label(csvs, nteams, nagents, graph_label, collective)
+        if env not in env_rewards:
+            env_rewards[env] = []
+        env_rewards[env].append(experiment_rewards)
 
 
         for env, rewards in env_rewards.items():
@@ -1795,8 +2104,8 @@ def plot_triangle_credo_reward(result, category_folders):
 
     figure, tax = ternary.figure(scale=scale)
 
-    if fname_add == 'gini': bax = tax.heatmap(d, style="h", cmap='coolwarm', vmin=0, vmax=1)
-    else: bax = tax.heatmap(d, style="h", cmap='coolwarm', vmin=0) #, vmin=0, vmax=4
+    if fname_add == 'gini': bax = tax.heatmap(d, style="h", cmap='Reds', vmin=0, vmax=1) # coolwarm
+    else: bax = tax.heatmap(d, style="h", cmap='Reds', vmin=0) #, vmin=0, vmax=4
 
     axes_colors = {'b': 'k',
             'l': 'k',
@@ -1851,13 +2160,89 @@ def plot_triangle_credo_reward(result, category_folders):
     pngpath2 = '../results/'+path_split.split("_")[0]+'/team_rewards_rgb/'
     if rogue["flag"]:
         pngpath2 = pngpath2 + "rogue/"+str(rogue["nrogue"])+"rogue/deg"+rogue["deg_rogue"]+"/"
-    pngfile2 = pngpath2 + "credo_"+fname_add+"_3teams_2agents_stars_NEWEXPS.png"
+    pngfile2 = pngpath2 + "credo_"+fname_add+"_3teams_2agents_stars_NEWEXPS_reds.png"
     if not os.path.exists(pngpath2):
         os.makedirs(pngpath2)
 
     plt.savefig(pngfile2,bbox_inches='tight', dpi=300)
     plt.close()
     print("saved: ", pngfile2)
+
+
+def plot_scatter_reward_cleaning(scenarios):
+    '''
+    Plots the a scatterplot cross-referencing cleaning and reward of the agent
+    '''
+
+    scale=5
+    d = dict()
+    rogue = {"flag": False}
+    rewards, apples, cleaning = np.array([]), np.array([]), np.array([])
+    for category_folder in category_folders: #get_all_subdirs(ray_results_path):
+        # if category_folder.split("/")[-1] in scenarios:
+        path = category_folder.split("/")[-1]
+
+        nteams, nagents, rogue = getExperimentParameters(path)
+        graph_label = str(nteams)+"/"+str(int(nagents/nteams))
+        collective = False
+
+        graph_label = getCredoVals(path, nteams)
+        i = int(float(graph_label.split("-")[0])*scale)
+        j = int(float(graph_label.split("-")[1])*scale)
+        k = int(float(graph_label.split("-")[2])*scale)
+
+
+        csvs = []
+        experiment_folders = get_all_subdirs(category_folder)
+        
+        for experiment_folder in experiment_folders:
+            csv_path = experiment_folder + "/progress.csv"
+            if os.path.getsize(csv_path) > 0:
+                csvs.append(csv_path)
+
+        reward_mtx = get_credo_experiment_matrix(csvs, nagents, metric='policy_reward_mean/agent-')
+        cleaning_mtx = get_credo_experiment_matrix(csvs, nagents, metric='custom_metrics/cleaning_beam_agent-')
+        apple_mtx = get_credo_experiment_matrix(csvs, nagents, metric='custom_metrics/apples_agent-')
+
+        rewards = np.concatenate((rewards, reward_mtx.flatten()))
+        cleaning = np.concatenate((cleaning, cleaning_mtx.flatten()))
+        apples = np.concatenate((apples, apple_mtx.flatten()))
+
+        # color = np.array([i/5, j/5, k/5])
+
+        # plt.scatter(reward_mtx.flatten(), apple_mtx.flatten(), c=color.reshape(1,-1), label=graph_label)
+
+        # print(i/5, ", ", j/5, ", ", k/5)
+
+    path_split = path.split("/")[-1]
+    pngpath2 = '../results/'+path_split.split("_")[0]+'/team_rewards_rgb/'
+    pngfile2 = pngpath2 + "credo_scatter-apple-reward_3teams_2agents.png"
+
+    np.save(pngpath2+"rewards.npy", rewards)
+    np.save(pngpath2+"apples.npy", apples)
+    np.save(pngpath2+"cleaning.npy", cleaning)
+    exit()
+    
+
+
+    plt.xlabel("Rewards", fontsize=22)
+    # plt.ylabel("Cleaning", fontsize=22)
+    plt.ylabel("Apples", fontsize=22)
+
+    # plt.legend(ncol=2)
+    plt.legend(fontsize=13,ncol=2, loc='center left', bbox_to_anchor=(1, 0.5), frameon=True)
+
+    path_split = path.split("/")[-1]
+    pngpath2 = '../results/'+path_split.split("_")[0]+'/team_rewards_rgb/'
+    pngfile2 = pngpath2 + "credo_scatter-apple-reward_3teams_2agents.png"
+    if not os.path.exists(pngpath2):
+        os.makedirs(pngpath2)
+
+    plt.savefig(pngfile2,bbox_inches='tight', dpi=300)
+    plt.close()
+    print("saved: ", pngfile2)
+    exit()
+
 
 def getCredoPaths():
 
@@ -1894,28 +2279,34 @@ def getCredoVals(path, nteams):
         return "0.0-1.0-0.0"
 
 
-def plot_team_compare_results(credo=False):
+def plot_team_compare_results(scenarios=None, diff_sizes=False, credo=False):
     '''
     This function compares all of the experiments in the "scenarios" list on the same graph
-    '''
-    # global ray_results_path
-    category_folders = get_all_subdirs(ray_results_path)
 
-    if credo:
+    if 'diff_sizes' = True, it means I'm plotting for example: 3 scenarios with 1 team (different sized teams)... i.e., 1/3, 1/4, and 1/5
+    '''
+    
+
+    if credo and scenarios is not None:
+        # global ray_results_path
+        category_folders = get_all_subdirs(ray_results_path)
         scenarios, scratch_base = getCredoPaths()
         category_folders = category_folders + get_all_subdirs(scratch_base)
     else:
+        category_folders = scenarios
+        scenarios = [s.split("/")[-1] for s in scenarios]
         # scenarios = ["cleanup_baseline_PPO_6teams_6agents_collective", "cleanup_baseline_PPO_6teams_6agents", "cleanup_baseline_PPO_3teams_6agents", "cleanup_baseline_PPO_2teams_6agents", "cleanup_baseline_PPO_1teams_6agents"]
-        scenarios = ["cleanup_baseline_PPO_1teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_2teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_3teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_6teams_6agents_custom_metrics_rgb"]
+        # scenarios = ["cleanup_baseline_PPO_1teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_2teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_3teams_6agents_custom_metrics_rgb", "cleanup_baseline_PPO_6teams_6agents_custom_metrics_rgb"]
         # scenarios = ["cleanup_baseline_PPO_1teams_6agents_moreapples0-2_rgb", "cleanup_baseline_PPO_2teams_6agents_moreapples0-2_rgb", "cleanup_baseline_PPO_3teams_6agents_moreapples0-2_rgb", "cleanup_baseline_PPO_6teams_6agents_moreapples0-2_rgb"]
+
+    # print(category_folders)
+    # exit()
 
     env_rewards = {}
     rogue = {"flag": False}
     for category_folder in category_folders: #get_all_subdirs(ray_results_path):
         if category_folder.split("/")[-1] in scenarios:
             path = category_folder.split("/")[-1]
-            # print(path)
-            # print()
 
             nteams, nagents, rogue = getExperimentParameters(path)
             graph_label = str(nteams)+"/"+str(int(nagents/nteams))
@@ -1931,17 +2322,18 @@ def plot_team_compare_results(credo=False):
             
             csvs = []
             experiment_folders = get_all_subdirs(category_folder)
+            experiment_folders = [natsort.natsorted(experiment_folders)[0]]
             
             for experiment_folder in experiment_folders:
                 csv_path = experiment_folder + "/progress.csv"
                 if os.path.getsize(csv_path) > 0:
                     csvs.append(csv_path)
 
-            experiment_rewards, env = get_experiment_rewards_label(csvs, nteams, graph_label, collective, credo)
+            experiment_rewards, env = get_experiment_rewards_label(csvs, nteams, nagents, graph_label, collective, credo, diff_sizes)
             if env not in env_rewards:
                 env_rewards[env] = []
             env_rewards[env].append(experiment_rewards)
-        
+
         for env, rewards in env_rewards.items():
             # print("Plotting collective plot for environment: " + env)
 
@@ -1953,7 +2345,10 @@ def plot_team_compare_results(credo=False):
             if credo:
                 plot_and_save(plot_fn, collective_env_path, "credo_"+ env+ "_no-zeros_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True, credo=True)
             else:
-                plot_and_save(plot_fn, collective_env_path, env+ "_compare_team_rewards_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True)
+                if diff_sizes:
+                    plot_and_save(plot_fn, collective_env_path, env+ "_compare_team_rewards_"+str(len(scenarios))+"diffsizeteams", nteams, nagents, rogue, compare=True)
+                else:
+                    plot_and_save(plot_fn, collective_env_path, env+ "_compare_team_rewards_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True)
 
                 # plot_and_save(plot_fn, collective_env_path, "TEST_"+env+ "_compare_team_rewards_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True)
                 # exit()
@@ -2014,64 +2409,8 @@ def plot_agent_custom_metrics_gini(scenarios):
             plot_and_save(plot_fn, collective_env_path, env+"_gini_specialization_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
 
 
-def plot_team_gini_score(scenarios):
-    '''
-    This function plots the score for each team which takes the gini among teammate's "apples" and "cleaning" 
-    to determine how distributed this work is among a team, multiplied by the team rewards. The plot will have 
-    num_teams lines representing how "good" a team is.
 
-    '''
-
-    moi = ["cleaning", "apples"]
-
-    # scenarios = ["cleanup_baseline_PPO_3teams_6agents_custom_metrics"]
-
-    # Plot combined experiment rewards per environment, for means per model
-    env_rewards = {}
-    rogue = {"flag": False}
-    for category_folder in get_all_subdirs(ray_results_path):
-        if category_folder.split("/")[-1] in scenarios:
-            path = category_folder.split("/")[-1]
-            # nteams = int(path.split("_")[-4][0])
-            # nagents = int(path.split("_")[-3][0])
-            # if "rogue" in path:
-            #     rogue_flag = True
-            #     nrogue = int(path.split("_")[-5][0])
-            #     deg_rogue = path.split("_")[-5][6:]
-            #     rogue = {"flag": rogue_flag, "nrogue":nrogue, "deg_rogue": deg_rogue}
-
-            nteams, nagents, rogue = getExperimentParameters(path)
-
-            
-            csvs = []
-            experiment_folders = get_all_subdirs(category_folder)
-
-            experiment_folders = natsort.natsorted(experiment_folders)
-            experiment_folders = [experiment_folders[-1]]
-
-            for experiment_folder in experiment_folders:
-                csv_path = experiment_folder + "/progress.csv"
-                if os.path.getsize(csv_path) > 0:
-                    csvs.append(csv_path)
-            
-            for team_num in range(nteams):
-                team_metric, env = get_team_custom_metrics_gini(csvs, nagents, nteams, team_num, moi)
-                if env not in env_rewards:
-                    env_rewards[env] = []
-                env_rewards[env].append(team_metric)
-
-        for env, team_metric in env_rewards.items():
-            print("Plotting collective plot for environment: " + env)
-
-            def plot_fn():
-                plot_multiple_category_result(team_metric)
-
-            # Add filler to path which will be removed
-            collective_env_path = "gini_results/filler/"
-            plot_and_save(plot_fn, collective_env_path, env+"_gini_team_perf_"+str(nteams)+"teams_"+str(nagents)+"agents", nteams, nagents, rogue)
-
-
-def plot_agent_custom_metrics(metric_type, scenarios, trial):
+def plot_agent_custom_metrics(metric_type, category_folder, trial):
     '''
     This function plots the custom metrics for each agent on the same plot (default is 6 agents)
 
@@ -2088,38 +2427,39 @@ def plot_agent_custom_metrics(metric_type, scenarios, trial):
     # Plot combined experiment rewards per environment, for means per model
     env_rewards = {}
     rogue = {"flag": False}
-    for category_folder in get_all_subdirs(ray_results_path):
-        if category_folder.split("/")[-1] in scenarios:
-            path = category_folder.split("/")[-1]
-            nteams, nagents, rogue = getExperimentParameters(path) 
-            csvs = []
-            experiment_folders = get_all_subdirs(category_folder)
+    # for category_folder in get_all_subdirs(ray_results_path):
+    #     if category_folder.split("/")[-1] in scenarios:
+    path = category_folder.split("/")[-1]
+    nteams, nagents, rogue = getExperimentParameters(path) 
+    csvs = []
+    experiment_folders = get_all_subdirs(category_folder)
 
-            experiment_folders = natsort.natsorted(experiment_folders)
-            experiment_folders = [experiment_folders[trial]]        # does index which experiment
 
-            for experiment_folder in experiment_folders:
-                csv_path = experiment_folder + "/progress.csv"
-                if os.path.getsize(csv_path) > 0:
-                    csvs.append(csv_path)
-            
-            for agent_num in range(nagents):
-                agent_metric, env = get_custom_metrics(csvs, nagents, nteams, agent_num, metric_type)
-                if env not in env_rewards:
-                    env_rewards[env] = []
-                env_rewards[env].append(agent_metric)
+    experiment_folders = natsort.natsorted(experiment_folders)
+    experiment_folders = [experiment_folders[trial]]        # does index which experiment
 
-        for env, agent_metric in env_rewards.items():
-            print("Plotting collective plot for environment: " + env)
+    for experiment_folder in experiment_folders:
+        csv_path = experiment_folder + "/progress.csv"
+        if os.path.getsize(csv_path) > 0:
+            csvs.append(csv_path)
+    
+    for agent_num in range(nagents):
+        agent_metric, env = get_custom_metrics(csvs, nagents, nteams, agent_num, metric_type)
+        if env not in env_rewards:
+            env_rewards[env] = []
+        env_rewards[env].append(agent_metric)
 
-            def plot_fn():
-                plot_multiple_category_result(agent_metric)
+    for env, agent_metric in env_rewards.items():
+        print("Plotting collective plot for environment: " + env)
 
-            # Add filler to path which will be removed
-            collective_env_path = "custom_metrics/filler/"
-            plot_and_save(plot_fn, collective_env_path, env+"_"+str(nteams)+"teams_"+str(nagents)+"agents_"+metric_type, nteams, nagents, rogue, trial=trial)
+        def plot_fn():
+            plot_multiple_category_result(agent_metric)
 
-            # plot_and_save(plot_fn, collective_env_path, "TEST_"+env+"_moreapples0-2_"+str(nteams)+"_teams_"+str(nagents)+"agents_"+metric_type, nteams, nagents, rogue)
+        # Add filler to path which will be removed
+        collective_env_path = "custom_metrics/filler/"
+        plot_and_save(plot_fn, collective_env_path, env+"_"+str(nteams)+"teams_"+str(nagents)+"agents_"+metric_type, nteams, nagents, rogue, trial=trial)
+
+        # plot_and_save(plot_fn, collective_env_path, "TEST_"+env+"_moreapples0-2_"+str(nteams)+"_teams_"+str(nagents)+"agents_"+metric_type, nteams, nagents, rogue)
 
 
 def get_reward_from_experiment_folders(experiment_folders):
@@ -2158,9 +2498,30 @@ def plot_indiv_agent_metric_policies(category_folders, metrics):
                 plot_credo_agent_custom_metrics(met, trial_num, exp_dir, exp_reward)
     exit()
 
+def plot_learning_metrics(category_folders):
+
+    # loss_types = ['policy_loss', 'vf_loss', 'total_loss']
+
+    learning_metrics = None
+    for cat_count, category_folder in enumerate(category_folders):
+        # if category_folder in todo_folders:
+        cat_folders = get_all_subdirs(category_folder)
+        experiment_folders = natsort.natsorted(cat_folders)
+        exp_reward = get_reward_from_experiment_folders(experiment_folders)
+        credo = True if 'credo' in category_folder else False
+        for trial_num, exp_dir in enumerate(experiment_folders):
+            learning_metrics = getPathForColumnNames(exp_dir)
+            # for lt in loss_types:
+            #     plotTrialLosses(lt, trial_num, exp_dir, exp_reward, credo)
+            for learning_metric in learning_metrics:
+                plotTrialLearningMetrics(learning_metric, trial_num, exp_dir, exp_reward, credo)
+    exit()
+
 if __name__ == "__main__":
 
-    # nteam_arr = [1, 2, 3, 6]
+    # compare_losses()
+
+    nteam_arr = [1, 2, 3, 6]
     # for nteam in nteam_arr:
     #     exp_str = "cleanup_baseline_PPO_"+str(nteam)+"teams_6agents_custom_metrics_rgb"
     #     scenarios = [exp_str]
@@ -2168,45 +2529,55 @@ if __name__ == "__main__":
     #     plot_separate_results(scenarios)
     #     # print("Plotting combined results..")
     #     # plot_combined_results()
+    #     compare_losses(scenarios)
 
-    scenarios = ['/h/dtradke/ray_results3teams_6agents/cleanup_baseline_PPO_3teams_6agents_0.0-0.4-0.6_rgb_trial1']
 
-    # print("Plotting team results..")
-    # plot_team_results(scenarios)                   # graphs teams in one scenario separately
-    # plot_team_compare_results(credo=True)             # graphs all teams on same plot
-    
-    # plot_team_compare_ginis()        # plots gini
-    # plot_agent_custom_metrics_gini(scenarios)  # plots how specialized agents are
-    # plot_team_gini_score(scenarios)              # plots how "good" a team is by my arbitrary calc
+    nteam_arr = [1]
+    nagent_arr = [1, 2, 3, 4, 5, 6]
 
-    # metrics = ["cleaning", "fire", "apples"]
+    category_folders = []
+    for nteam in nteam_arr:
+        for nagent in nagent_arr:
+            category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
+            # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
-    # nteam_arr = [2, 3]
-    # # metrics = ["apples", "cleaning"]
-    # metrics = ["apples"]
-    # for trial_num in range(8):
-    #     for nteam in nteam_arr:
-    #         if trial_num == 7 and nteam == 1: continue
-    #         exp_str = "cleanup_baseline_PPO_"+str(nteam)+"teams_6agents_custom_metrics_rgb"
-    #         scenarios = [exp_str]
+
+    # plot_team_results(category_folders)                   # graphs teams in one scenario/team size separately... pass in list of paths to experiments to plot separately
+    plot_team_compare_results(category_folders, diff_sizes=True)           # graphs all teams on same plot (DIFF TEAM SIZES)... pass in list of paths to experiments to compare
+    # # plot_team_compare_ginis(category_folders)             # plots gini all teams on same plot (DIFF TEAM SIZES)... pass in list of paths to experiments to compare
+    # # exit()
+
+    # metrics = ["apples", "cleaning"]
+    # for category_folder in category_folders:
+    #     cat_folders = get_all_subdirs(category_folder)
+    #     experiment_folders = natsort.natsorted(cat_folders)
+    #     for trial_num, exp_dir in enumerate(experiment_folders):
     #         for met in metrics:
-    #             plot_agent_custom_metrics(met, scenarios, trial_num) # metric type one of: "cleaning", "fire", or "apples"
-    #         exit()
-    ''' credo '''
-    category_folders = get_all_subdirs(ray_results_path)
-    scenarios, scratch_base = getCredoPaths()
-    category_folders = scenarios
+    #             plot_agent_custom_metrics(met, category_folder, trial_num) # metric type one of: "cleaning", "fire", or "apples"
+
+    # plot_learning_metrics(category_folders)
+    exit()
+
+
+
+
+    
+
+    ''' CREDO BELOW '''
+    # category_folders = get_all_subdirs(ray_results_path)
+    # scenarios, scratch_base = getCredoPaths()
+    # category_folders = scenarios
 
     '''             triangle plots for credo paper              '''
-    plot_triangle_credo_reward("Reward", scenarios) # "Reward", "Inv. Gini"              plotting reward or gini in triangle
-    plot_triangle_credo_reward("Inverse Gini", scenarios)
+    # plot_triangle_credo_reward("Reward", scenarios) # "Reward", "Inv. Gini"              plotting reward or gini in triangle
+    # plot_triangle_credo_reward("Inverse Gini", scenarios)
     # plot_triangle_credo_reward_lines("Reward", scenarios)
+    # plot_scatter_reward_cleaning(scenarios)
 
     metrics = ["apples", "cleaning"]
     # for met in metrics:
     #     plot_triangle_credo_custom_metrics(met, scenarios)                 # plotting pickers or cleaners in triangle for credo
 
-    
     # plot_indiv_agent_metric_policies(category_folders, metrics)             # plots apple/cleaning curves for agents with all credo
 
 
