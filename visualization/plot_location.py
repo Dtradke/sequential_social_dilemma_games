@@ -17,6 +17,7 @@ import copy
 import sys
 import imageio
 
+import plot_results
 
 
 ray_results_path = os.path.expanduser("~/ray_results")
@@ -110,26 +111,41 @@ def loadNpyEnvs(exp_dir, trial_num, agent, metric):
 
 
 
+    for category_folder in category_folders:
+        cat_folders = get_all_subdirs(category_folder)
+        experiment_folders = natsort.natsorted(cat_folders)
+        for trial_num, exp_dir in enumerate(experiment_folders):
+            for met in metrics:
+                plot_agent_custom_metrics(met, category_folder, trial_num) # metric type one of: "cleaning", "fire", or "apples"
+
+
+
 def inspectLocationData(category_folders):
     ''' main function to loop through metrics/agents and plot their maps '''
 
-    metrics = ['vf_preds', 'rewards', 'value_targets', 'location']
+    learning_metrics = ['vf_preds', 'rewards', 'value_targets', 'location']
+    action_metrics = ["apples", "cleaning"]
 
-    files_to_load = [0, -1]
+    files_to_load = [-1]
 
     for cat_count, category_folder in enumerate(category_folders):
         cat_folders = get_all_subdirs(category_folder)
-        experiment_folders = [natsort.natsorted(cat_folders)[0]]
+        experiment_folders = natsort.natsorted(cat_folders) #[natsort.natsorted(cat_folders)[0]]
 
+        # remove previous experiments that dont have agent_value tables
+        experiment_folders = [e for e in experiment_folders if os.path.exists(e+"/agent_values/")]
 
         for trial_num, exp_dir in enumerate(experiment_folders):
             num_agents = len(os.listdir(exp_dir+"/agent_values/"))
             for agent in range(num_agents):
                 for file_to_load in files_to_load:
                     df, episode_num = getAgentData(exp_dir, agent, file_to_load)
-                    for metric in metrics:
+                    for metric in learning_metrics:
                         final_map = populateValueMap(df, metric)
                         saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
+
+            for met in action_metrics:
+                plot_results.plot_agent_custom_metrics(met, category_folder, trial_num, experiment_folders=[exp_dir]) # metric type one of: "cleaning", "fire", or "apples"
 
 
 def plotLocations(envs, nagents, metric, episodes, base_fname):
@@ -345,7 +361,7 @@ def plotLocationData(category_folders):
 if __name__ == "__main__":
 
     nteam_arr = [1]
-    nagent_arr = [6]
+    nagent_arr = [2]
 
     category_folders = []
     for nteam in nteam_arr:
@@ -354,9 +370,9 @@ if __name__ == "__main__":
             # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
 
-    # from utility_funcs import get_all_subdirs
-    # inspectLocationData(category_folders)
+    from utility_funcs import get_all_subdirs
+    inspectLocationData(category_folders)
     # exit()
 
-    plotLocationData(category_folders)
+    # plotLocationData(category_folders)
     # plotRewardHist(category_folders)
