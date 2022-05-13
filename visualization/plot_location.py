@@ -17,7 +17,10 @@ import copy
 import sys
 import imageio
 
-import plot_results
+try:
+    import plot_results
+except:
+    pass
 
 
 ray_results_path = os.path.expanduser("~/ray_results")
@@ -205,8 +208,8 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
                 all_vmin = -1
                 all_vmax = 1
             else:
-                all_vmin = -1*np.amax(np.absolute(np.array(env))) # np.amin(np.array(envs))
-                all_vmax = np.amax(np.absolute(np.array(env))) # np.amax(np.array(envs))
+                all_vmin = -25 # -1*np.amax(np.absolute(np.array(env))) # np.amin(np.array(envs))
+                all_vmax = 25 # np.amax(np.absolute(np.array(env))) # np.amax(np.array(envs))
             color_map = 'seismic' # 'Reds'
             
 
@@ -361,7 +364,7 @@ def plotLocationData(category_folders):
 if __name__ == "__main__":
 
     nteam_arr = [1]
-    nagent_arr = [2]
+    nagent_arr = [1]
 
     category_folders = []
     for nteam in nteam_arr:
@@ -370,9 +373,9 @@ if __name__ == "__main__":
             # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
 
-    from utility_funcs import get_all_subdirs
-    inspectLocationData(category_folders)
+    # from utility_funcs import get_all_subdirs
+    # inspectLocationData(category_folders)
     # exit()
 
-    # plotLocationData(category_folders)
+    plotLocationData(category_folders)
     # plotRewardHist(category_folders)
