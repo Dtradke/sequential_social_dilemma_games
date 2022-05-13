@@ -180,7 +180,7 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
         # env = np.mean(to_stack, axis=0)
 
         agent_envs = envs[i:i+nagents]
-        for agent_id, env in enumerage(agent_envs):
+        for agent_id, env in enumerate(agent_envs):
             env = np.flipud(env)
 
             # print(np.std(env.flatten()), np.count_nonzero(env.flatten()))
@@ -232,18 +232,22 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
 
             # ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
             # ax.set_title("Episode: "+str(int(episodes[epi_idx])), fontsize=22)
-            ax.set_title(str(nagents)+" Agents", fontsize=22)
+            ax.set_title("1/"+str(nagents)+", Agent: "+str(agent_id), fontsize=22)
             # ax.text(-5, 14, "River", fontsize=20, rotation=90)
             # ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
             # plt.show()
             
-            fname = base_fname +episodes[epi_idx]+"/"+metric+'/agent-'+str(agent_id)+'.png'
-            # plt.savefig(fname,bbox_inches='tight', dpi=300)
+            fname = base_fname +episodes[epi_idx]+"/"+metric+'/'
+            if not os.path.exists(fname):
+                os.mkdir(fname)
+
+            fname = fname + 'agent-'+str(agent_id)+'.png'
+            plt.savefig(fname,bbox_inches='tight', dpi=300)
             print("saved: ", fname)
-            exit()
+            # exit()
             plt.close()
         epi_idx+=1
-        # exit()
+    # exit()
 
 
 
@@ -341,7 +345,7 @@ def plotLocationData(category_folders):
 if __name__ == "__main__":
 
     nteam_arr = [1]
-    nagent_arr = [2]
+    nagent_arr = [6]
 
     category_folders = []
     for nteam in nteam_arr:
@@ -350,7 +354,7 @@ if __name__ == "__main__":
             # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
 
-    from utility_funcs import get_all_subdirs
+    # from utility_funcs import get_all_subdirs
     # inspectLocationData(category_folders)
     # exit()
 
