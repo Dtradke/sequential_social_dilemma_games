@@ -353,9 +353,6 @@ class MapEnv(MultiAgentEnv):
                 rewards[agent] = collective_reward
 
         dones["__all__"] = np.any(list(dones.values()))
-
-        print(rewards, dones)
-
         return observations, rewards, dones, info
 
     def reset(self):
