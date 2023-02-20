@@ -1,8 +1,0 @@
- Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
-2021-11-17 15:07:43,507	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 54.31 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2021-11-17 15:07:43,777	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21368578048 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
-slurmstepd: error: *** JOB 5004936 ON gpu028 CANCELLED AT 2021-11-17T16:07:45 DUE TO PREEMPTION ***
- Successfully loaded module "tensorflow2-gpu-cuda10.1-conda-python3.6"
-2021-11-17 16:10:08,561	INFO resource_spec.py:212 -- Starting Ray with 148.97 GiB memory available for workers and up to 53.47 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2021-11-17 16:10:08,867	WARNING services.py:1494 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 21474181120 bytes available. This may slow down performance! You may be able to free up space by deleting files in /dev/shm or terminating any running plasma_store_server processes. If you are inside a Docker container, you may need to pass an argument with the flag '--shm-size' to 'docker run'.
-slurmstepd: error: *** JOB 5004936 ON gpu088 CANCELLED AT 2021-11-17T17:11:44 DUE TO PREEMPTION ***

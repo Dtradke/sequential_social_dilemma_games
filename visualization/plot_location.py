@@ -87,7 +87,7 @@ def populateValueMap(df, metric):
 
 def currentDirectory(exp_dir, trial_num):
     nteams, nagents = getExperimentParameters(exp_dir)
-    fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/maps/trial-"+str(trial_num)+"/agent_values/"
+    fname = "../results/cleanup/baseline_PPO_"+str(nteams)+"teams_"+str(nagents)+"agents_rgb/trial-"+str(trial_num)+"/agent_values/"
     return fname
 
 def saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num):
@@ -100,6 +100,7 @@ def saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num):
         os.makedirs(fname)
     np.save(fname+"agent-"+str(agent)+metric+".npy", final_map)
     print("saved: ", fname+"agent-"+str(agent)+metric+".npy")
+    # exit()
 
 def loadNpyEnvs(exp_dir, trial_num, agent, metric):
     fname = currentDirectory(exp_dir, trial_num)
@@ -138,6 +139,8 @@ def inspectLocationData(category_folders):
         # remove previous experiments that dont have agent_value tables
         experiment_folders = [e for e in experiment_folders if os.path.exists(e+"/agent_values/")]
 
+        print(len(experiment_folders))
+        exit()
         for trial_num, exp_dir in enumerate(experiment_folders):
             num_agents = len(os.listdir(exp_dir+"/agent_values/"))
             for agent in range(num_agents):
@@ -147,11 +150,11 @@ def inspectLocationData(category_folders):
                         final_map = populateValueMap(df, metric)
                         saveFinalMap(final_map, exp_dir, agent, trial_num, metric, episode_num)
 
-            for met in action_metrics:
-                plot_results.plot_agent_custom_metrics(met, category_folder, trial_num, experiment_folders=[exp_dir]) # metric type one of: "cleaning", "fire", or "apples"
+            # for met in action_metrics:
+            #     plot_results.plot_agent_custom_metrics(met, category_folder, trial_num, experiment_folders=[exp_dir]) # metric type one of: "cleaning", "fire", or "apples"
 
 
-def plotLocations(envs, nagents, metric, episodes, base_fname):
+def plotLocations(envs, nteams, nagents, metric, episodes, base_fname):
 
     # if metric == 'rewards':
     #     all_vmin = -1
@@ -251,7 +254,7 @@ def plotLocations(envs, nagents, metric, episodes, base_fname):
 
             # ax.set_title("Agent: "+str(agent_num)+'\n'+"Epi: "+str(int(episodes[epi_idx])), fontsize=22)
             # ax.set_title("Episode: "+str(int(episodes[epi_idx])), fontsize=22)
-            ax.set_title("1/"+str(nagents)+", Agent: "+str(agent_id), fontsize=22)
+            ax.set_title(str(nteams)+"/"+str(nagents)+", Agent: "+str(agent_id), fontsize=22)
             # ax.text(-5, 14, "River", fontsize=20, rotation=90)
             # ax.text(18, 15, "Orchard", fontsize=20, rotation=270)
             # plt.show()
@@ -355,7 +358,7 @@ def plotLocationData(category_folders):
                     for agent in range(nagents):
                         envs.append(np.load(base_fname+str(epi)+"/npy_arrays/agent-"+str(agent)+metric+'.npy'))
                         
-                plotLocations(envs, nagents, metric, episodes, base_fname)
+                plotLocations(envs, nteams, nagents, metric, episodes, base_fname)
                     
 
 
@@ -363,8 +366,8 @@ def plotLocationData(category_folders):
 
 if __name__ == "__main__":
 
-    nteam_arr = [1]
-    nagent_arr = [1]
+    nteam_arr = [3]
+    nagent_arr = [6]
 
     category_folders = []
     for nteam in nteam_arr:
@@ -373,9 +376,9 @@ if __name__ == "__main__":
             # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
 
 
-    # from utility_funcs import get_all_subdirs
-    # inspectLocationData(category_folders)
-    # exit()
+    from utility_funcs import get_all_subdirs
+    inspectLocationData(category_folders)
+    exit()
 
-    plotLocationData(category_folders)
+    # plotLocationData(category_folders)
     # plotRewardHist(category_folders)

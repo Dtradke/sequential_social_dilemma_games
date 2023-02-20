@@ -67,6 +67,10 @@ def build_experiment_config_dict(args):
         ModelCatalog.register_custom_model(model_name, MOAModel)
     elif args.model == "baseline":
         ModelCatalog.register_custom_model(model_name, BaselineModel)
+        
+
+# TODO(dtr):  add in the social planner here... different obs/act space so the gen_policy() will be different and need a code or something for policy_graphs for SP agent
+
 
     # Each policy can have a different configuration (including custom model)
     def gen_policy():
@@ -322,6 +326,7 @@ def create_experiment(args):
         assert (args.selfW + args.teamW + args.sysW) == 1, "CREDO SUM DOES NOT EQUAL 1"
     else:
         experiment_name = experiment_name + "_custom_metrics"
+        # experiment_name = experiment_name + "_weight_change"
 
     if not args.return_agent_actions:
         experiment_name = experiment_name + "_rgb"
@@ -455,7 +460,7 @@ def run(args, experiments):
             #     scheduler=scheduler,
             #     reuse_actors=args.tune_hparams,
             # )
-            exit()
+            # exit()
         
     # else:
     args.resume = False

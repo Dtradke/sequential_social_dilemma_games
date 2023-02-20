@@ -56,12 +56,15 @@ class CleanupEnv(MapEnv):
             use_collective_reward=use_collective_reward,
         )
 
+        # self.thresholdDepletion = 0.4
+        # self.wasteSpawnProbability = 0.5
+
         # compute potential waste area
         unique, counts = np.unique(self.base_map, return_counts=True)
         counts_dict = dict(zip(unique, counts))
         self.potential_waste_area = counts_dict.get(b"H", 0) + counts_dict.get(b"R", 0)
         self.current_apple_spawn_prob = appleRespawnProbability
-        self.current_waste_spawn_prob = wasteSpawnProbability
+        self.current_waste_spawn_prob = wasteSpawnProbability #self.wasteSpawnProbability
         self.compute_probabilities()
 
         # make a list of the potential apple and waste spawn points
@@ -125,8 +128,13 @@ class CleanupEnv(MapEnv):
             )
         return updates
 
-    def custom_map_update(self):
+    def custom_map_update(self, timesteps=None):
         """"Update the probabilities and then spawn"""
+
+        # if timesteps > 500000:
+        #     self.thresholdDepletion = 0.3
+        #     self.wasteSpawnProbability = 0.7
+
         self.compute_probabilities()
         self.update_map(self.spawn_apples_and_waste())
 
@@ -201,23 +209,20 @@ class CleanupEnv(MapEnv):
         if self.potential_waste_area > 0:
             waste_density = 1 - self.compute_permitted_area() / self.potential_waste_area
 
-        # print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-        # exit()
-
         # if theres too much waste
-        if waste_density >= thresholdDepletion:
+        if waste_density >= thresholdDepletion: #self.thresholdDepletion:
             self.current_apple_spawn_prob = 0
             self.current_waste_spawn_prob = 0
         # else compute the probabilities based on how much waste
         else:
-            self.current_waste_spawn_prob = wasteSpawnProbability
+            self.current_waste_spawn_prob = wasteSpawnProbability # self.wasteSpawnProbability
             if waste_density <= thresholdRestoration:
                 self.current_apple_spawn_prob = appleRespawnProbability
             else:
                 spawn_prob = (
                     1
                     - (waste_density - thresholdRestoration)
-                    / (thresholdDepletion - thresholdRestoration)
+                    / (thresholdDepletion - thresholdRestoration)   # self.thresholdDepletion
                 ) * appleRespawnProbability
                 self.current_apple_spawn_prob = spawn_prob
 

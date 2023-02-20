@@ -213,9 +213,11 @@ class MapEnv(MultiAgentEnv):
                 arr[row, col] = ascii_list[row][col]
         return arr
 
+# TODO(dr): Need to only share what an agent has credo for... i.e., if they are 0.8 team-focused and get reward of 1, only share 0.8 with team
+
     def compute_team_rewards(self):
-        ''' calculates the team's rewards when split is even 
-        
+        ''' calculates the team's rewards when split is even
+
         Returns
         -------
         self_rewards: a dict representing {agent_id: single_agent_reward, ........ for all agents}
@@ -265,14 +267,14 @@ class MapEnv(MultiAgentEnv):
         for agent_id, action in actions.items():
 
             # print(len(list(self.all_actions.keys())))
-            # making rogue actions... 
+            # making rogue actions...
             # if self.agents[agent_id].is_rogue and np.random.random() < self.agents[agent_id].rogue_deg:
             #     action = np.random.randint(self.num_actions)
             #     actions[agent_id] = action
 
             agent_action = self.agents[agent_id].action_map(action)
             agent_actions[agent_id] = agent_action
-            
+
 
         # Remove agents from color map
         for agent in self.agents.values():
@@ -290,6 +292,7 @@ class MapEnv(MultiAgentEnv):
         self.update_custom_moves(agent_actions)
 
         # execute spawning events
+        # self.custom_map_update(timesteps=len(self.agents[list(self.agents.keys())[0]]._reward_arr))
         self.custom_map_update()
 
         map_with_agents = self.get_map_with_agents()
@@ -298,6 +301,8 @@ class MapEnv(MultiAgentEnv):
             row, col = agent.pos[0], agent.pos[1]
             # Firing beams have priority over agents and should cover them
             if self.world_map[row, col] not in [b"F", b"C"]:
+                # print(agent.get_char_id())
+                # exit()
                 self.single_update_world_color_map(row, col, agent.get_char_id())
 
 
@@ -326,16 +331,7 @@ class MapEnv(MultiAgentEnv):
             else:
                 observations[agent.agent_id] = {"curr_obs": rgb_arr}
 
-            # full team credo
-            # rewards[agent.agent_id] = team_rewards[agent.team_num][agent.agent_id] #agent.compute_reward()                           # changed for teams
 
-            # print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-
-            # print(team_rewards)
-            # print(agent.team_num)
-            # print(agent.agent_id)
-            # print(team_rewards[agent.team_num][agent.agent_id])
-            # exit()
 
             # rewards[agent.agent_id] = self_rewards[agent.agent_id] #agent.compute_reward()
             # credo weights...
@@ -345,7 +341,10 @@ class MapEnv(MultiAgentEnv):
 
             dones[agent.agent_id] = agent.get_done()
             # exit()
-            # info[agent.agent_id]["apples"] = 1
+            info[agent.agent_id] = {"loc":agent.pos}
+
+            # added to know what timestep it is
+            agent._reward_arr.append(rewards[agent.agent_id])
 
 
         if self.use_collective_reward:
@@ -354,6 +353,9 @@ class MapEnv(MultiAgentEnv):
                 rewards[agent] = collective_reward
 
         dones["__all__"] = np.any(list(dones.values()))
+
+        print(rewards, dones)
+
         return observations, rewards, dones, info
 
     def reset(self):
@@ -372,7 +374,7 @@ class MapEnv(MultiAgentEnv):
         self.agents = {}
         self.setup_agents()
         self.reset_map()
-        self.custom_map_update()
+        self.custom_map_update() #timesteps=len(self.agents[list(self.agents.keys())[0]]._reward_arr))
 
         map_with_agents = self.get_map_with_agents()
 

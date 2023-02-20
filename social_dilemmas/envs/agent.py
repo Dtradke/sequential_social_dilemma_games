@@ -50,6 +50,8 @@ class Agent(object):
         self.reward_this_turn = 0
         self.prev_visible_agents = None
 
+        self._reward_arr = []
+
     @property
     def action_space(self):
         """Identify the dimensions and bounds of the action space.

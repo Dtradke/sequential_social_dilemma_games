@@ -40,7 +40,7 @@ class PlotData(object):
         self.plot_graphics = PlotGraphics(column_name, legend_name, color)
 
 
-def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=False, trial=None, credo=False, reward=None):
+def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=False, trial=None, credo=False, reward=None, maps=None):
     global files
     # Clear plot to prevent slowdown when drawing multiple figures
     plt.style.use('seaborn-whitegrid')
@@ -48,7 +48,8 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
     if "cleaning" in file_name_addition or "apples" in file_name_addition or "loss" in file_name_addition:
         figure(figsize=(4, 2.5), dpi=300)
     elif "diffsizeteams" in file_name_addition:
-        figure(figsize=(2.5, 4), dpi=300)
+        # figure(figsize=(2.5, 4), dpi=300)
+        figure(figsize=(10, 4), dpi=300)
     elif compare:
         figure(figsize=(10, 4), dpi=300)
     else:
@@ -74,7 +75,7 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
         elif ("cleaning" in file_name_addition and credo) or ("Met:" in file_name_addition and credo):
             plt.legend(loc='upper center', ncol=3, bbox_to_anchor=(0.5, -0.35), frameon=True)
         elif "diffsizeteams" in file_name_addition:
-            plt.legend(handles, labels, fontsize=13, loc='lower left', frameon=True)
+            plt.legend(handles, labels, fontsize=13, loc='lower right', frameon=True)
 
     # Strip path of all but last folder
     path_split = os.path.dirname(path).split("/")
@@ -91,12 +92,21 @@ def plot_and_save(fn, path, file_name_addition, nteams, nagents, rogue, compare=
         pngpath = pngpath + "rogue/"+str(rogue["nrogue"])+"rogue/deg"+rogue["deg_rogue"]+"/"
         pngpath2 = pngpath2 + "rogue/"+str(rogue["nrogue"])+"rogue/deg"+rogue["deg_rogue"]+"/"
 
-    if trial is not None:
+    if maps is not None:
+        files = os.listdir(pngpath2 + "maps/trial-"+str(trial)+"/agent_values/")
+        files = natsort.natsorted(files)
+        if 'episode_list.npy' in files: files = files[:-1]
+        episode_fname = str(files[-1])
+
+        pngpath = pngpath + "maps/trial-"+str(trial)+"/agent_values/"+episode_fname+"/"
+        pngpath2 = pngpath2 + "maps/trial-"+str(trial)+"/agent_values/"+episode_fname+"/"
+    elif trial is not None:
         pngpath = pngpath + "trial-"+str(trial)+"/"
         pngpath2 = pngpath2 + "trial-"+str(trial)+"/"
 
     pngfile = pngpath + file_name_addition + ".png"
     pngfile2 = pngpath2 + file_name_addition + ".png"
+
 
     if not os.path.exists(pngpath2):
         os.makedirs(pngpath2)
@@ -216,7 +226,7 @@ def plot_single_category_result(
             y_max=800
             bottom = -1
         elif "Mean Pop. Reward" == y_label_name or "Reward" in y_label_name:
-            y_max = 400 # 350
+            y_max = 350 # 400
             bottom = -1
         elif 'entropy' in y_label_name:
             bottom = -0.1
@@ -716,7 +726,7 @@ def get_color_from_agent_num_single_team(agent_num, nteams):
         "agent-3": {1:"magenta", 2:"darkred",       3:"lightcoral",             6:"green"},
         "agent-4": {1:"teal",       2:"red",            3:"green",              6:"magenta"},
         "agent-5": {1:"purple",       2:"lightcoral",     3:"lime",  6:"cyan"},
-        "agent-6": {1:"aquamarine", 2:"", 3:"", 6:"grey"},
+        "agent-6": {1:"lime", 2:"", 3:"", 6:"grey"},
     }
     # name_lower = model_name.lower()
     agent_label_str = "agent-"+str(agent_num)
@@ -2302,6 +2312,7 @@ def plot_team_compare_results(scenarios=None, diff_sizes=False, credo=False):
     # print(category_folders)
     # exit()
 
+
     env_rewards = {}
     rogue = {"flag": False}
     for category_folder in category_folders: #get_all_subdirs(ray_results_path):
@@ -2323,6 +2334,14 @@ def plot_team_compare_results(scenarios=None, diff_sizes=False, credo=False):
             csvs = []
             experiment_folders = get_all_subdirs(category_folder)
             experiment_folders = [natsort.natsorted(experiment_folders)[0]]
+
+            # remove exps that didn't finish completely
+            # new_experiment_folders = []
+            # for e in experiment_folders:
+            #     files = [f for f in os.listdir(e) if f[:2] == 'ch']
+            #     if (len(files) > 0 and 'checkpoint_1660' in files) or (len(files) == 0):
+            #         new_experiment_folders.append(e)
+            # experiment_folders = new_experiment_folders
             
             for experiment_folder in experiment_folders:
                 csv_path = experiment_folder + "/progress.csv"
@@ -2348,7 +2367,8 @@ def plot_team_compare_results(scenarios=None, diff_sizes=False, credo=False):
                 if diff_sizes:
                     plot_and_save(plot_fn, collective_env_path, env+ "_compare_team_rewards_"+str(len(scenarios))+"diffsizeteams", nteams, nagents, rogue, compare=True)
                 else:
-                    plot_and_save(plot_fn, collective_env_path, env+ "_compare_team_rewards_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True)
+                    # plot_and_save(plot_fn, collective_env_path, env+ "_compare_team_rewards_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True)
+                    plot_and_save(plot_fn, collective_env_path, env+ "_compare_teams_weight_change_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True)
 
                 # plot_and_save(plot_fn, collective_env_path, "TEST_"+env+ "_compare_team_rewards_"+str(nagents)+"agents", nteams, nagents, rogue, compare=True)
                 # exit()
@@ -2410,7 +2430,7 @@ def plot_agent_custom_metrics_gini(scenarios):
 
 
 
-def plot_agent_custom_metrics(metric_type, category_folder, trial):
+def plot_agent_custom_metrics(metric_type, category_folder, trial, experiment_folders=None):
     '''
     This function plots the custom metrics for each agent on the same plot (default is 6 agents)
 
@@ -2432,11 +2452,11 @@ def plot_agent_custom_metrics(metric_type, category_folder, trial):
     path = category_folder.split("/")[-1]
     nteams, nagents, rogue = getExperimentParameters(path) 
     csvs = []
-    experiment_folders = get_all_subdirs(category_folder)
 
-
-    experiment_folders = natsort.natsorted(experiment_folders)
-    experiment_folders = [experiment_folders[trial]]        # does index which experiment
+    if experiment_folders is None:
+        experiment_folders = get_all_subdirs(category_folder)
+        experiment_folders = natsort.natsorted(experiment_folders)
+        experiment_folders = [experiment_folders[trial]]        # does index which experiment
 
     for experiment_folder in experiment_folders:
         csv_path = experiment_folder + "/progress.csv"
@@ -2457,7 +2477,7 @@ def plot_agent_custom_metrics(metric_type, category_folder, trial):
 
         # Add filler to path which will be removed
         collective_env_path = "custom_metrics/filler/"
-        plot_and_save(plot_fn, collective_env_path, env+"_"+str(nteams)+"teams_"+str(nagents)+"agents_"+metric_type, nteams, nagents, rogue, trial=trial)
+        plot_and_save(plot_fn, collective_env_path, env+"_"+str(nteams)+"teams_"+str(nagents)+"agents_"+metric_type, nteams, nagents, rogue, trial=trial, maps=experiment_folders)
 
         # plot_and_save(plot_fn, collective_env_path, "TEST_"+env+"_moreapples0-2_"+str(nteams)+"_teams_"+str(nagents)+"agents_"+metric_type, nteams, nagents, rogue)
 
@@ -2532,18 +2552,20 @@ if __name__ == "__main__":
     #     compare_losses(scenarios)
 
 
-    nteam_arr = [1]
-    nagent_arr = [1, 2, 3, 4, 5, 6]
+    nteam_arr = [1] #[1, 2, 3, 6]
+    nagent_arr = [1]
 
     category_folders = []
     for nteam in nteam_arr:
         for nagent in nagent_arr:
             category_folders.append("/scratch/ssd004/scratch/dtradke/ray_results/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
             # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_custom_metrics_rgb")
+            # category_folders.append("../../ray_results"+str(nteam)+"teams_"+str(nagent)+"agents/cleanup_baseline_PPO_"+str(nteam)+"teams_"+str(nagent)+"agents_weight_change_rgb")
 
 
     # plot_team_results(category_folders)                   # graphs teams in one scenario/team size separately... pass in list of paths to experiments to plot separately
-    plot_team_compare_results(category_folders, diff_sizes=True)           # graphs all teams on same plot (DIFF TEAM SIZES)... pass in list of paths to experiments to compare
+    # plot_team_compare_results(category_folders)
+    # plot_team_compare_results(category_folders, diff_sizes=True)           # graphs all teams on same plot (DIFF TEAM SIZES)... pass in list of paths to experiments to compare
     # # plot_team_compare_ginis(category_folders)             # plots gini all teams on same plot (DIFF TEAM SIZES)... pass in list of paths to experiments to compare
     # # exit()
 
@@ -2555,7 +2577,7 @@ if __name__ == "__main__":
     #         for met in metrics:
     #             plot_agent_custom_metrics(met, category_folder, trial_num) # metric type one of: "cleaning", "fire", or "apples"
 
-    # plot_learning_metrics(category_folders)
+    plot_learning_metrics(category_folders)
     exit()
 
 
